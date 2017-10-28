@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+
+// Route::get('/', function () {
+//     return view('login.index');
+// });
+
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::match(['get', 'post'], 'password/reset', function(){
+    return abort(404);
 });
