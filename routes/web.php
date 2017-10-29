@@ -22,9 +22,7 @@ Auth::routes();
  //    });
 
 Route::group(['middleware' => 'guest'], function() {
-	Route::get('/', function(){
-		Route::get('/', 'HomeController@index');
-	});    
+	Route::get('/', 'HomeController@index');   
 });
 
 Route::group(['middleware' => 'auth'], function() {

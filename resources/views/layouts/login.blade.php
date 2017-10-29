@@ -14,16 +14,19 @@
           <div class="col-sm-3 col-lg-2">
             <ul class="nav flex-column navbar">
               <li class="nav-item">
-                <a class="nav-link active" href="#">Active</a>
+                <a class="nav-link active" href="#">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Branch</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Closing</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
+                <a class="nav-link" href="#">Property</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Agent</a>
               </li>
             </ul>
           </div>
