@@ -60,7 +60,7 @@
 					<button type="submit" class="btn btn-outline-primary">
 						Save
 					</button>
-					<a href="{{ route('branch') }}" class="btn btn-outline-danger">Cancel</a>
+					<a href="{{ route('closing') }}" class="btn btn-outline-danger">Cancel</a>
 				</div>
 			</div>
 		</form>

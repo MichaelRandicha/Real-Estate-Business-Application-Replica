@@ -23,9 +23,6 @@
                 <a class="nav-link @if (Request::is('closing/*') || Request::is('closing')) active @endif" href="{{ route('closing') }}">Closing</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link @if (Request::is('property/*') || Request::is('property')) active @endif" href="{{ route('property') }}">Property</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link @if (Request::is('agent/*') || Request::is('agent')) active @endif" href="{{ route('agent') }}">Agent</a>
               </li>
             </ul>

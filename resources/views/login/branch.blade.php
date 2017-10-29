@@ -23,13 +23,13 @@
 				</form>	
 			</div>
 		</div>
-		<table class="table table-sm table-bordered">
+		<table class="table table-sm table-hover table-bordered">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
-					<th scope="col">Nama Cabang</th>
-					<th scope="col">Lokasi</th>
-					<th scope="col">Nomor Handphone</th>
+					<th scope="col">Branch Name</th>
+					<th scope="col">Location</th>
+					<th scope="col">Phone Number</th>
 					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>

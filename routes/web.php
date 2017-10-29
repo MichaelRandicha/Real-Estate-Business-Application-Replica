@@ -57,12 +57,20 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('view/{id}', 'ClosingController@view')->name('viewClosing');
 	});
 
-	Route::group(['prefix' => 'property'], function(){
-		Route::get('/', 'PropertyController@index')->name('property');
-	});
-
 	Route::group(['prefix' => 'agent'], function(){
 		Route::get('/', 'AgentController@index')->name('agent');
+
+		Route::post('search', 'AgentController@search')->name('searchAgent');
+		
+		Route::get('add', 'AgentController@add')->name('addAgent');
+		Route::post('add', 'AgentController@register')->name('registerAgent');
+		
+		Route::get('view/{id}', 'AgentController@view')->name('viewAgent');
+
+		Route::get('edit/{id}', 'AgentController@edit')->name('editAgent');
+		Route::post('edit/{id}', 'AgentController@change')->name('changeAgent');
+		
+		Route::get('delete/{id}', 'AgentController@delete')->name('deleteAgent');
 	});
 
 });

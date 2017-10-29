@@ -23,12 +23,12 @@
 				</form>
 			</div>
 		</div>
-		<table class="table table-sm table-bordered">
+		<table class="table table-sm table-hover table-bordered">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Property</th>
-					<th scope="col">Tanggal</th>
+					<th scope="col">Date</th>
 					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>
