@@ -31,10 +31,10 @@
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
-			<a href="{{ route('branch') }}" class="btn btn-outline-success">Back</a>
 			<a href="{{ route('editBranch', ['id' => '1']) }}" class="btn btn-outline-warning">Edit</a>
 			<Button class="btn btn-outline-danger" onclick="del(event)">Delete</Button>
-			<a href="{{ route('branch') }}" id="del" hidden></a>
+			<a href="{{ route('deleteBranch', ['id' => '1']) }}" id="del" hidden></a>
+			<a href="{{ route('branch') }}" class="btn btn-outline-success">Back</a>
 		</div>
 	</div>
 </div>
@@ -48,16 +48,16 @@
 			type: 'red',
 			closeIcon: true,
 			backgroundDismiss: true,
-		    buttons: {
-		        yes: function () {
-		            document.getElementById('del').click()
-		        },
-		        cancel: {
-		            keys: ['esc'],
-		            action: function () {
-		            }
-		        }
-		    }
+			buttons: {
+				yes: function () {
+					document.getElementById('del').click()
+				},
+				cancel: {
+					keys: ['esc'],
+					action: function () {
+					}
+				}
+			}
 		})
 	}
 </script>

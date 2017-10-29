@@ -19,6 +19,11 @@ class BranchController extends Controller
     	return view('login.branch.add');
     }
 
+    public function register(Request $request){
+        
+        return redirect('branch');
+    }
+
     public function view($id){
     	if(!is_numeric($id)){
     		return redirect('branch');
@@ -31,5 +36,18 @@ class BranchController extends Controller
     		return redirect('branch');
     	}
     	return view('login.branch.edit');
+    }
+
+    public function change(Request $request, $id){
+        if(!is_numeric($id)){
+            return redirect('branch');
+        }
+        
+        return redirect('branch/view/'.$id);
+    }
+
+    public function delete($id){
+
+        return redirect('branch');
     }
 }

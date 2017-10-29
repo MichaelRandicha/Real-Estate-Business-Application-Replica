@@ -36,14 +36,25 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['prefix' => 'branch'], function(){
 		Route::get('/', 'BranchController@index')->name('branch');
+		
 		Route::post('search', 'BranchController@search')->name('searchBranch');
+		
 		Route::get('add', 'BranchController@add')->name('addBranch');
+		Route::post('add', 'BranchController@register')->name('registerBranch');
+		
 		Route::get('view/{id}', 'BranchController@view')->name('viewBranch');
+
 		Route::get('edit/{id}', 'BranchController@edit')->name('editBranch');
+		Route::post('edit/{id}', 'BranchController@change')->name('changeBranch');
+		
+		Route::get('delete/{id}', 'BranchController@delete')->name('deleteBranch');
 	});
 
 	Route::group(['prefix' => 'closing'], function(){
 		Route::get('/', 'ClosingController@index')->name('closing');
+		Route::post('search', 'BranchController@search')->name('searchClosing');
+		Route::get('add', 'ClosingController@add')->name('addClosing');
+		Route::get('view/{id}', 'ClosingController@view')->name('viewClosing');
 	});
 
 	Route::group(['prefix' => 'property'], function(){

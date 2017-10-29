@@ -12,9 +12,7 @@
 		@endif
 
 		<div>
-			
 			<div style="float:left;">
-				
 				<a href={{ route('addBranch') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Branch</a>
 			</div>
 
@@ -22,8 +20,7 @@
 				<form class="form-inline" style="float:right;margin-bottom: 10px" method="POST" action="{{ route('searchBranch') }}">
 					{{ csrf_field() }}
 					<input type="text" name="search" placeholder="Nama Cabang" class="search">
-				</form>
-				
+				</form>	
 			</div>
 		</div>
 		<table class="table table-sm table-bordered">
@@ -31,52 +28,52 @@
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Nama Cabang</th>
-					<th scope="col">Lokasi</td>
-						<th scope="col">Nomor Handphone</td>
-							<th scope="col" class="text-center">Action</td>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="text-center">1</td>
-								<td>BranchA</td>
-								<td>Surabaya</td>
-								<td>0812345678</td>
-								<td class="text-center"><a href="#" class="btn btn-outline-primary btn-xs">View</a></td>
-							</tr>
-							<tr>
-								<td class="text-center">2</td>
-								<td>BranchB</td>
-								<td>Jakarta</td>
-								<td>0812345678</td>
-								<td class="text-center"><a href="#" class="btn btn-outline-primary btn-xs">View</a></td>
-							</tr>
-							<tr>
-								<td class="text-center">3</td>
-								<td>BranchC</td>
-								<td>Bali</td>
-								<td>0812345678</td>
-								<td class="text-center"><a href="#" class="btn btn-outline-primary btn-xs">View</a></td>
-							</tr>
-							<tr>
-								<td class="text-center">4</td>
-								<td>BranchD</td>
-								<td>Semarang</td>
-								<td>0812345678</td>
-								<td class="text-center"><a href="#" class="btn btn-outline-primary btn-xs">View</a></td>
-							</tr>
-							<tr>
-								<td class="text-center">5</td>
-								<td>BranchE</td>
-								<td>Malang</td>
-								<td>0812345678</td>
-								<td class="text-center"><a href="#" class="btn btn-outline-primary btn-xs">View</a></td>
-							</tr>
-						</tbody>
-					</table>
+					<th scope="col">Lokasi</th>
+					<th scope="col">Nomor Handphone</th>
+					<th scope="col" class="text-center">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="text-center">1</td>
+					<td>BranchA</td>
+					<td>Surabaya</td>
+					<td>0812345678</td>
+					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '1']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				<tr>
+					<td class="text-center">2</td>
+					<td>BranchB</td>
+					<td>Jakarta</td>
+					<td>0812345678</td>
+					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '2']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				<tr>
+					<td class="text-center">3</td>
+					<td>BranchC</td>
+					<td>Bali</td>
+					<td>0812345678</td>
+					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '3']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				<tr>
+					<td class="text-center">4</td>
+					<td>BranchD</td>
+					<td>Semarang</td>
+					<td>0812345678</td>
+					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '4']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				<tr>
+					<td class="text-center">5</td>
+					<td>BranchE</td>
+					<td>Malang</td>
+					<td>0812345678</td>
+					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '5']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+			</tbody>
+		</table>
 
-					{{-- {{ $branch->links() }} --}}
+		{{-- {{ $branch->links() }} --}}
 
-				</div>
-			</div>
-			@endsection
+	</div>
+</div>
+@endsection

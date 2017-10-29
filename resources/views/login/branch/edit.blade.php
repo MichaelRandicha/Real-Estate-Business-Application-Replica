@@ -10,7 +10,7 @@
 			{{ session('status') }}
 		</div>
 		@endif
-		<form class="form-horizontal" method="POST" action="{{ route('register') }}">
+		<form class="form-horizontal" method="POST" action="{{ route('changeBranch', ['id' => '1']) }}">
 			{{ csrf_field() }}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -31,7 +31,7 @@
 				<label for="location" class="col-md-4 control-label">Location</label>
 
 				<div class="col-md-6">
-					<input id="location" type="location" class="form-control" name="location" value="Surabaya" required>
+					<input id="location" type="text" class="form-control" name="location" value="Surabaya" required>
 
 					@if ($errors->has('location'))
 					<span class="help-block">
@@ -45,7 +45,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="phone" class="form-control" name="phone" value="08123456789" required>
+					<input id="phone" type="text" pattern="^[0-9]{1,12}$" class="form-control" name="phone" value="08123456789" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -60,7 +60,7 @@
 					<button type="submit" class="btn btn-outline-primary">
 						Save
 					</button>
-					<a href="{{ route('branch') }}" class="btn btn-outline-danger">Cancel</a>
+					<a href="{{ route('viewBranch', ['id' => '1']) }}" class="btn btn-outline-danger">Cancel</a>
 				</div>
 			</div>
 		</form>
