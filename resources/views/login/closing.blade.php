@@ -28,7 +28,7 @@
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Property</th>
-					<th scope="col">Date</th>
+					<th scope="col">Sold Date</th>
 					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>
@@ -36,31 +36,31 @@
 				<tr>
 					<td class="text-center">1</td>
 					<td>Rumah01</td>
-					<td>11-11-17</td>
+					<td>11/11/17</td>
 					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '1']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				<tr>
 					<td class="text-center">2</td>
 					<td>Rumah02</td>
-					<td>30-10-17</td>
+					<td>30/10/17</td>
 					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '2']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				<tr>
 					<td class="text-center">3</td>
 					<td>Rumah03</td>
-					<td>21-10-17</td>
+					<td>21/10/17</td>
 					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '3']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				<tr>
 					<td class="text-center">4</td>
 					<td>Rumah04</td>
-					<td>19-10-17</td>
+					<td>19/10/17</td>
 					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '4']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				<tr>
 					<td class="text-center">5</td>
 					<td>Rumah05</td>
-					<td>15-10-17</td>
+					<td>15/10/17</td>
 					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '5']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 			</tbody>
