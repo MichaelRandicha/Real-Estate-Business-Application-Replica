@@ -46,6 +46,8 @@
 			content: 'Delete BranchA?',
 			theme: 'modern',
 			type: 'red',
+			closeIcon: true,
+			backgroundDismiss: true,
 		    buttons: {
 		        yes: function () {
 		            document.getElementById('del').click()
