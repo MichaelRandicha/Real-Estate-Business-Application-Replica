@@ -13,7 +13,7 @@
 		</div>
 		@endif
 
-		<h3><strong>Top Branch</strong></h3>
+		<h4><strong>Top Branch</strong></h4>
 		<table class="table table-sm table-bordered">
 			<thead class="thead-light">
 				<tr>
@@ -50,7 +50,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<h3><strong>Top Agent</strong></h3>
+			<h4><strong>Top Agent</strong></h4>
 			<table class="table table-sm table-bordered">
 				<thead class="thead-light">
 					<tr>
