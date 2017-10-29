@@ -27,8 +27,33 @@ Route::group(['middleware' => 'guest'], function() {
 
 Route::group(['middleware' => 'auth'], function() {
 	Route::get('/', function(){
-		return view('login.index');
-	});    
+		return redirect('dashboard');
+	});
+
+	Route::group(['prefix' => 'dashboard'], function(){
+		Route::get('/', 'DashboardController@index')->name('dashboard');
+	});
+
+	Route::group(['prefix' => 'branch'], function(){
+		Route::get('/', 'BranchController@index')->name('branch');
+		Route::post('search', 'BranchController@search')->name('searchBranch');
+		Route::get('add', 'BranchController@add')->name('addBranch');
+		Route::get('view/{id}', 'BranchController@view')->name('viewBranch');
+		Route::get('edit/{id}', 'BranchController@edit')->name('editBranch');
+	});
+
+	Route::group(['prefix' => 'closing'], function(){
+		Route::get('/', 'ClosingController@index')->name('closing');
+	});
+
+	Route::group(['prefix' => 'property'], function(){
+		Route::get('/', 'PropertyController@index')->name('property');
+	});
+
+	Route::group(['prefix' => 'agent'], function(){
+		Route::get('/', 'AgentController@index')->name('agent');
+	});
+
 });
 
 

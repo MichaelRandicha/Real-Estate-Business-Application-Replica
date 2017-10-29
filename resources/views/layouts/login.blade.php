@@ -14,19 +14,19 @@
           <div class="col-sm-3 col-lg-2">
             <ul class="nav flex-column navbar">
               <li class="nav-item">
-                <a class="nav-link active" href="#">Dashboard</a>
+                <a class="nav-link @if (Request::is('dashboard/*') || Request::is('dashboard')) active @endif" href="{{ route('dashboard') }}">Dashboard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Branch</a>
+                <a class="nav-link @if (Request::is('branch/*') || Request::is('branch')) active @endif" href="{{ route('branch') }}">Branch</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Closing</a>
+                <a class="nav-link @if (Request::is('closing/*') || Request::is('closing')) active @endif" href="{{ route('closing') }}">Closing</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Property</a>
+                <a class="nav-link @if (Request::is('property/*') || Request::is('property')) active @endif" href="{{ route('property') }}">Property</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Agent</a>
+                <a class="nav-link @if (Request::is('agent/*') || Request::is('agent')) active @endif" href="{{ route('agent') }}">Agent</a>
               </li>
             </ul>
           </div>

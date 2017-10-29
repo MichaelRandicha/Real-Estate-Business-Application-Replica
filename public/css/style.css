@@ -14,3 +14,38 @@
 .nav-link:hover {
 	color: #333;
 }
+
+.table .thead-dark th {
+  color: #fff;
+  background-color: #212529;
+  border-color: #32383e;
+}
+
+.table .thead-light th {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #e9ecef;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+}
+
+.link:hover {
+  text-decoration: none;
+  color: blue;
+}
+
+.search {
+    width: 13em;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white;
+    background-image: url('../images/searchicon.png');
+    background-position: 6px 6px; 
+    background-repeat: no-repeat;
+    padding: 6px 20px 6px 40px;
+}
