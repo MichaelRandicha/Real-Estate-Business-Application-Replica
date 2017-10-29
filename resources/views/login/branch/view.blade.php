@@ -33,8 +33,30 @@
 		<div style="margin:0 auto; text-align: center;">
 			<a href="{{ route('branch') }}" class="btn btn-outline-success">Back</a>
 			<a href="{{ route('editBranch', ['id' => '1']) }}" class="btn btn-outline-warning">Edit</a>
-			<a href="" class="btn btn-outline-danger" onclick="confirm('Delete BranchA?')">Delete</a>
+			<Button class="btn btn-outline-danger" onclick="del(event)">Delete</Button>
+			<a href="{{ route('branch') }}" id="del" hidden></a>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	function del (event){
+		event.preventDefault()
+		$.confirm({
+			title: 'Caution!',
+			content: 'Delete BranchA?',
+			theme: 'modern',
+			type: 'red',
+		    buttons: {
+		        yes: function () {
+		            document.getElementById('del').click()
+		        },
+		        cancel: {
+		            keys: ['esc'],
+		            action: function () {
+		            }
+		        }
+		    }
+		})
+	}
+</script>
 @endsection
