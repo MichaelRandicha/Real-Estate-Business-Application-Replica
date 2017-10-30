@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/Treant.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-confirm.min.css') }}">
+    <script src="{{ asset('js/jquery.js') }}"></script>
 </head>
 <body>
     <div id="app">

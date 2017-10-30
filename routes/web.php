@@ -45,14 +45,12 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('view/{id}', 'BranchController@view')->name('viewBranch');
 
 		Route::get('edit/{id}', 'BranchController@edit')->name('editBranch');
-		Route::post('edit/{id}', 'BranchController@change')->name('changeBranch');
-		
-		Route::get('delete/{id}', 'BranchController@delete')->name('deleteBranch');
+		Route::post('edit/{id}', 'BranchController@change')->name('changeBranch');	
 	});
 
 	Route::group(['prefix' => 'closing'], function(){
 		Route::get('/', 'ClosingController@index')->name('closing');
-		Route::post('search', 'BranchController@search')->name('searchClosing');
+		Route::post('search', 'ClosingController@search')->name('searchClosing');
 		Route::get('add', 'ClosingController@add')->name('addClosing');
 		Route::get('view/{id}', 'ClosingController@view')->name('viewClosing');
 	});
@@ -70,7 +68,7 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('edit/{id}', 'AgentController@edit')->name('editAgent');
 		Route::post('edit/{id}', 'AgentController@change')->name('changeAgent');
 		
-		Route::get('delete/{id}', 'AgentController@delete')->name('deleteAgent');
+		Route::get('edit/{id}/status/change', 'AgentController@changeStatus')->name('changeStatusAgent');
 	});
 
 });

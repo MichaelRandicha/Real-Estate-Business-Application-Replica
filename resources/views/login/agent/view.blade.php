@@ -29,19 +29,23 @@
 					<td>BranchA</td>
 				</tr>
 				<tr>
-					<td>Username Upline</td>
-					<td>Omega001</td>
+					<td>Agent Name Upline</td>
+					<td>Bravo</td>
 				</tr>
 				<tr>
 					<td>Position</td>
 					<td>Normal Agent</td>
 				</tr>
+				<tr>
+					<td>Status</td>
+					<td>Employed</td>
+				</tr>
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
 			<a href="{{ route('editAgent', ['id' => '1']) }}" class="btn btn-outline-warning">Edit</a>
-			<Button class="btn btn-outline-danger" onclick="del(event)">Delete</Button>
-			<a href="{{ route('deleteAgent', ['id' => '1']) }}" id="del" hidden></a>
+			<Button class="btn btn-outline-danger" onclick="del(event)">Change Status</Button>
+			<a href="{{ route('changeStatusAgent', ['id' => '1']) }}" id="del" hidden></a>
 			<a href="{{ route('agent') }}" class="btn btn-outline-success">Back</a>
 		</div>
 	</div>
@@ -51,7 +55,7 @@
 		event.preventDefault()
 		$.confirm({
 			title: 'Caution!',
-			content: 'Delete Agent Alpha?',
+			content: 'Change Status of Agent Alpha?',
 			theme: 'modern',
 			type: 'red',
 			closeIcon: true,

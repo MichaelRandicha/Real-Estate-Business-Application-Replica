@@ -46,8 +46,8 @@ class AgentController extends Controller
         return redirect('agent/view/'.$id);
     }
 
-    public function delete($id){
+    public function changeStatus($id){
 
-        return redirect('agent');
+        return redirect('agent/view/'.$id);
     }
 }

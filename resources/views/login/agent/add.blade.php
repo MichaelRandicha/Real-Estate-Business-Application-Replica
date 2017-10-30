@@ -73,15 +73,20 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-				<label for="username" class="col-md-4 control-label">Username Upline (Optional)</label>
+			<div class="form-group{{ $errors->has('upline') ? ' has-error' : '' }}">
+				<label for="upline" class="col-md-4 control-label">Upline Agent Name (Optional)</label>
 
 				<div class="col-md-6">
-					<input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}">
+					<select name="branch" class="form-control">
+					     <option value="0" selected></option>
+					     <option value="1">Alpha</option>
+					     <option value="2">Bravo</option>
+					     <option value="3">Charlie</option>
+					</select>
 
-					@if ($errors->has('username'))
+					@if ($errors->has('upline'))
 					<span class="help-block">
-						<strong>{{ $errors->first('username') }}</strong>
+						<strong>{{ $errors->first('upline') }}</strong>
 					</span>
 					@endif
 				</div>

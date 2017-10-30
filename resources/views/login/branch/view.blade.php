@@ -28,37 +28,20 @@
 					<td>Total Income</td>
 					<td>Rp. 500.000</td>
 				</tr>
+				<tr>
+					<td>President</td>
+					<td>Alpha</td>
+				</tr>
+				<tr>
+					<td>Vice President</td>
+					<td>Bravo</td>
+				</tr>
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
 			<a href="{{ route('editBranch', ['id' => '1']) }}" class="btn btn-outline-warning">Edit</a>
-			<Button class="btn btn-outline-danger" onclick="del(event)">Delete</Button>
-			<a href="{{ route('deleteBranch', ['id' => '1']) }}" id="del" hidden></a>
 			<a href="{{ route('branch') }}" class="btn btn-outline-success">Back</a>
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	function del (event){
-		event.preventDefault()
-		$.confirm({
-			title: 'Caution!',
-			content: 'Delete BranchA?',
-			theme: 'modern',
-			type: 'red',
-			closeIcon: true,
-			backgroundDismiss: true,
-			buttons: {
-				yes: function () {
-					document.getElementById('del').click()
-				},
-				cancel: {
-					keys: ['esc'],
-					action: function () {
-					}
-				}
-			}
-		})
-	}
-</script>
 @endsection
