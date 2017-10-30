@@ -29,11 +29,11 @@
 					<td>Rp. 500.000</td>
 				</tr>
 				<tr>
-					<td>President</td>
+					<td>Principal</td>
 					<td>Alpha</td>
 				</tr>
 				<tr>
-					<td>Vice President</td>
+					<td>Vice Principal</td>
 					<td>Bravo</td>
 				</tr>
 			</tbody>
