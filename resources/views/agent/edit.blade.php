@@ -60,7 +60,7 @@
 				<label for="branch" class="col-md-4 control-label">Branch</label>
 
 				<div class="col-md-6">
-					<select name="branch" class="form-control" disabled>
+					<select name="branch" class="form-control">
 					     <option value="1" selected>BranchA</option>
 					     <option value="2">BranchB</option>
 					     <option value="3">BranchC</option>
