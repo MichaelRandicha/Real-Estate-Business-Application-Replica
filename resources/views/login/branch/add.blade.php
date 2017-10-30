@@ -113,14 +113,6 @@
 			
 			var option = vice.children;
 
-			// if(vice.selectedIndex == index && president.value > 0){
-			// 	if(index == option.length - 1){
-			// 		vice.selectedIndex = index - 1;
-			// 	}else{
-			// 		vice.selectedIndex = index+1;
-			// 	}
-			// }
-
 			for (var i = 0; i < option.length; i++) {
 				option[i].removeAttribute("hidden");
 			}
@@ -133,14 +125,6 @@
 			var index = vice.selectedIndex;
 			
 			var option = president.children;
-
-			// if(president.selectedIndex == index && vice.value > 0){
-			// 	if(index == option.length - 1){
-			// 		president.selectedIndex = index - 1;
-			// 	}else{
-			// 		president.selectedIndex = index + 1;
-			// 	}
-			// }
 
 			for (var i = 0; i < option.length; i++) {
 				option[i].removeAttribute("hidden");

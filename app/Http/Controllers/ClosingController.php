@@ -25,4 +25,9 @@ class ClosingController extends Controller
     	}
     	return view('login.closing.view');
     }
+
+    public function register(){
+
+        return redirect('agent');
+    }
 }

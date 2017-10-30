@@ -50,8 +50,12 @@ Route::group(['middleware' => 'auth'], function() {
 
 	Route::group(['prefix' => 'closing'], function(){
 		Route::get('/', 'ClosingController@index')->name('closing');
+
 		Route::post('search', 'ClosingController@search')->name('searchClosing');
+		
 		Route::get('add', 'ClosingController@add')->name('addClosing');
+		Route::post('add', 'ClosingController@register')->name('registerClosing');
+
 		Route::get('view/{id}', 'ClosingController@view')->name('viewClosing');
 	});
 
