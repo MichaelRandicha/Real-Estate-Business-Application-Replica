@@ -7,27 +7,27 @@ use Illuminate\Http\Request;
 class ClosingController extends Controller
 {
     public function index(){
-    	return view('login.closing');
+    	return view('closing.index');
     }
 
     public function search(Request $request){
 
-    	return view('login.closing');
+    	return view('closing.index');
     }
 
     public function add(){
-    	return view('login.closing.add');
+    	return view('closing.add');
     }
 
     public function view($id){
     	if(!is_numeric($id)){
     		return redirect('closing');
     	}
-    	return view('login.closing.view');
+    	return view('closing.view');
     }
 
     public function register(){
 
-        return redirect('agent');
+        return redirect('closing');
     }
 }

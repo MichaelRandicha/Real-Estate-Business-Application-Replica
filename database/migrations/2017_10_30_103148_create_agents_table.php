@@ -16,7 +16,7 @@ class CreateAgentsTable extends Migration
         Schema::create('agents', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('alamat');
+            $table->string('lokasi');
             $table->string('telepon');
             $table->integer('cabang_id')->unsigned();
             $table->integer('upline_id')->unsigned()->nullable();

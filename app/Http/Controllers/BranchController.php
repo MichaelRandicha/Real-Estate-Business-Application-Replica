@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 class BranchController extends Controller
 {
     public function index(){
-    	return view('login.branch');
+    	return view('branch.index');
     }
 
     public function search(Request $request){
 
-    	return view('login.branch');
+    	return view('branch.index');
     }
 
     public function add(){
-    	return view('login.branch.add');
+    	return view('branch.add');
     }
 
     public function register(Request $request){
@@ -28,14 +28,14 @@ class BranchController extends Controller
     	if(!is_numeric($id)){
     		return redirect('branch');
     	}
-    	return view('login.branch.view');
+    	return view('branch.view');
     }
 
     public function edit($id){
     	if(!is_numeric($id)){
     		return redirect('branch');
     	}
-    	return view('login.branch.edit');
+    	return view('branch.edit');
     }
 
     public function change(Request $request, $id){

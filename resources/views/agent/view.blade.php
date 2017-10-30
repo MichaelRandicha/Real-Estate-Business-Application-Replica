@@ -17,7 +17,7 @@
 					<td>Alpha</td>
 				</tr>
 				<tr>
-					<td>Address</td>
+					<td>Location</td>
 					<td>Surabaya</td>
 				</tr>
 				<tr>

@@ -16,7 +16,7 @@ class CreateCabangsTable extends Migration
         Schema::create('cabangs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('alamat');
+            $table->string('lokasi');
             $table->string('telepon');
             $table->foreign('principal_id')->references('id')->on('users');
             $table->foreign('vice_id')->references('id')->on('users');

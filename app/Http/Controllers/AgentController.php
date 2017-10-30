@@ -7,16 +7,16 @@ use Illuminate\Http\Request;
 class AgentController extends Controller
 {
     public function index(){
-        return view('login.agent');
+        return view('agent.index');
     }
 
     public function search(Request $request){
 
-    	return view('login.agent');
+    	return view('agent.index');
     }
 
     public function add(){
-    	return view('login.agent.add');
+    	return view('agent.add');
     }
 
     public function register(Request $request){
@@ -28,14 +28,14 @@ class AgentController extends Controller
     	if(!is_numeric($id)){
     		return redirect('agent');
     	}
-    	return view('login.agent.view');
+    	return view('agent.view');
     }
 
     public function edit($id){
     	if(!is_numeric($id)){
     		return redirect('agent');
     	}
-    	return view('login.agent.edit');
+    	return view('agent.edit');
     }
 
     public function change(Request $request, $id){
