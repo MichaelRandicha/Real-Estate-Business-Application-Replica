@@ -63,7 +63,9 @@
 					    <option value="0" selected></option>
 						@foreach($cabang->member as $agent)
 							@if($agent->id > 1)
-					    		<option value={{ $agent->id }} @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+								@if($agent->isEmployed == true)
+					    			<option value={{ $agent->id }} @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    		@endif
 					    	@endif
 					    @endforeach
 					</select>
@@ -82,7 +84,11 @@
 					<select name="vice" id="vice" class="form-control">
 					    <option value="0" selected></option>
 					    @foreach($cabang->member as $agent)
-					    		<option value={{ $agent->id }} @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+							@if($agent->id > 1)
+								@if($agent->isEmployed == true)
+					    			<option value={{ $agent->id }} @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    		@endif
+					    	@endif
 					    @endforeach
 					</select>
 					@if ($errors->has('vice'))

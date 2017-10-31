@@ -33,6 +33,10 @@
 					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @endif</td>
 				</tr>
 				<tr>
+				<tr>
+					<td>Pendapatan</td>
+					<td>Rp. {{ number_format($agent->pendapatan, 0 , '', '.') }}</td>
+				</tr>
 					<td>Position</td>
 					<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
 				</tr>

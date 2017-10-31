@@ -144,6 +144,16 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
+        if($agent->status == true){
+            $cabang = Cabang::find($agent->cabang->id);
+            if($agent->isPrincipal){
+                $cabang->principal_id = null;
+            }else if($agent->isVice){
+                $cabang->vice_id = null;
+            }
+            $cabang->save();
+        }
+
         $agent->status = !$agent->status;
         $agent->save();
         

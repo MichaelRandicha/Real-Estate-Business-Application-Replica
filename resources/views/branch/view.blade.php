@@ -25,10 +25,6 @@
 					<td>{{ $cabang->telepon }}</td>
 				</tr>
 				<tr>
-					<td>Total Income</td>
-					<td>Rp. {{ number_format($cabang->totalPendapatan, 0 , '', '.') }}</td>
-				</tr>
-				<tr>
 					<td>Principal</td>
 					<td>@if($cabang->principal != null) {{ $cabang->principal->nama }} @endif</td>
 				</tr>
