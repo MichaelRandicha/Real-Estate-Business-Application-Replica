@@ -9,12 +9,14 @@ use App\Cabang;
 class AgentController extends Controller
 {
     public function index(){
-        $agents = Agent::all();
+        $agents = Agent::paginate(5);
         return view('agent.index', compact('agents'));
     }
 
     public function search(Request $request){
-        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->get();
+        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->paginate(5);
+        $agents->appends(['search' => $request->input('search')]);
+
     	return view('agent.index', compact('agents'));
     }
 

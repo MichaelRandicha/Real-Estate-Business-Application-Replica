@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'branch'], function(){
 		Route::get('/', 'BranchController@index')->name('branch');
 		
-		Route::post('search', 'BranchController@search')->name('searchBranch');
+		Route::get('search', 'BranchController@search')->name('searchBranch');
 		
 		Route::get('add', 'BranchController@add')->name('addBranch');
 		Route::post('add', 'BranchController@register')->name('registerBranch');
@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'closing'], function(){
 		Route::get('/', 'ClosingController@index')->name('closing');
 
-		Route::post('search', 'ClosingController@search')->name('searchClosing');
+		Route::get('search', 'ClosingController@search')->name('searchClosing');
 		
 		Route::get('add', 'ClosingController@add')->name('addClosing');
 		Route::post('add', 'ClosingController@register')->name('registerClosing');
@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'agent'], function(){
 		Route::get('/', 'AgentController@index')->name('agent');
 
-		Route::post('search', 'AgentController@search')->name('searchAgent');
+		Route::get('search', 'AgentController@search')->name('searchAgent');
 		
 		Route::get('add', 'AgentController@add')->name('addAgent');
 		Route::post('add', 'AgentController@register')->name('registerAgent');

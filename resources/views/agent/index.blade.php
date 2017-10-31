@@ -17,8 +17,7 @@
 			</div>
 
 			<div style="float:right">
-				<form class="form-inline" style="float:right;margin-bottom: 10px" method="POST" action="{{ route('searchAgent') }}">
-					{{ csrf_field() }}
+				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('searchAgent') }}">
 					<input type="text" name="search" placeholder="Nama Agent" class="search">
 				</form>	
 			</div>
@@ -37,7 +36,7 @@
 				@if(!empty($agents))
 					@foreach($agents as $agent)
 						<tr @if($agent->status == false) class="table-danger" @endif>
-							<td class="text-center">{{ $loop->iteration }}</td>
+							<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
 							<td>{{ $agent->nama }}</td>
 							<td>{{ $agent->cabang->nama }}</td>
 							<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
@@ -48,7 +47,7 @@
 			</tbody>
 		</table>
 
-		{{-- {{ $branch->links() }} --}}
+		{{ $agents->links() }}
 
 	</div>
 </div>
