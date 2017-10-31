@@ -34,41 +34,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="text-center">1</td>
-					<td>Alpha</td>
-					<td>BranchA</td>
-					<td>Normal Agent</td>
-					<td class="text-center"><a href="{{ route('viewAgent', ['id' => '1']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">2</td>
-					<td>Bravo</td>
-					<td>BranchB</td>
-					<td>Normal Agent</td>
-					<td class="text-center"><a href="{{ route('viewAgent', ['id' => '2']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">3</td>
-					<td>Charlie</td>
-					<td>BranchC</td>
-					<td>Normal Agent</td>
-					<td class="text-center"><a href="{{ route('viewAgent', ['id' => '3']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">4</td>
-					<td>Delta</td>
-					<td>BranchD</td>
-					<td>Principal</td>
-					<td class="text-center"><a href="{{ route('viewAgent', ['id' => '4']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">5</td>
-					<td>Echo</td>
-					<td>BranchE</td>
-					<td>V. Principal</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '5']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
+				@if(!empty($agents))
+					@foreach($agents as $agent)
+						<tr @if($agent->status == false) class="table-danger" @endif>
+							<td class="text-center">{{ $loop->iteration }}</td>
+							<td>{{ $agent->nama }}</td>
+							<td>{{ $agent->cabang->nama }}</td>
+							<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
+							<td class="text-center"><a href="{{ route('viewAgent', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 

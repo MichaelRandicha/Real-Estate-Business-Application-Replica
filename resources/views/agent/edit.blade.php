@@ -18,7 +18,7 @@
 				<label for="name" class="col-md-4 control-label">Agent Name</label>
 
 				<div class="col-md-6">
-					<input id="name" type="text" class="form-control" name="name" value="Alpha" required autofocus>
+					<input id="name" type="text" class="form-control" name="name" value={{ $agent->nama }} required autofocus>
 
 					@if ($errors->has('name'))
 					<span class="help-block">
@@ -28,15 +28,15 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-				<label for="address" class="col-md-4 control-label">Address</label>
+			<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+				<label for="location" class="col-md-4 control-label">Location</label>
 
 				<div class="col-md-6">
-					<input id="address" type="text" class="form-control" name="address" value="Surabaya" required>
+					<input id="location" type="text" class="form-control" name="location" value={{ $agent->lokasi }} required>
 
-					@if ($errors->has('address'))
+					@if ($errors->has('location'))
 					<span class="help-block">
-						<strong>{{ $errors->first('address') }}</strong>
+						<strong>{{ $errors->first('location') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -46,7 +46,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" value="08198765432" required>
+					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" value={{ $agent->telepon }} required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -61,9 +61,9 @@
 
 				<div class="col-md-6">
 					<select name="branch" class="form-control">
-					     <option value="1" selected>BranchA</option>
-					     <option value="2">BranchB</option>
-					     <option value="3">BranchC</option>
+						@foreach($cabangs as $cabang)
+							<option value={{ $cabang->id }} @if($agent->cabang->id == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
+						@endforeach
 					</select>
 					@if ($errors->has('branch'))
 					<span class="help-block">
@@ -73,15 +73,15 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-				<label for="username" class="col-md-4 control-label">Username Upline (Optional)</label>
+			{{-- <div class="form-group{{ $errors->has('upline') ? ' has-error' : '' }}">
+				<label for="upline" class="col-md-4 control-label">Agent Name Upline (Optional)</label>
 
 				<div class="col-md-6">
-					<input id="username" type="text" class="form-control" name="username" value="Omega001" disabled>
+					<input id="upline" type="text" class="form-control" name="upline" value="@if($agent->upline != null){{ $agent->upline->nama }}@endif" disabled>
 
-					@if ($errors->has('username'))
+					@if ($errors->has('upline'))
 					<span class="help-block">
-						<strong>{{ $errors->first('username') }}</strong>
+						<strong>{{ $errors->first('upline') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -91,7 +91,7 @@
 				<label for="position" class="col-md-4 control-label">Position</label>
 
 				<div class="col-md-6">
-					<input id="position" type="text" class="form-control" name="position" value="Normal Agent" required disabled>
+					<input id="position" type="text" class="form-control" name="position" value="@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif" required disabled>
 
 					@if ($errors->has('position'))
 					<span class="help-block">
@@ -99,7 +99,7 @@
 					</span>
 					@endif
 				</div>
-			</div>
+			</div> --}}
 
 			<div class="form-group">
 				<div class="col-md-6 col-md-offset-4">

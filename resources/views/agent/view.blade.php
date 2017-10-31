@@ -14,48 +14,49 @@
 			<tbody>
 				<tr>
 					<td style="width:30%">Agent Name</td>
-					<td>Alpha</td>
+					<td id="nama">{{ $agent->nama }}</td>
 				</tr>
 				<tr>
 					<td>Location</td>
-					<td>Surabaya</td>
+					<td>{{ $agent->lokasi }}</td>
 				</tr>
 				<tr>
 					<td>Phone Number</td>
-					<td>081237209954</td>
+					<td>{{ $agent->telepon }}</td>
 				</tr>
 				<tr>
 					<td>Branch</td>
-					<td>BranchA</td>
+					<td>{{ $agent->cabang->nama }}</td>
 				</tr>
 				<tr>
 					<td>Agent Name Upline</td>
-					<td>Bravo</td>
+					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @endif</td>
 				</tr>
 				<tr>
 					<td>Position</td>
-					<td>Normal Agent</td>
+					<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
 				</tr>
 				<tr>
 					<td>Status</td>
-					<td>Employed</td>
+					<td>@if($agent->isEmployed) Employed @else Unemployed @endif</td>
 				</tr>
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
-			<a href="{{ route('editAgent', ['id' => '1']) }}" class="btn btn-outline-warning">Edit</a>
+			<a href="{{ route('editAgent', ['id' => $agent->id]) }}" class="btn btn-outline-warning">Edit</a>
 			<Button class="btn btn-outline-danger" onclick="del(event)">Change Status</Button>
-			<a href="{{ route('changeStatusAgent', ['id' => '1']) }}" id="del" hidden></a>
+			<a href="{{ route('changeStatusAgent', ['id' => $agent->id]) }}" id="del" hidden></a>
 			<a href="{{ route('agent') }}" class="btn btn-outline-success">Back</a>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
 	function del (event){
+		var nama = document.getElementById('nama').innerHTML;
 		event.preventDefault()
 		$.confirm({
 			title: 'Caution!',
-			content: 'Change Status of Agent Alpha?',
+			content: 'Change Status of Agent '+nama+'?',
 			theme: 'modern',
 			type: 'red',
 			closeIcon: true,

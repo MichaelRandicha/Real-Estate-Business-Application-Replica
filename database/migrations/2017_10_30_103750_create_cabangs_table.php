@@ -18,8 +18,10 @@ class CreateCabangsTable extends Migration
             $table->string('nama');
             $table->string('lokasi');
             $table->string('telepon');
-            $table->foreign('principal_id')->references('id')->on('users');
-            $table->foreign('vice_id')->references('id')->on('users');
+            $table->integer('principal_id')->unsigned()->nullable();
+            $table->foreign('principal_id')->references('id')->on('agents');
+            $table->integer('vice_id')->unsigned()->nullable();
+            $table->foreign('vice_id')->references('id')->on('agents');
             $table->timestamps();
         });
     }

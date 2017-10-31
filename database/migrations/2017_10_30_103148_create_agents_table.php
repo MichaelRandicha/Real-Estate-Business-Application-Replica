@@ -20,7 +20,8 @@ class CreateAgentsTable extends Migration
             $table->string('telepon');
             $table->integer('cabang_id')->unsigned();
             $table->integer('upline_id')->unsigned()->nullable();
-            $table->boolean('status');
+            $table->foreign('upline_id')->references('id')->on('agents');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -32,6 +33,9 @@ class CreateAgentsTable extends Migration
      */
     public function down()
     {
+        Schema::table('agents', function (Blueprint $table) {
+            $table->dropForeign('upline_id');
+        });
         Schema::dropIfExists('agents');
     }
 }

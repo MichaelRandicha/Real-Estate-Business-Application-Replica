@@ -28,15 +28,15 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
-				<label for="address" class="col-md-4 control-label">Address</label>
+			<div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+				<label for="location" class="col-md-4 control-label">Location</label>
 
 				<div class="col-md-6">
-					<input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required>
+					<input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required>
 
-					@if ($errors->has('address'))
+					@if ($errors->has('location'))
 					<span class="help-block">
-						<strong>{{ $errors->first('address') }}</strong>
+						<strong>{{ $errors->first('location') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -46,7 +46,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" required>
+					<input id="phone" type="number" class="form-control" name="phone" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -60,10 +60,10 @@
 				<label for="branch" class="col-md-4 control-label">Branch</label>
 
 				<div class="col-md-6">
-					<select name="branch" class="form-control">
-					     <option value="1" selected>A</option>
-					     <option value="2">B</option>
-					     <option value="3">C</option>
+					<select name="branch" class="form-control" required>
+					    @foreach($cabangs as $cabang)
+					    	<option value={{ $cabang->id }} @if($loop->first) selected @endif>{{ $cabang->nama }}</option>
+					    @endforeach
 					</select>
 					@if ($errors->has('branch'))
 					<span class="help-block">
@@ -77,11 +77,11 @@
 				<label for="upline" class="col-md-4 control-label">Upline Agent Name (Optional)</label>
 
 				<div class="col-md-6">
-					<select name="branch" class="form-control">
+					<select name="upline" class="form-control">
 					     <option value="0" selected></option>
-					     <option value="1">Alpha</option>
-					     <option value="2">Bravo</option>
-					     <option value="3">Charlie</option>
+					     @foreach($agents as $agent)
+					     	<option value={{ $agent->id }}>{{ $agent->nama }}</option>
+					     @endforeach
 					</select>
 
 					@if ($errors->has('upline'))

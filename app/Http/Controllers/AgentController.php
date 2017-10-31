@@ -3,51 +3,130 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Agent;
+use App\Cabang;
 
 class AgentController extends Controller
 {
     public function index(){
-        return view('agent.index');
+        $agents = Agent::all();
+        return view('agent.index', compact('agents'));
     }
 
     public function search(Request $request){
-
-    	return view('agent.index');
+        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->get();
+    	return view('agent.index', compact('agents'));
     }
 
     public function add(){
-    	return view('agent.add');
+        $agents = Agent::all();
+        $cabangs = Cabang::all();
+
+    	return view('agent.add', compact('agents', 'cabangs'));
     }
 
     public function register(Request $request){
-        
-        return redirect('agent');
+        $this->validate($request,[
+            'name' => 'required',
+            'location' => 'required', 
+            'phone' => 'required|numeric|digits_between:10,12',
+            'branch' => 'required']);
+
+            $agent = new Agent;
+            $agent->nama = $request->input('name');
+            $agent->lokasi = $request->input('location');
+            $agent->telepon = $request->input('phone');
+            $agent->cabang_id = $request->input('branch');
+            if($request->input('upline') > 0){
+                $agent->upline_id = $request->input('upline');
+            }
+            $agent->save();
+
+            $id = $agent->id;
+
+            return redirect('agent/view/'.$id);
     }
 
     public function view($id){
     	if(!is_numeric($id)){
     		return redirect('agent');
     	}
-    	return view('agent.view');
+        
+        $agent = Agent::find($id);
+        
+        if($agent == null){
+            return redirect('agent');
+        }
+
+        return view('agent.view', compact('agent'));
     }
 
     public function edit($id){
     	if(!is_numeric($id)){
     		return redirect('agent');
     	}
-    	return view('agent.edit');
+
+        $agent = Agent::find($id);
+        
+        if($agent == null){
+            return redirect('agent');
+        }
+
+        $cabangs = Cabang::all();
+
+    	return view('agent.edit', compact('agent', 'cabangs'));
     }
 
     public function change(Request $request, $id){
         if(!is_numeric($id)){
             return redirect('agent');
         }
+        $agent = Agent::find($id);
         
+        if($agent == null){
+            return redirect('agent');
+        }
+
+        $this->validate($request,[
+            'name' => 'required',
+            'location' => 'required', 
+            'phone' => 'required|numeric|digits_between:10,12',
+            'branch' => 'required']);
+
+        $agent->nama = $request->input('name');
+        $agent->lokasi = $request->input('location');
+        $agent->telepon = $request->input('phone');
+        if($agent->isPrincipal || $agent->isVice){
+            if($agent->cabang_id != $request->input('branch')){
+                $cabang = Cabang::find($agent->cabang_id);
+                if($agent->isPrincipal){
+                    $cabang->principal_id = null;
+                }else if ($agent->isVice){
+                    $cabang->vice_id = null;
+                }
+                $cabang->save();
+            }
+        }
+        $agent->cabang_id = $request->input('branch');
+        $agent->save();
+
         return redirect('agent/view/'.$id);
     }
 
     public function changeStatus($id){
+        if(!is_numeric($id)){
+            return redirect('agent');
+        }
+        
+        $agent = Agent::find($id);
+        
+        if($agent == null){
+            return redirect('agent');
+        }
 
+        $agent->status = !$agent->status;
+        $agent->save();
+        
         return redirect('agent/view/'.$id);
     }
 }
