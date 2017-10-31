@@ -70,10 +70,20 @@ class AgentController extends Controller
         $children = $this->getAllDownlines(2);
 
         $tree = [
-            'chart' => ['container' => '#agent-tree', 'connectors' => ['type' => 'step']],
+            'chart' => [
+                'container' => '#agent-tree',
+                'connectors' => [
+                    'type' => 'step'
+                ]
+            ],
             'nodeStructure' => [
-                'text' => ['name' => Agent::find(2)->nama, 'title' => Agent::find(2)->cabang->nama],
-                'link' => ['href' => route('viewAgent', ['id' => 2])],
+                'text' => [
+                    'name' => Agent::find(2)->nama,
+                    'title' => Agent::find(2)->cabang->nama
+                ],
+                'link' => [
+                    'href' => route('viewAgent', ['id' => 2])
+                ],
                 'HTMLclass' => 'btn btn-outline-primary',
                 'children' => $children
             ]
@@ -98,14 +108,24 @@ class AgentController extends Controller
             
             if(count($downline->downline) == 0){
                 $children[] = [
-                    'text' => ['name' => $downline->nama, 'title' => $downline->cabang->nama],
-                    'link' => ['href' => route('viewAgent', ['id' => $downline->id])],
+                    'text' => [
+                        'name' => $downline->nama,
+                        'title' => $downline->cabang->nama
+                    ],
+                    'link' => [
+                        'href' => route('viewAgent', ['id' => $downline->id])
+                    ],
                     'HTMLclass' => $button
                 ];
             }else{
                 $children[] = [
-                    'text' => ['name' => $downline->nama, 'title' => $downline->cabang->nama],
-                    'link' => ['href' => route('viewAgent', ['id' => $downline->id])],
+                    'text' => [
+                        'name' => $downline->nama,
+                        'title' => $downline->cabang->nama
+                    ],
+                    'link' => [
+                        'href' => route('viewAgent', ['id' => $downline->id])
+                    ],
                     'HTMLclass' => $button,
                     'children' => $this->getAllDownlines($downline->id)
                 ];
