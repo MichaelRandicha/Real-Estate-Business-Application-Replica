@@ -67,11 +67,52 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
+        $children = $this->getAllDownlines(2);
+
+        $tree = [
+            'chart' => ['container' => '#agent-tree', 'connectors' => ['type' => 'step']],
+            'nodeStructure' => [
+                'text' => ['name' => Agent::find(2)->nama, 'title' => Agent::find(2)->cabang->nama],
+                'link' => ['href' => route('viewAgent', ['id' => 2])],
+                'HTMLclass' => 'btn btn-outline-primary',
+                'children' => $children
+            ]
+        ];
+
         JavaScript::put([
-            'agent_tree' => Agent::all()
+            'agent_tree' => json_encode($tree)
         ]);
 
         return view('agent.view', compact('agent'));
+    }
+
+    private function getAllDownlines($upline_id){
+        $upline = Agent::find($upline_id);
+
+        foreach ($upline->downline as $downline) {
+            $button = 'btn btn-outline-primary';
+
+            if($downline->isEmployed == false){
+                $button = 'btn btn-outline-danger';
+            }
+            
+            if(count($downline->downline) == 0){
+                $children[] = [
+                    'text' => ['name' => $downline->nama, 'title' => $downline->cabang->nama],
+                    'link' => ['href' => route('viewAgent', ['id' => $downline->id])],
+                    'HTMLclass' => $button
+                ];
+            }else{
+                $children[] = [
+                    'text' => ['name' => $downline->nama, 'title' => $downline->cabang->nama],
+                    'link' => ['href' => route('viewAgent', ['id' => $downline->id])],
+                    'HTMLclass' => $button,
+                    'children' => $this->getAllDownlines($downline->id)
+                ];
+            }
+        }
+
+        return $children;
     }
 
     public function edit($id){

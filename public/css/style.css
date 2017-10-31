@@ -436,3 +436,10 @@
     background-repeat: no-repeat;
     padding: 6px 20px 6px 40px;
 }
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+
+.node { color: #9CB5ED; border: 2px solid #C8C8C8; border-radius: 3px; text-decoration: none !important; padding: 1px; }
+.node p { font-family:"Times new Roman";font-size: 20px; line-height: 20px; height: 20px; font-weight: bold; padding: 0px; margin: 0; }
+.node-name { font-size: 18px !important;}
+.node-title { font-size: 14px !important;}

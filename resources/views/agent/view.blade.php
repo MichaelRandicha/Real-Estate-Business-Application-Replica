@@ -52,6 +52,10 @@
 			<a href="{{ route('changeStatusAgent', ['id' => $agent->id]) }}" id="del" hidden></a>
 			<a href="{{ route('agent') }}" class="btn btn-outline-success">Back</a>
 		</div>
+
+		<div id="agent-tree"></div>
+
+		@include('js.value')
 	</div>
 </div>
 <script type="text/javascript">
@@ -78,39 +82,7 @@
 		})
 	}
 </script>
-@endsection
-
-@section('bottom-content')
-<div class="col-md-8 col-md-offset-2">
-	<div class="panel panel-default">
-		<div class="panel-heading">Agent Tree View</div>
-
-		<div class="panel-body">
-			<div id="agent-tree"></div>
-		</div>
-	</div>
-	@include('js.value')
-</div>
-
 <script type="text/javascript">
-	// console.log(foo);
-	// var agent_tree = {
-	//     chart: {
-	//         container: "#agent-tree"
-	//     },
-	    
-	//     nodeStructure: {
-	//         text: { name: "Parent node" },
-	//         children: [
-	//             {
-	//                 text: { name: "First child" }
-	//             },
-	//             {
-	//                 text: { name: "Second child" }
-	//             }
-	//         ]
-	//     }
-	// };
-	// var my_chart = new Treant(agent_tree);
+	var my_chart = new Treant(JSON.parse(agent_tree));
 </script>
 @endsection
