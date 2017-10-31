@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Agent;
 use App\Cabang;
+use JavaScript;
 
 class AgentController extends Controller
 {
@@ -21,7 +22,7 @@ class AgentController extends Controller
     }
 
     public function add(){
-        $agents = Agent::where('id', '!=', 1);
+        $agents = Agent::where('id', '>', 1)->get();
         $cabangs = Cabang::all();
 
         return view('agent.add', compact('agents', 'cabangs'));
@@ -33,7 +34,13 @@ class AgentController extends Controller
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
-
+        if(count(Agent::all()) > 2){
+            $this->validate($request, [
+                'upline' => 'required|not_in:0,1']);
+            if($request->input('upline') == 0){
+                return redirect('agent/add')->withErrors(['upline', 'The selected upline is invalid.']);;
+            }
+        }
         $agent = new Agent;
         $agent->nama = $request->input('name');
         $agent->lokasi = $request->input('location');
@@ -59,6 +66,10 @@ class AgentController extends Controller
         if($agent == null){
             return redirect('agent');
         }
+
+        JavaScript::put([
+            'agent_tree' => Agent::all()
+        ]);
 
         return view('agent.view', compact('agent'));
     }

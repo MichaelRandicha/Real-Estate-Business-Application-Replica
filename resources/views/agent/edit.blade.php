@@ -72,35 +72,7 @@
 					@endif
 				</div>
 			</div>
-
-			{{-- <div class="form-group{{ $errors->has('upline') ? ' has-error' : '' }}">
-				<label for="upline" class="col-md-4 control-label">Agent Name Upline (Optional)</label>
-
-				<div class="col-md-6">
-					<input id="upline" type="text" class="form-control" name="upline" value="@if($agent->upline != null){{ $agent->upline->nama }}@endif" disabled>
-
-					@if ($errors->has('upline'))
-					<span class="help-block">
-						<strong>{{ $errors->first('upline') }}</strong>
-					</span>
-					@endif
-				</div>
-			</div>
-
-			<div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
-				<label for="position" class="col-md-4 control-label">Position</label>
-
-				<div class="col-md-6">
-					<input id="position" type="text" class="form-control" name="position" value="@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif" required disabled>
-
-					@if ($errors->has('position'))
-					<span class="help-block">
-						<strong>{{ $errors->first('position') }}</strong>
-					</span>
-					@endif
-				</div>
-			</div> --}}
-
+			
 			<div class="form-group">
 				<div class="col-md-6 col-md-offset-4">
 					<button type="submit" class="btn btn-outline-primary">

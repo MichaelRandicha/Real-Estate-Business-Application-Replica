@@ -15,7 +15,14 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/Treant.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-confirm.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/perfect-scrollbar.css') }}">
+    <!-- Script -->
     <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/raphael.js') }}"></script>
+    <script src="{{ asset('js/Treant.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
+    <script src="{{ asset('js/perfect-scrollbar.js') }}"></script>
 </head>
 <body>
     <div id="app">
@@ -80,7 +87,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/Treant.js') }}"></script>
     <script src="{{ asset('js/jquery-confirm.min.js') }}"></script>
 </body>
 </html>

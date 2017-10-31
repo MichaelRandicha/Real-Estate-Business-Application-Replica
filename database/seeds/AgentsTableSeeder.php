@@ -12,8 +12,8 @@ class AgentsTableSeeder extends Seeder
     public function run()
     {
         DB::table('agents')->insert([
-            'name' => 'Perusahaan',
-            'lokasi' => '',
+            'nama' => 'Perusahaan',
+            'lokasi' => 'Surabaya',
             'telepon' => '123456789011',
         ]);
     }

@@ -24,19 +24,33 @@ class Agent extends Model
 
 	protected $appends = ['is_principal', 'is_vice', 'is_employed'];
 
+    protected $hidden = [
+        'is_principal', 'is_vice', 'is_employed'
+    ];
+
     public function getIsPrincipalAttribute()
     {
+        if($this->cabang == null){
+            return false;
+        }
+
     	if($this->cabang->principal == null){
     		return false;
     	}
+        
         return $this->cabang->principal->id == $this->id;
     }
 
     public function getIsViceAttribute()
     {
-    	if($this->cabang->vice == null){
+    	if($this->cabang == null){
+            return false;
+        }
+
+        if($this->cabang->vice == null){
     		return false;
     	}
+
         return $this->cabang->vice->id == $this->id;
     }
 

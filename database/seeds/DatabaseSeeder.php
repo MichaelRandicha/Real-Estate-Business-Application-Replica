@@ -12,10 +12,5 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(AgentsTableSeeder::class);
-        // DB::table('agents')->insert([
-        //     'nama' => 'Perusahaan',
-        //     'lokasi' => 'Surabaya',
-        //     'telepon' => '123456789011',
-        // ]);
     }
 }

@@ -74,11 +74,13 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('upline') ? ' has-error' : '' }}">
-				<label for="upline" class="col-md-4 control-label">Upline Agent Name (Optional)</label>
+				<label for="upline" class="col-md-4 control-label">Upline Agent Name</label>
 
 				<div class="col-md-6">
-					<select name="upline" class="form-control">
-					     <option value="0" selected></option>
+					<select name="upline" class="form-control" @if(count(App\Agent::all()) > 2) required @endif>
+					     @if(count(App\Agent::all()) == 1)
+					     	<option value="0" selected></option>
+					     @endif
 					     @foreach($agents as $agent)
 					     	<option value={{ $agent->id }}>{{ $agent->nama }}</option>
 					     @endforeach
