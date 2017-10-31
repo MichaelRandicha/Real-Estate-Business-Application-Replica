@@ -55,42 +55,6 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('principal') ? ' has-error' : '' }}">
-				<label for="principal" class="col-md-4 control-label">Principal</label>
-
-				<div class="col-md-6">
-					<select name="principal" id="principal" class="form-control">
-					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					</select>
-					@if ($errors->has('principal'))
-					<span class="help-block">
-						<strong>{{ $errors->first('principal') }}</strong>
-					</span>
-					@endif
-				</div>
-			</div>
-
-			<div class="form-group{{ $errors->has('vice') ? ' has-error' : '' }}">
-				<label for="vice" class="col-md-4 control-label">Vice Principal</label>
-
-				<div class="col-md-6">
-					<select name="vice" id="vice" class="form-control">
-					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					</select>
-					@if ($errors->has('vice'))
-					<span class="help-block">
-						<strong>{{ $errors->first('vice') }}</strong>
-					</span>
-					@endif
-				</div>
-			</div>
-
 			<div class="form-group">
 				<div class="col-md-6 col-md-offset-4">
 					<button type="submit" class="btn btn-outline-primary">

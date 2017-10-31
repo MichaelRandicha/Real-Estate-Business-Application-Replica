@@ -9,22 +9,22 @@ use App\Cabang;
 class AgentController extends Controller
 {
     public function index(){
-        $agents = Agent::paginate(5);
+        $agents = Agent::where('id', '!=', 1)->paginate(5);
         return view('agent.index', compact('agents'));
     }
 
     public function search(Request $request){
-        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->paginate(5);
+        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->where('id','!=', 1)->paginate(5);
         $agents->appends(['search' => $request->input('search')]);
 
-    	return view('agent.index', compact('agents'));
+        return view('agent.index', compact('agents'));
     }
 
     public function add(){
-        $agents = Agent::all();
+        $agents = Agent::where('id', '!=', 1);
         $cabangs = Cabang::all();
 
-    	return view('agent.add', compact('agents', 'cabangs'));
+        return view('agent.add', compact('agents', 'cabangs'));
     }
 
     public function register(Request $request){
@@ -34,26 +34,26 @@ class AgentController extends Controller
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
 
-            $agent = new Agent;
-            $agent->nama = $request->input('name');
-            $agent->lokasi = $request->input('location');
-            $agent->telepon = $request->input('phone');
-            $agent->cabang_id = $request->input('branch');
-            if($request->input('upline') > 0){
-                $agent->upline_id = $request->input('upline');
-            }
-            $agent->save();
+        $agent = new Agent;
+        $agent->nama = $request->input('name');
+        $agent->lokasi = $request->input('location');
+        $agent->telepon = $request->input('phone');
+        $agent->cabang_id = $request->input('branch');
+        if($request->input('upline') > 1){
+            $agent->upline_id = $request->input('upline');
+        }
+        $agent->save();
 
-            $id = $agent->id;
-
-            return redirect('agent/view/'.$id);
+        return redirect('agent/view/'.$agent->id);
     }
 
     public function view($id){
     	if(!is_numeric($id)){
     		return redirect('agent');
-    	}
-        
+    	}else if ($id == 1){
+            return redirect('agent');
+        }
+
         $agent = Agent::find($id);
         
         if($agent == null){
@@ -66,7 +66,9 @@ class AgentController extends Controller
     public function edit($id){
     	if(!is_numeric($id)){
     		return redirect('agent');
-    	}
+    	}else if ($id == 1){
+            return redirect('agent');
+        }
 
         $agent = Agent::find($id);
         
@@ -76,13 +78,16 @@ class AgentController extends Controller
 
         $cabangs = Cabang::all();
 
-    	return view('agent.edit', compact('agent', 'cabangs'));
+        return view('agent.edit', compact('agent', 'cabangs'));
     }
 
     public function change(Request $request, $id){
         if(!is_numeric($id)){
             return redirect('agent');
+        }else if ($id == 1){
+            return redirect('agent');
         }
+        
         $agent = Agent::find($id);
         
         if($agent == null){
@@ -117,6 +122,8 @@ class AgentController extends Controller
 
     public function changeStatus($id){
         if(!is_numeric($id)){
+            return redirect('agent');
+        }else if ($id == 1){
             return redirect('agent');
         }
         

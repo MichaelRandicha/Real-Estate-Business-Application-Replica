@@ -17,8 +17,7 @@
 			</div>
 
 			<div style="float:right">
-				<form class="form-inline" style="float:right;margin-bottom: 10px" method="POST" action="{{ route('searchClosing') }}">
-					{{ csrf_field() }}
+				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('searchClosing') }}">
 					<input type="text" name="search" placeholder="Nama Property" class="search">
 				</form>
 			</div>

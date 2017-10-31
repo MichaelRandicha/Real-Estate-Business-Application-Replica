@@ -17,8 +17,7 @@
 			</div>
 
 			<div style="float:right">
-				<form class="form-inline" style="float:right;margin-bottom: 10px" method="POST" action="{{ route('searchBranch') }}">
-					{{ csrf_field() }}
+				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('searchBranch') }}">
 					<input type="text" name="search" placeholder="Nama Cabang" class="search">
 				</form>	
 			</div>
@@ -34,45 +33,21 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="text-center">1</td>
-					<td>BranchA</td>
-					<td>Surabaya</td>
-					<td>0812345678</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '1']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">2</td>
-					<td>BranchB</td>
-					<td>Jakarta</td>
-					<td>0812345678</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '2']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">3</td>
-					<td>BranchC</td>
-					<td>Bali</td>
-					<td>0812345678</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '3']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">4</td>
-					<td>BranchD</td>
-					<td>Semarang</td>
-					<td>0812345678</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '4']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">5</td>
-					<td>BranchE</td>
-					<td>Malang</td>
-					<td>0812345678</td>
-					<td class="text-center"><a href="{{ route('viewBranch', ['id' => '5']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
+				@if(!empty($cabangs))
+					@foreach($cabangs as $cabang)
+						<tr>
+							<td class="text-center">{{ (($cabangs->currentPage() - 1) * 5) + $loop->iteration }}</td>
+							<td>{{ $cabang->nama }}</td>
+							<td>{{ $cabang->lokasi }}</td>
+							<td>{{ $cabang->telepon }}</td>
+							<td class="text-center"><a href="{{ route('viewBranch', ['id' => $cabang->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+						</tr>
+					@endforeach
+				@endif
 			</tbody>
 		</table>
 
-		{{-- {{ $branch->links() }} --}}
+		{{ $cabangs->links() }}
 
 	</div>
 </div>
