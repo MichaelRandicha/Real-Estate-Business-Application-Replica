@@ -67,8 +67,6 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
-        $children = $this->getAllDownlines(2);
-
         $tree = [
             'chart' => [
                 'container' => '#agent-tree',
@@ -85,7 +83,7 @@ class AgentController extends Controller
                     'href' => route('viewAgent', ['id' => 2])
                 ],
                 'HTMLclass' => 'btn btn-outline-primary',
-                'children' => $children
+                'children' => $this->getAllDownlines(2)
             ]
         ];
 
