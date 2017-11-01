@@ -67,6 +67,12 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
+        $button = 'btn btn-outline-primary';
+
+        if(Agent::find(2)->isEmployed == false){
+            $button = 'btn btn-outline-danger';
+        }
+
         $tree = [
             'chart' => [
                 'container' => '#agent-tree',
@@ -82,7 +88,7 @@ class AgentController extends Controller
                 'link' => [
                     'href' => route('viewAgent', ['id' => 2])
                 ],
-                'HTMLclass' => 'btn btn-outline-primary',
+                'HTMLclass' => $button,
                 'children' => $this->getAllDownlines(2)
             ]
         ];
@@ -96,6 +102,8 @@ class AgentController extends Controller
 
     private function getAllDownlines($upline_id){
         $upline = Agent::find($upline_id);
+
+        $children = array();
 
         foreach ($upline->downline as $downline) {
             $button = 'btn btn-outline-primary';

@@ -1,7 +1,5 @@
 @extends('layouts.login')
 
-@section('title', '- Dashboard')
-
 @section('middle-content')
 <div class="panel panel-default">
 	<div class="panel-heading">Dashboard</div>
