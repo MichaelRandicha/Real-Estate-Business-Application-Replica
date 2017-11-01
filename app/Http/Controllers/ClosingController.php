@@ -48,6 +48,7 @@ class ClosingController extends Controller
     public function register(Request $request){
         $this->validate($request,[
             'name' => 'required',
+            'date' => 'required|date', 
             'price' => 'required|numeric|min:1']);
 
         $closing = new Closing();
