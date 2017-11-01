@@ -22,7 +22,7 @@ class ClosingController extends Controller
     }
 
     public function add(Request $request){
-        if(Agent::where('status', true)->count() == 0){
+        if(Agent::where('status', true)->count() == 1){
             $request->session()->flash('status', 'Please Make a New Agent That is Employed First Before Adding New Closing');
             return redirect('closing');
         }
