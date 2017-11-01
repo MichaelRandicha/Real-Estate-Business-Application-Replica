@@ -32,40 +32,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="text-center">1</td>
-					<td>Rumah01</td>
-					<td>11/11/17</td>
-					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '1']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">2</td>
-					<td>Rumah02</td>
-					<td>30/10/17</td>
-					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '2']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">3</td>
-					<td>Rumah03</td>
-					<td>21/10/17</td>
-					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '3']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">4</td>
-					<td>Rumah04</td>
-					<td>19/10/17</td>
-					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '4']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
-				<tr>
-					<td class="text-center">5</td>
-					<td>Rumah05</td>
-					<td>15/10/17</td>
-					<td class="text-center"><a href="{{ route('viewClosing', ['id' => '5']) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-				</tr>
+				@foreach($closings as $closing)
+					<tr>
+						<td class="text-center">{{ (($closings->currentPage() - 1) * 5) + $loop->iteration }}</td>
+						<td>{{ $closing->nama }}</td>
+						<td>{{ date("d/m/Y", strtotime($closing->tanggal)) }}</td>
+						<td class="text-center"><a href="{{ route('viewClosing', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 
-		{{-- {{ $branch->links() }} --}}
+		{{ $closings->links() }}
 
 	</div>
 </div>

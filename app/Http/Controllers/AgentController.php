@@ -23,7 +23,7 @@ class AgentController extends Controller
 
     public function add(Request $request){
         $agents = Agent::where('id', '>', 1)->where('status', true)->get();
-        if(count(Cabang::all()) == 0){
+        if(Cabang::all()->count() == 0){
             $request->session()->flash('status', 'Please Make a New Branch First Before Adding New Agent');
             return redirect('agent');
         }
@@ -38,7 +38,7 @@ class AgentController extends Controller
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
-        if(count(Agent::all()) > 2){
+        if(Agent::all()->count() > 2){
             $this->validate($request, [
                 'upline' => 'required|not_in:0,1']);
             if($request->input('upline') == 0){
@@ -139,7 +139,7 @@ class AgentController extends Controller
                 }
             }
             
-            if(count($downline->downline) == 0){
+            if($downline->downline->count() == 0){
                 $children[] = [
                     'text' => [
                         'name' => $downline->nama,

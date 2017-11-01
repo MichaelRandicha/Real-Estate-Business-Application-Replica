@@ -22,10 +22,14 @@ class Agent extends Model
     	return $this->belongsTo('App\Cabang');
     }
 
-	protected $appends = ['is_principal', 'is_vice', 'is_employed'];
+    public function closing(){
+        return $this->hasMany('App\AgentClosing');
+    }
+
+	protected $appends = ['is_principal', 'is_vice', 'is_employed', 'total_closing'];
 
     protected $hidden = [
-        'is_principal', 'is_vice', 'is_employed'
+        'is_principal', 'is_vice', 'is_employed', 'total_closing'
     ];
 
     public function getIsPrincipalAttribute()
@@ -57,5 +61,10 @@ class Agent extends Model
     public function getIsEmployedAttribute()
     {
         return $this->status;
+    }
+
+    public function getTotalClosingAttribute()
+    {
+        return $this->closing->count();
     }
 }

@@ -14,11 +14,11 @@
 			<tbody>
 				<tr>
 					<td style="width:30%">Property Name</td>
-					<td>Rumah01</td>
+					<td>{{ $closing->nama }}</td>
 				</tr>
 				<tr>
 					<td>Sold Date</td>
-					<td>01/10/2017</td>
+					<td>{{ date("d/m/Y", strtotime($closing->tanggal)) }}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -27,96 +27,83 @@
 			<thead class="thead-light">
 				<tr>
 					<th style="width:30%"></th>
-					<th>Agent 1</th>
-					<th>Agent 2</th>
-					<th>Agent 3</th>
-					<th>Agent 4</th>
+					@foreach($closing->closing as $agentclosing)
+						<th>Agent {{ $loop->iteration }}</th>
+					@endforeach
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td>Agent Name</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->agent->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Total Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->komisi }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 1</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline1->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>7% Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline1_komisi }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 2</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline2->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>2% Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline2_komisi }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 3</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline3->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>1% Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->upline3_komisi }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Principal</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->principal->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>6% Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->principal_komisi }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>Vice Principal</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->vice->nama }}</td>
+					@endforeach
 				</tr>
 				<tr>
 					<td>4% Comission</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					@foreach($closing->closing as $agentclosing)
+						<td>{{ $agentclosing->vice_komisi }}</td>
+					@endforeach
 				</tr>
 			</tbody>
 		</table>

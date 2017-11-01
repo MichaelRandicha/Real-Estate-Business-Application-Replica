@@ -21,15 +21,4 @@ class Cabang extends Model
     public function member(){
     	return $this->hasMany('App\Agent');
     }
-
-    protected $appends = ['total_pendapatan'];
-
-    public function getTotalPendapatanAttribute()
-    {
-        $pendapatan = 0;
-        foreach ($this->member as $user) {
-            $pendapatan = $pendapatan + $user->pendapatan;
-        }
-        return $pendapatan;
-    }
 }

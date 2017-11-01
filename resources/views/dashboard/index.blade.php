@@ -10,6 +10,7 @@
 			{{ session('status') }}
 		</div>
 		@endif
+
 		<h4><strong>Top Agent</strong></h4>
 		<table class="table table-sm table-bordered">
 			<thead class="thead-light">
@@ -17,42 +18,25 @@
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Agent Name</th>
 					<th scope="col">Branch</th>
-					<th scope="col">Total Closing</td>
+					<th scope="col">Total Closing</th>
+					<th scope="col" class="text-center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td class="text-center">1</td>
-						<td>Alpha</td>
-						<td>BranchA</td>
-						<td>20</td>
-					</tr>
-					<tr>
-						<td class="text-center">2</td>
-						<td>Beta</td>
-						<td>BranchB</td>
-						<td>15</td>
-					</tr>
-					<tr>
-						<td class="text-center">3</td>
-						<td>Gamma</td>
-						<td>BranchC</td>
-						<td>10</td>
-					</tr>
-					<tr>
-						<td class="text-center">4</td>
-						<td>Charlie</td>
-						<td>BranchD</td>
-						<td>7</td>
-					</tr>
-					<tr>
-						<td class="text-center">5</td>
-						<td>Delta</td>
-						<td>BranchE</td>
-						<td>5</td>
-					</tr>
+					@foreach($agents as $agent)
+						<tr>
+							<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
+							<td>{{ $agent->nama }}</td>
+							<td>{{ $agent->cabang->nama }}</td>
+							<td>{{ $agent->totalClosing }}</td>
+							<td class="text-center"><a href="{{ route('viewAgent', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+						</tr>
+					@endforeach
 				</tbody>
 			</table>
+
+			{{ $agents->links() }}
+
 		</div>
 	</div>
 	@endsection
