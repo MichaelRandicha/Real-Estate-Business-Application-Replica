@@ -19,22 +19,22 @@ class CreateAgentClosingTable extends Migration
             $table->foreign('agent_id')->references('id')->on('agents');
             $table->integer('closing_id')->unsigned();
             $table->foreign('closing_id')->references('id')->on('closings');
-            $table->string('komisi');
+            $table->decimal('komisi', '13', '2');
             $table->integer('upline1_id')->unsigned();
             $table->foreign('upline1_id')->references('id')->on('agents');
-            $table->string('upline1_komisi');
+            $table->decimal('upline1_komisi', '13', '2');
             $table->integer('upline2_id')->unsigned();
             $table->foreign('upline2_id')->references('id')->on('agents');
-            $table->string('upline2_komisi');
+            $table->decimal('upline2_komisi', '13', '2');
             $table->integer('upline3_id')->unsigned();
             $table->foreign('upline3_id')->references('id')->on('agents');
-            $table->string('upline3_komisi');
+            $table->decimal('upline3_komisi', '13', '2');
             $table->integer('principal_id')->unsigned();
             $table->foreign('principal_id')->references('id')->on('agents');
-            $table->string('principal_komisi');
+            $table->decimal('principal_komisi', '13', '2');
             $table->integer('vice_id')->unsigned();
             $table->foreign('vice_id')->references('id')->on('agents');
-            $table->string('vice_komisi');
+            $table->decimal('vice_komisi', '13', '2');
             $table->timestamps();
         });
     }

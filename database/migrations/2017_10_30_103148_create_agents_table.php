@@ -18,7 +18,7 @@ class CreateAgentsTable extends Migration
             $table->string('nama');
             $table->string('lokasi');
             $table->string('telepon');
-            $table->decimal('pendapatan', '13', '0')->default(0);
+            $table->decimal('pendapatan', '13', '2')->default(0);
             $table->integer('cabang_id')->unsigned()->nullable();
             $table->integer('upline_id')->unsigned()->nullable();
             $table->foreign('upline_id')->references('id')->on('agents');

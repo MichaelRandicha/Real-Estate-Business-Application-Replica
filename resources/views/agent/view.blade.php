@@ -35,7 +35,7 @@
 				<tr>
 				<tr>
 					<td>Pendapatan</td>
-					<td>Rp. {{ number_format($agent->pendapatan, 0 , '', '.') }}</td>
+					<td>Rp. {{ number_format($agent->pendapatan, 2, ',', '.') }}</td>
 				</tr>
 					<td>Position</td>
 					<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>

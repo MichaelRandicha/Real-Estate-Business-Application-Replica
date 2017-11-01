@@ -42,7 +42,7 @@
 				<tr>
 					<td>Total Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -54,7 +54,7 @@
 				<tr>
 					<td>7% Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->upline1_komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->upline1_komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -66,7 +66,7 @@
 				<tr>
 					<td>2% Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->upline2_komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->upline2_komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -78,7 +78,7 @@
 				<tr>
 					<td>1% Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->upline3_komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->upline3_komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -90,7 +90,7 @@
 				<tr>
 					<td>6% Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->principal_komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->principal_komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -102,7 +102,7 @@
 				<tr>
 					<td>4% Comission</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>Rp. {{ number_format($agentclosing->vice_komisi, 0 , '', '.') }}</td>
+						<td>Rp. {{ number_format($agentclosing->vice_komisi, 2, ',', '.') }}</td>
 					@endforeach
 				</tr>
 			</tbody>
