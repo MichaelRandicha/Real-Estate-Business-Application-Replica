@@ -45,7 +45,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" required>
+					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" value="{{ old('phone') }}" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -66,37 +66,4 @@
 		</form>
 	</div>
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		var principal = document.getElementById("principal");
-		var vice = document.getElementById("vice");
-
-		$('#principal').on('change', function () {
-			var index = principal.selectedIndex;
-			
-			var option = vice.children;
-
-			for (var i = 0; i < option.length; i++) {
-				option[i].removeAttribute("hidden");
-			}
-			if(principal.value > 0){
-				option[index].setAttribute('hidden', '');
-			}
-		});
-
-		$('#vice').on('change', function () {
-			var index = vice.selectedIndex;
-			
-			var option = principal.children;
-
-			for (var i = 0; i < option.length; i++) {
-				option[i].removeAttribute("hidden");
-			}
-			if(vice.value > 0){
-				option[index].setAttribute('hidden', '');				
-			}
-		});
-	});
-</script>
 @endsection

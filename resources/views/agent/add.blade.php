@@ -46,7 +46,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="number" class="form-control" name="phone" required>
+					<input id="phone" type="number" class="form-control" name="phone" value="{{ old('phone') }}" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -62,7 +62,7 @@
 				<div class="col-md-6">
 					<select name="branch" class="form-control" required>
 					    @foreach($cabangs as $cabang)
-					    	<option value={{ $cabang->id }} @if($loop->first) selected @endif>{{ $cabang->nama }}</option>
+					    	<option value="{{ $cabang->id }}" @if(old('branch') == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
 					    @endforeach
 					</select>
 					@if ($errors->has('branch'))
@@ -82,7 +82,7 @@
 					     	<option value="0" selected></option>
 					     @endif
 					     @foreach($agents as $agent)
-					     	<option value={{ $agent->id }}>{{ $agent->nama }}</option>
+					     	<option value="{{ $agent->id }}" @if(old('upline') == $agent->id) selected @endif>{{ $agent->nama }}</option>
 					     @endforeach
 					</select>
 

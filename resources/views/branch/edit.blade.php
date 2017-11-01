@@ -17,7 +17,7 @@
 				<label for="name" class="col-md-4 control-label">Branch Name</label>
 
 				<div class="col-md-6">
-					<input id="name" type="text" class="form-control" name="name" value="{{ $cabang->nama }}"r required autofocus>
+					<input id="name" type="text" class="form-control" name="name" value="{{ $cabang->nama }}" required autofocus>
 
 					@if ($errors->has('name'))
 					<span class="help-block">
@@ -63,7 +63,7 @@
 					    <option value="0" selected></option>
 						@foreach($cabang->member->where('status', true) as $agent)
 							@if($agent->id > 1)
-					    		<option value={{ $agent->id }} @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    		<option value="{{ $agent->id }}" @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
 					    	@endif
 					    @endforeach
 					</select>
