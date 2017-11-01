@@ -120,7 +120,7 @@ class ClosingController extends Controller
                     }
                 }
                 $agentClosing->upline1_id = $upline1->id;
-                $agentClosing->upline1_komisi = $closing->harga * 7 / 100;
+                $agentClosing->upline1_komisi = $agentClosing->komisi * 7 / 100;
                 $upline1->pendapatan += $agentClosing->upline1_komisi;
 
                 $upline1->save();
@@ -140,7 +140,7 @@ class ClosingController extends Controller
                     }
                 }
                 $agentClosing->upline2_id = $upline2->id;
-                $agentClosing->upline2_komisi = $closing->harga * 2 / 100;
+                $agentClosing->upline2_komisi = $agentClosing->komisi * 2 / 100;
                 $upline2->pendapatan += $agentClosing->upline2_komisi;
 
                 $upline2->save();
@@ -160,7 +160,7 @@ class ClosingController extends Controller
                     }
                 }
                 $agentClosing->upline3_id = $upline3->id;
-                $agentClosing->upline3_komisi = $closing->harga * 1 / 100;
+                $agentClosing->upline3_komisi = $agentClosing->komisi * 1 / 100;
                 $upline3->pendapatan += $agentClosing->upline3_komisi;
 
                 $upline3->save();
@@ -176,7 +176,7 @@ class ClosingController extends Controller
                     }
                 }
                 $agentClosing->principal_id = $principal->id;
-                $agentClosing->principal_komisi = $closing->harga * 6 / 100;
+                $agentClosing->principal_komisi = $agentClosing->komisi * 6 / 100;
                 $principal->pendapatan += $agentClosing->principal_komisi;
 
                 $principal->save();
@@ -192,7 +192,7 @@ class ClosingController extends Controller
                     }
                 }
                 $agentClosing->vice_id = $vice->id;
-                $agentClosing->vice_komisi = $closing->harga * 4 / 100;
+                $agentClosing->vice_komisi = $agentClosing->komisi * 4 / 100;
                 $vice->pendapatan += $agentClosing->vice_komisi;
 
                 $vice->save();
