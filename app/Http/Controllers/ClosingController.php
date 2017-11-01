@@ -22,8 +22,8 @@ class ClosingController extends Controller
     }
 
     public function add(Request $request){
-        if(Agent::where('status', true)->count() == 1){
-            $request->session()->flash('status', 'Please Make a New Agent That is Employed First Before Adding New Closing');
+        if(Agent::where('id', '>', 1)->where('status', true)->count() == 0){
+            $request->session()->flash('status', 'You Need At Least One Employed Agent Before Adding New Closing');
             return redirect('closing');
         }
 
@@ -46,6 +46,10 @@ class ClosingController extends Controller
     }
 
     public function register(Request $request){
+        $this->validate($request,[
+            'name' => 'required',
+            'price' => 'required|numeric|min:1']);
+
         $closing = new Closing();
         $closing->nama = $request->input('name');
         $closing->harga = $request->input('price');
@@ -196,6 +200,6 @@ class ClosingController extends Controller
             }
         }
 
-        return redirect('closing/view'.$closing->id);
+        return redirect('closing/view/'.$closing->id);
     }
 }

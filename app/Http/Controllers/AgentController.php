@@ -27,6 +27,10 @@ class AgentController extends Controller
             return redirect('agent');
         }
         $agents = Agent::where('id', '>', 1)->where('status', true)->get();
+        if(Agent::all()->count() > 1 && $agents->count() == 0){
+            $request->session()->flash('status', 'You Need At Least One Employed Agent Before Adding New Agent');
+            return redirect('agent');
+        }
         $cabangs = Cabang::all();
 
         return view('agent.add', compact('agents', 'cabangs'));
