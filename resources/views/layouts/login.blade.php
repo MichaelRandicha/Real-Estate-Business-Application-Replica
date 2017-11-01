@@ -20,10 +20,10 @@
                 <a class="nav-link @if (Request::is('branch/*') || Request::is('branch')) active @endif" href="{{ route('branch') }}">Branch</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link @if (Request::is('closing/*') || Request::is('closing')) active @endif" href="{{ route('closing') }}">Closing</a>
+                <a class="nav-link @if (Request::is('agent/*') || Request::is('agent')) active @endif" href="{{ route('agent') }}">Agent</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link @if (Request::is('agent/*') || Request::is('agent')) active @endif" href="{{ route('agent') }}">Agent</a>
+                <a class="nav-link @if (Request::is('closing/*') || Request::is('closing')) active @endif" href="{{ route('closing') }}">Closing</a>
               </li>
             </ul>
           </div>
