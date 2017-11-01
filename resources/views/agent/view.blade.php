@@ -60,11 +60,10 @@
 </div>
 <script type="text/javascript">
 	function del (event){
-		var nama = document.getElementById('nama').innerHTML;
 		event.preventDefault()
 		$.confirm({
 			title: 'Caution!',
-			content: 'Change Status of Agent '+nama+'?',
+			content: 'Change Status of Agent '+ nama +'?',
 			theme: 'modern',
 			type: 'red',
 			closeIcon: true,

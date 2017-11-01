@@ -21,8 +21,12 @@ class AgentController extends Controller
         return view('agent.index', compact('agents'));
     }
 
-    public function add(){
+    public function add(Request $request){
         $agents = Agent::where('id', '>', 1)->where('status', true)->get();
+        if(count(Cabang::all()) == 0){
+            $request->session()->flash('status', 'Please Make a New Branch First Before Adding New Agent');
+            return redirect('agent');
+        }
         $cabangs = Cabang::all();
 
         return view('agent.add', compact('agents', 'cabangs'));
@@ -84,7 +88,6 @@ class AgentController extends Controller
             }
         }
 
-
         $tree = [
             'chart' => [
                 'container' => '#agent-tree',
@@ -106,7 +109,8 @@ class AgentController extends Controller
         ];
 
         JavaScript::put([
-            'agent_tree' => json_encode($tree)
+            'agent_tree' => json_encode($tree),
+            'nama' => $agent->nama
         ]);
 
         return view('agent.view', compact('agent'));
