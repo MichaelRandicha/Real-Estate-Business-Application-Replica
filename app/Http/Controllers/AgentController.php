@@ -79,7 +79,7 @@ class AgentController extends Controller
 
         if($id == 2){
             $button = $button .' this-agent';
-            if(!Agent::find(2)){
+            if(!Agent::find(2)->isEmployed){
                 $button = $button .' dipecat';
             }
         }else {
