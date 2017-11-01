@@ -22,7 +22,7 @@ class AgentController extends Controller
     }
 
     public function add(){
-        $agents = Agent::where('id', '>', 1)->get();
+        $agents = Agent::where('id', '>', 1)->where('status', true)->get();
         $cabangs = Cabang::all();
 
         return view('agent.add', compact('agents', 'cabangs'));
@@ -73,6 +73,18 @@ class AgentController extends Controller
             $button = 'btn btn-outline-danger';
         }
 
+        if($id == 2){
+            $button = $button .' this-agent';
+            if(Agent::find(2)->isEmployed == false){
+                $button = $button .' dipecat';
+            }
+        }else {
+            if(Agent::find(2)->isEmployed == false){
+                $button = $button .' outline-dipecat';
+            }
+        }
+
+
         $tree = [
             'chart' => [
                 'container' => '#agent-tree',
@@ -89,7 +101,7 @@ class AgentController extends Controller
                     'href' => route('viewAgent', ['id' => 2])
                 ],
                 'HTMLclass' => $button,
-                'children' => $this->getAllDownlines(2)
+                'children' => $this->getAllDownlines(2, $id)
             ]
         ];
 
@@ -100,7 +112,7 @@ class AgentController extends Controller
         return view('agent.view', compact('agent'));
     }
 
-    private function getAllDownlines($upline_id){
+    private function getAllDownlines($upline_id, $selectedId){
         $upline = Agent::find($upline_id);
 
         $children = array();
@@ -110,6 +122,17 @@ class AgentController extends Controller
 
             if($downline->isEmployed == false){
                 $button = 'btn btn-outline-danger';
+            }
+
+            if($selectedId == $downline->id){
+                $button = $button.' this-agent';
+                if($downline->isEmployed == false){
+                    $button = $button .' dipecat';
+                }
+            }else {
+                if($downline->isEmployed == false){
+                    $button = $button .' outline-dipecat';
+                }
             }
             
             if(count($downline->downline) == 0){
@@ -133,7 +156,7 @@ class AgentController extends Controller
                         'href' => route('viewAgent', ['id' => $downline->id])
                     ],
                     'HTMLclass' => $button,
-                    'children' => $this->getAllDownlines($downline->id)
+                    'children' => $this->getAllDownlines($downline->id, $selectedId)
                 ];
             }
         }
