@@ -175,17 +175,15 @@ class AgentController extends Controller
         $agent->telepon = $request->input('phone');
         if($agent->isPrincipal || $agent->isVice){
             if($agent->cabang_id != $request->input('branch')){
-                $cabang = Cabang::find($agent->cabang_id);
                 if($agent->isPrincipal){
-                    $cabang->principal_id = null;
+                    $agent->cabang->principal_id = null;
                 }else if ($agent->isVice){
-                    $cabang->vice_id = null;
+                    $agent->cabang->vice_id = null;
                 }
-                $cabang->save();
             }
         }
         $agent->cabang_id = $request->input('branch');
-        $agent->save();
+        $agent->push();
 
         return redirect('agent/view/'.$id);
     }
@@ -204,17 +202,15 @@ class AgentController extends Controller
         }
 
         if($agent->status == true){
-            $cabang = Cabang::find($agent->cabang->id);
             if($agent->isPrincipal){
-                $cabang->principal_id = null;
+                $agent->cabang->principal_id = null;
             }else if($agent->isVice){
-                $cabang->vice_id = null;
+                $agent->cabang->vice_id = null;
             }
-            $cabang->save();
         }
 
         $agent->status = !$agent->status;
-        $agent->save();
+        $agent->push();
         
         return redirect('agent/view/'.$id);
     }

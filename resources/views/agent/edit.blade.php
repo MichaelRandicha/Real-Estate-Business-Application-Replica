@@ -11,7 +11,7 @@
 		</div>
 		@endif
 
-		<form class="form-horizontal" method="POST" action="{{ route('changeAgent', ['id' => '1']) }}">
+		<form class="form-horizontal" method="POST" action="{{ route('changeAgent', ['id' => $agent->id]) }}">
 			{{ csrf_field() }}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -78,7 +78,7 @@
 					<button type="submit" class="btn btn-outline-primary">
 						Save
 					</button>
-					<a href="{{ route('viewAgent', ['id' => '1']) }}" class="btn btn-outline-danger">Cancel</a>
+					<a href="{{ route('viewAgent', ['id' => $agent->id]) }}" class="btn btn-outline-danger">Cancel</a>
 				</div>
 			</div>
 		</form>
