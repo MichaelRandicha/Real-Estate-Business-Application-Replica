@@ -17,7 +17,7 @@
 				<label for="name" class="col-md-4 control-label">Branch Name</label>
 
 				<div class="col-md-6">
-					<input id="name" type="text" class="form-control" name="name" value={{ $cabang->nama }} required autofocus>
+					<input id="name" type="text" class="form-control" name="name" value="{{ $cabang->nama }}"r required autofocus>
 
 					@if ($errors->has('name'))
 					<span class="help-block">
@@ -31,7 +31,7 @@
 				<label for="location" class="col-md-4 control-label">Location</label>
 
 				<div class="col-md-6">
-					<input id="location" type="text" class="form-control" name="location" value={{ $cabang->lokasi }} required>
+					<input id="location" type="text" class="form-control" name="location" value="{{ $cabang->lokasi }}" required>
 
 					@if ($errors->has('location'))
 					<span class="help-block">
@@ -86,7 +86,7 @@
 					    @foreach($cabang->member as $agent)
 							@if($agent->id > 1)
 								@if($agent->isEmployed == true)
-					    			<option value={{ $agent->id }} @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    			<option value="{{ $agent->id }}" @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
 					    		@endif
 					    	@endif
 					    @endforeach

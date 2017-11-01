@@ -18,7 +18,7 @@
 				<label for="name" class="col-md-4 control-label">Agent Name</label>
 
 				<div class="col-md-6">
-					<input id="name" type="text" class="form-control" name="name" value={{ $agent->nama }} required autofocus>
+					<input id="name" type="text" class="form-control" name="name" value="{{ $agent->nama }}" required autofocus>
 
 					@if ($errors->has('name'))
 					<span class="help-block">
@@ -32,7 +32,7 @@
 				<label for="location" class="col-md-4 control-label">Location</label>
 
 				<div class="col-md-6">
-					<input id="location" type="text" class="form-control" name="location" value={{ $agent->lokasi }} required>
+					<input id="location" type="text" class="form-control" name="location" value="{{ $agent->lokasi }}" required>
 
 					@if ($errors->has('location'))
 					<span class="help-block">
@@ -46,7 +46,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" value={{ $agent->telepon }} required>
+					<input id="phone" type="number" pattern="^[0-9]*{1,12}$" class="form-control" name="phone" value="{{ $agent->telepon }}" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
@@ -62,7 +62,7 @@
 				<div class="col-md-6">
 					<select name="branch" class="form-control">
 						@foreach($cabangs as $cabang)
-							<option value={{ $cabang->id }} @if($agent->cabang->id == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
+							<option value="{{ $cabang->id }}" @if($agent->cabang->id == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
 						@endforeach
 					</select>
 					@if ($errors->has('branch'))
