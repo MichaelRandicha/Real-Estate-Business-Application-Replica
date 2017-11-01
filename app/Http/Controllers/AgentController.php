@@ -10,23 +10,23 @@ use JavaScript;
 class AgentController extends Controller
 {
     public function index(){
-        $agents = Agent::where('id', '!=', 1)->paginate(5);
+        $agents = Agent::where('id', '>', 1)->paginate(5);
         return view('agent.index', compact('agents'));
     }
 
     public function search(Request $request){
-        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->where('id','!=', 1)->paginate(5);
+        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->where('id','>', 1)->paginate(5);
         $agents->appends(['search' => $request->input('search')]);
 
         return view('agent.index', compact('agents'));
     }
 
     public function add(Request $request){
-        $agents = Agent::where('id', '>', 1)->where('status', true)->get();
         if(Cabang::all()->count() == 0){
             $request->session()->flash('status', 'Please Make a New Branch First Before Adding New Agent');
             return redirect('agent');
         }
+        $agents = Agent::where('id', '>', 1)->where('status', true)->get();
         $cabangs = Cabang::all();
 
         return view('agent.add', compact('agents', 'cabangs'));
@@ -73,17 +73,17 @@ class AgentController extends Controller
 
         $button = 'btn btn-outline-primary';
 
-        if(Agent::find(2)->isEmployed == false){
+        if(!Agent::find(2)->isEmployed){
             $button = 'btn btn-outline-danger';
         }
 
         if($id == 2){
             $button = $button .' this-agent';
-            if(Agent::find(2)->isEmployed == false){
+            if(!Agent::find(2)){
                 $button = $button .' dipecat';
             }
         }else {
-            if(Agent::find(2)->isEmployed == false){
+            if(!Agent::find(2)->isEmployed){
                 $button = $button .' outline-dipecat';
             }
         }
@@ -124,17 +124,17 @@ class AgentController extends Controller
         foreach ($upline->downline as $downline) {
             $button = 'btn btn-outline-primary';
 
-            if($downline->isEmployed == false){
+            if(!$downline->isEmployed){
                 $button = 'btn btn-outline-danger';
             }
 
             if($selectedId == $downline->id){
                 $button = $button.' this-agent';
-                if($downline->isEmployed == false){
+                if(!$downline->isEmployed){
                     $button = $button .' dipecat';
                 }
             }else {
-                if($downline->isEmployed == false){
+                if(!$downline->isEmployed){
                     $button = $button .' outline-dipecat';
                 }
             }
@@ -236,7 +236,7 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
-        if($agent->status == true){
+        if($agent->isEmployed){
             if($agent->isPrincipal){
                 $agent->cabang->principal_id = null;
             }else if($agent->isVice){

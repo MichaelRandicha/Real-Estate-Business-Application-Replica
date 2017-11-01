@@ -61,11 +61,9 @@
 				<div class="col-md-6">
 					<select name="principal" id="principal" class="form-control">
 					    <option value="0" selected></option>
-						@foreach($cabang->member as $agent)
+						@foreach($cabang->member->where('status', true) as $agent)
 							@if($agent->id > 1)
-								@if($agent->isEmployed == true)
-					    			<option value={{ $agent->id }} @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
-					    		@endif
+					    		<option value={{ $agent->id }} @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
 					    	@endif
 					    @endforeach
 					</select>
@@ -83,11 +81,9 @@
 				<div class="col-md-6">
 					<select name="vice" id="vice" class="form-control">
 					    <option value="0" selected></option>
-					    @foreach($cabang->member as $agent)
+					    @foreach($cabang->member->where('status', true) as $agent)
 							@if($agent->id > 1)
-								@if($agent->isEmployed == true)
-					    			<option value="{{ $agent->id }}" @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
-					    		@endif
+					    		<option value="{{ $agent->id }}" @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
 					    	@endif
 					    @endforeach
 					</select>

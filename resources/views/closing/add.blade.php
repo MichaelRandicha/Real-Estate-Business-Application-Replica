@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-				<label for="price" class="col-md-4 control-label">Property Price</label>
+				<label for="price" class="col-md-4 control-label">Commission Money</label>
 
 				<div class="col-md-6">
 					<input id="price" type="number" class="form-control" name="price" required>
@@ -55,17 +55,15 @@
 				</div>
 			</div>
 
-			<div class="form-group{{ $errors->has('agent.0') ? ' has-error' : '' }}">
+			<div class="form-group{{ $errors->has('agent.0') ? ' has-error' : '' }}" required>
 				<label for="agent[0]" class="col-md-4 control-label">Agent 1 Name</label>
 
 				<div class="col-md-6">
 					<select name="agent[0]" id="agent1" class="form-control">
-					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					    <option value="4">Delta</option>
-					    <option value="5">Echo</option>
+					    <option value="0" disabled hidden></option>
+					    @foreach($agents as $agent)	
+					    	<option value="{{ $agent->id }}">{{ $agent->nama }}</option>
+					    @endforeach
 					</select>
 					@if ($errors->has('agent.0'))
 					<span class="help-block">
@@ -81,11 +79,9 @@
 				<div class="col-md-6">
 					<select name="agent[1]" id="agent2" class="form-control">
 					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					    <option value="4">Delta</option>
-					    <option value="5">Echo</option>
+					    @foreach($agents as $agent)	
+					    	<option value="{{ $agent->id }}">{{ $agent->nama }}</option>
+					    @endforeach
 					</select>
 					@if ($errors->has('agent.1'))
 					<span class="help-block">
@@ -101,11 +97,9 @@
 				<div class="col-md-6">
 					<select name="agent[2]" id="agent3" class="form-control">
 					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					    <option value="4">Delta</option>
-					    <option value="5">Echo</option>
+					    @foreach($agents as $agent)	
+					    	<option value="{{ $agent->id }}">{{ $agent->nama }}</option>
+					    @endforeach
 					</select>
 					@if ($errors->has('agent.2'))
 					<span class="help-block">
@@ -121,11 +115,9 @@
 				<div class="col-md-6">
 					<select name="agent[3]" id="agent4" class="form-control">
 					    <option value="0" selected></option>
-					    <option value="1">Alpha</option>
-					    <option value="2">Bravo</option>
-					    <option value="3">Charlie</option>
-					    <option value="4">Delta</option>
-					    <option value="5">Echo</option>
+					    @foreach($agents as $agent)	
+					    	<option value="{{ $agent->id }}">{{ $agent->nama }}</option>
+					    @endforeach
 					</select>
 					@if ($errors->has('agent.3'))
 					<span class="help-block">
@@ -157,7 +149,24 @@
 		var two = agent2.children;
 		var three = agent3.children;
 		var four = agent4.children;
-		
+
+		var indexOne = agent1.selectedIndex;
+
+		if(agent1.value > 0){
+			two[indexOne].setAttribute('hidden', '');
+			three[indexOne].setAttribute('hidden', '');
+			four[indexOne].setAttribute('hidden', '');
+		}
+		if(agent2.value > 0){
+			one[indexTwo].setAttribute('hidden', '');
+			three[indexTwo].setAttribute('hidden', '');
+			four[indexTwo].setAttribute('hidden', '');
+		}
+		if(agent3.value > 0){
+			one[indexThree].setAttribute('hidden', '');
+			two[indexThree].setAttribute('hidden', '');
+			four[indexThree].setAttribute('hidden', '');
+		}
 		
 		$('#agent1').on('change', function () {
 			var indexOne = agent1.selectedIndex;
@@ -205,7 +214,7 @@
 			var indexThree = agent3.selectedIndex;
 			var indexFour = agent4.selectedIndex;
 			
-			for (var i = 0; i < one.length; i++) {
+			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
 
@@ -245,7 +254,7 @@
 			var indexThree = agent3.selectedIndex;
 			var indexFour = agent4.selectedIndex;
 			
-			for (var i = 0; i < one.length; i++) {
+			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
 
@@ -285,7 +294,7 @@
 			var indexThree = agent3.selectedIndex;
 			var indexFour = agent4.selectedIndex;
 			
-			for (var i = 0; i < one.length; i++) {
+			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
 

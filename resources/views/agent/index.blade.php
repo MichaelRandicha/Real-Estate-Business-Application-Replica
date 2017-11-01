@@ -35,7 +35,7 @@
 			<tbody>
 				@if(!empty($agents))
 					@foreach($agents as $agent)
-						<tr @if($agent->status == false) class="table-danger" @endif>
+						<tr @if(!$agent->isEmployed) class="table-danger" @endif>
 							<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
 							<td>{{ $agent->nama }}</td>
 							<td>{{ $agent->cabang->nama }}</td>

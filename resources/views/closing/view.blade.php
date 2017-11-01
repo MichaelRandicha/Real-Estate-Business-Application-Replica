@@ -27,7 +27,7 @@
 			<thead class="thead-light">
 				<tr>
 					<th style="width:30%"></th>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<th>Agent {{ $loop->iteration }}</th>
 					@endforeach
 				</tr>
@@ -35,74 +35,74 @@
 			<tbody>
 				<tr>
 					<td>Agent Name</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->agent->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Total Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 1</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->upline1->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>7% Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->upline1_komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->upline1_komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 2</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->upline2->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>2% Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->upline2_komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->upline2_komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Agent Upline 3</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->upline3->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>1% Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->upline3_komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->upline3_komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Principal</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->principal->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>6% Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->principal_komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->principal_komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>Vice Principal</td>
-					@foreach($closing->closing as $agentclosing)
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
 						<td>{{ $agentclosing->vice->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>
 					<td>4% Comission</td>
-					@foreach($closing->closing as $agentclosing)
-						<td>{{ $agentclosing->vice_komisi }}</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>Rp. {{ number_format($agentclosing->vice_komisi, 0 , '', '.') }}</td>
 					@endforeach
 				</tr>
 			</tbody>
