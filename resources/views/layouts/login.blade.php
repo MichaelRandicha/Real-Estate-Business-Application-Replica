@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-3 col-lg-2">
-            <ul class="nav flex-column navbar">
+            <ul class="nav navbar">
               <li class="nav-item">
                 <a class="nav-link @if (Request::is('dashboard/*') || Request::is('dashboard')) active @endif" href="{{ route('dashboard') }}">Dashboard</a>
               </li>
