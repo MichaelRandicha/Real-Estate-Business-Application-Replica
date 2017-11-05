@@ -14,7 +14,6 @@ class AddCabangForeignKeyTable extends Migration
     public function up()
     {
         Schema::table('agents', function (Blueprint $table) {
-            $table->integer('cabang_id')->unsigned()->change();
             $table->foreign('cabang_id')->references('id')->on('cabangs');
         });
     }
