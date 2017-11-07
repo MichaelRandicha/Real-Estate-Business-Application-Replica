@@ -125,18 +125,23 @@ class ClosingController extends Controller
 
                 $upline1->save();
 
-                $upline2 = $upline1->upline;
-                if($upline2 == null){
+                $upline2 = null;
+                if($agent->upline == null){
                     $upline2 = Agent::find(1);
                 }else{
-                    if($upline2->isEmployed){
-                        if($agent->cabang->id == $upline2->cabang->id){
-                            if($upline2->isPrincipal || $upline2->isVice){
-                                $upline2 = Agent::find(1);
-                            }
-                        }
-                    }else{
+                    $upline2 = $agent->upline->upline;
+                    if($upline2 == null){
                         $upline2 = Agent::find(1);
+                    }else{
+                        if($upline2->isEmployed){
+                            if($agent->cabang->id == $upline2->cabang->id){
+                                if($upline2->isPrincipal || $upline2->isVice){
+                                    $upline2 = Agent::find(1);
+                                }
+                            }
+                        }else{
+                            $upline2 = Agent::find(1);
+                        }
                     }
                 }
                 $agentClosing->upline2_id = $upline2->id;
@@ -145,18 +150,23 @@ class ClosingController extends Controller
 
                 $upline2->save();
 
-                $upline3 = $upline2->upline;
-                if($upline3 == null){
+                $upline3 = null;
+                if($agent->upline == null || $agent->upline->upline == null){
                     $upline3 = Agent::find(1);
                 }else{
-                    if($upline3->isEmployed){
-                        if($agent->cabang->id == $upline3->cabang->id){
-                            if($upline3->isPrincipal || $upline3->isVice){
-                                $upline3 = Agent::find(1);
-                            }
-                        }
-                    }else{
+                    $upline3 = $agent->upline->upline->upline;
+                    if ($upline3 == null) {
                         $upline3 = Agent::find(1);
+                    }else {
+                        if($upline3->isEmployed){
+                            if($agent->cabang->id == $upline3->cabang->id){
+                                if($upline3->isPrincipal || $upline3->isVice){
+                                    $upline3 = Agent::find(1);
+                                }
+                            }
+                        }else{
+                            $upline3 = Agent::find(1);
+                        }
                     }
                 }
                 $agentClosing->upline3_id = $upline3->id;
