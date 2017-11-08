@@ -150,30 +150,9 @@
 		var three = agent3.children;
 		var four = agent4.children;
 
-		var indexOne = agent1.selectedIndex;
-
-		if(agent1.value > 0){
-			two[indexOne].setAttribute('hidden', '');
-			three[indexOne].setAttribute('hidden', '');
-			four[indexOne].setAttribute('hidden', '');
-		}
-		if(agent2.value > 0){
-			one[indexTwo].setAttribute('hidden', '');
-			three[indexTwo].setAttribute('hidden', '');
-			four[indexTwo].setAttribute('hidden', '');
-		}
-		if(agent3.value > 0){
-			one[indexThree].setAttribute('hidden', '');
-			two[indexThree].setAttribute('hidden', '');
-			four[indexThree].setAttribute('hidden', '');
-		}
+		hidden();
 		
 		$('#agent1').on('change', function () {
-			var indexOne = agent1.selectedIndex;
-			var indexTwo = agent2.selectedIndex;
-			var indexThree = agent3.selectedIndex;
-			var indexFour = agent4.selectedIndex;
-
 			for (var i = 0; i < two.length; i++) {
 				two[i].removeAttribute("hidden");
 			}
@@ -185,35 +164,10 @@
 			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
-
-			if(agent1.value > 0){
-				two[indexOne].setAttribute('hidden', '');
-				three[indexOne].setAttribute('hidden', '');
-				four[indexOne].setAttribute('hidden', '');
-			}
-			if(agent2.value > 0){
-				one[indexTwo].setAttribute('hidden', '');
-				three[indexTwo].setAttribute('hidden', '');
-				four[indexTwo].setAttribute('hidden', '');
-			}
-			if(agent3.value > 0){
-				one[indexThree].setAttribute('hidden', '');
-				two[indexThree].setAttribute('hidden', '');
-				four[indexThree].setAttribute('hidden', '');
-			}
-			if(agent4.value > 0){
-				one[indexFour].setAttribute('hidden', '');
-				two[indexFour].setAttribute('hidden', '');
-				three[indexFour].setAttribute('hidden', '');
-			}
+			hidden();
 		});
 
 		$('#agent2').on('change', function () {
-			var indexOne = agent1.selectedIndex;
-			var indexTwo = agent2.selectedIndex;
-			var indexThree = agent3.selectedIndex;
-			var indexFour = agent4.selectedIndex;
-			
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
@@ -225,35 +179,10 @@
 			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
-
-			if(agent1.value > 0){
-				two[indexOne].setAttribute('hidden', '');
-				three[indexOne].setAttribute('hidden', '');
-				four[indexOne].setAttribute('hidden', '');
-			}
-			if(agent2.value > 0){
-				one[indexTwo].setAttribute('hidden', '');
-				three[indexTwo].setAttribute('hidden', '');
-				four[indexTwo].setAttribute('hidden', '');
-			}
-			if(agent3.value > 0){
-				one[indexThree].setAttribute('hidden', '');
-				two[indexThree].setAttribute('hidden', '');
-				four[indexThree].setAttribute('hidden', '');
-			}
-			if(agent4.value > 0){
-				one[indexFour].setAttribute('hidden', '');
-				two[indexFour].setAttribute('hidden', '');
-				three[indexFour].setAttribute('hidden', '');
-			}
+			hidden();
 		});
 
 		$('#agent3').on('change', function () {
-			var indexOne = agent1.selectedIndex;
-			var indexTwo = agent2.selectedIndex;
-			var indexThree = agent3.selectedIndex;
-			var indexFour = agent4.selectedIndex;
-			
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
@@ -265,35 +194,10 @@
 			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
-
-			if(agent1.value > 0){
-				two[indexOne].setAttribute('hidden', '');
-				three[indexOne].setAttribute('hidden', '');
-				four[indexOne].setAttribute('hidden', '');
-			}
-			if(agent2.value > 0){
-				one[indexTwo].setAttribute('hidden', '');
-				three[indexTwo].setAttribute('hidden', '');
-				four[indexTwo].setAttribute('hidden', '');
-			}
-			if(agent3.value > 0){
-				one[indexThree].setAttribute('hidden', '');
-				two[indexThree].setAttribute('hidden', '');
-				four[indexThree].setAttribute('hidden', '');
-			}
-			if(agent4.value > 0){
-				one[indexFour].setAttribute('hidden', '');
-				two[indexFour].setAttribute('hidden', '');
-				three[indexFour].setAttribute('hidden', '');
-			}
+			hidden();
 		});
 
-		$('#agent4').on('change', function () {
-			var indexOne = agent1.selectedIndex;
-			var indexTwo = agent2.selectedIndex;
-			var indexThree = agent3.selectedIndex;
-			var indexFour = agent4.selectedIndex;
-			
+		$('#agent4').on('change', function () {			
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
 			}
@@ -305,7 +209,14 @@
 			for (var i = 0; i < three.length; i++) {
 				three[i].removeAttribute("hidden");
 			}
+			hidden();
+		});
 
+		function hidden() {
+			var indexOne = agent1.selectedIndex;
+			var indexTwo = agent2.selectedIndex;
+			var indexThree = agent3.selectedIndex;
+			var indexFour = agent4.selectedIndex;
 			if(agent1.value > 0){
 				two[indexOne].setAttribute('hidden', '');
 				three[indexOne].setAttribute('hidden', '');
@@ -326,7 +237,7 @@
 				two[indexFour].setAttribute('hidden', '');
 				three[indexFour].setAttribute('hidden', '');
 			}
-		});
+		}
 
 	});
 </script>
