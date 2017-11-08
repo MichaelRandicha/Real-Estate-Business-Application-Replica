@@ -145,6 +145,8 @@
 		var agent3 = document.getElementById("agent3");
 		var agent4 = document.getElementById("agent4");
 
+		// Length Children setiap Agent pasti sama
+		// Maka dari itu for hanya dipanggil sekali untuk remove setiap hidden
 		var one = agent1.children;
 		var two = agent2.children;
 		var three = agent3.children;
@@ -153,15 +155,9 @@
 		hidden();
 		
 		$('#agent1').on('change', function () {
-			for (var i = 0; i < two.length; i++) {
+			for (var i = 0; i < one.length; i++) {
 				two[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < three.length; i++) {
 				three[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
 			hidden();
@@ -170,13 +166,7 @@
 		$('#agent2').on('change', function () {
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < three.length; i++) {
 				three[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
 			hidden();
@@ -185,13 +175,7 @@
 		$('#agent3').on('change', function () {
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < two.length; i++) {
 				two[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < four.length; i++) {
 				four[i].removeAttribute("hidden");
 			}
 			hidden();
@@ -200,13 +184,7 @@
 		$('#agent4').on('change', function () {			
 			for (var i = 1; i < one.length; i++) {
 				one[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < two.length; i++) {
 				two[i].removeAttribute("hidden");
-			}
-
-			for (var i = 0; i < three.length; i++) {
 				three[i].removeAttribute("hidden");
 			}
 			hidden();
