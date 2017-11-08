@@ -217,22 +217,22 @@
 			var indexTwo = agent2.selectedIndex;
 			var indexThree = agent3.selectedIndex;
 			var indexFour = agent4.selectedIndex;
-			if(agent1.value > 0){
+			if(agent1.selectedIndex > 0){
 				two[indexOne].setAttribute('hidden', '');
 				three[indexOne].setAttribute('hidden', '');
 				four[indexOne].setAttribute('hidden', '');
 			}
-			if(agent2.value > 0){
+			if(agent2.selectedIndex > 0){
 				one[indexTwo].setAttribute('hidden', '');
 				three[indexTwo].setAttribute('hidden', '');
 				four[indexTwo].setAttribute('hidden', '');
 			}
-			if(agent3.value > 0){
+			if(agent3.selectedIndex > 0){
 				one[indexThree].setAttribute('hidden', '');
 				two[indexThree].setAttribute('hidden', '');
 				four[indexThree].setAttribute('hidden', '');
 			}
-			if(agent4.value > 0){
+			if(agent4.selectedIndex > 0){
 				one[indexFour].setAttribute('hidden', '');
 				two[indexFour].setAttribute('hidden', '');
 				three[indexFour].setAttribute('hidden', '');
