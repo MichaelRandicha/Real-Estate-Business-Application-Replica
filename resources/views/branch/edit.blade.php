@@ -120,7 +120,8 @@
 			for (var i = 0; i < option.length; i++) {
 				option[i].removeAttribute("hidden");
 			}
-			if(principal.value > 0){
+
+			if(principal.selectedIndex > 0){
 				option[index].setAttribute('hidden', '');
 			}
 		});
@@ -133,7 +134,8 @@
 			for (var i = 0; i < option.length; i++) {
 				option[i].removeAttribute("hidden");
 			}
-			if(vice.value > 0){
+			
+			if(vice.selectedIndex > 0){
 				option[index].setAttribute('hidden', '');				
 			}
 		});
