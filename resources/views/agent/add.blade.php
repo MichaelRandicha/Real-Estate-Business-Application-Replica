@@ -77,8 +77,8 @@
 				<label for="upline" class="col-md-4 control-label">Upline Agent Name</label>
 
 				<div class="col-md-6">
-					<select name="upline" class="form-control" @if(count(App\Agent::all()) > 2) required @endif>
-					     @if(count(App\Agent::all()) == 1)
+					<select name="upline" class="form-control" @if(App\Agent::where('nama', 'not like', 'kantor%')->get()->count() > 0) required @endif>
+					     @if(App\Agent::where('nama', 'not like', 'kantor%')->get()->count() == 0)
 					     	<option value="0" selected></option>
 					     @endif
 					     @foreach($agents as $agent)
