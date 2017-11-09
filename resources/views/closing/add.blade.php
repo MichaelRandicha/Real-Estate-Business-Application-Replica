@@ -42,7 +42,7 @@
 			</div>
 
 			<div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-				<label for="price" class="col-md-4 control-label">Commission Money</label>
+				<label for="price" class="col-md-4 control-label">Closing Price</label>
 
 				<div class="col-md-6">
 					<input id="price" type="number" class="form-control" name="price" value="{{ old('price') }}" required>
