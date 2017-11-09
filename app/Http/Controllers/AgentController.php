@@ -9,15 +9,14 @@ use JavaScript;
 
 class AgentController extends Controller
 {
-    public function index(){
-        $agents = Agent::where('nama', 'not like', 'kantor%')->paginate(5);
-        return view('agent.index', compact('agents'));
-    }
-
-    public function search(Request $request){
-        $agents = Agent::where('nama', 'like',  $request->input('search').'%')->where('nama','not like', 'kantor%')->paginate(5);
-        $agents->appends(['search' => $request->input('search')]);
-
+    public function index(Request $request){
+        $agents = null;
+        if($request->search == null){
+            $agents = Agent::where('nama', 'not like', 'kantor%')->paginate(5);
+        }else{
+            $agents = Agent::where('nama', 'like',  $request->search.'%')->where('nama','not like', 'kantor%')->paginate(5);
+            $agents->appends(['search' => $request->search]);
+        }
         return view('agent.index', compact('agents'));
     }
 
@@ -45,17 +44,17 @@ class AgentController extends Controller
         if(Agent::where('nama', 'not like', 'kantor%')->count() > 0){
             $this->validate($request, [
                 'upline' => 'required|not_in:0,1']);
-            if($request->input('upline') == 0){
+            if($request->upline == 0){
                 return redirect('agent/add')->withErrors(['upline', 'The selected upline is invalid.']);;
             }
         }
         $agent = new Agent;
-        $agent->nama = $request->input('name');
-        $agent->lokasi = $request->input('location');
-        $agent->telepon = $request->input('phone');
-        $agent->cabang_id = $request->input('branch');
-        if($request->input('upline') > 1){
-            $agent->upline_id = $request->input('upline');
+        $agent->nama = $request->name;
+        $agent->lokasi = $request->location;
+        $agent->telepon = $request->phone;
+        $agent->cabang_id = $request->branch;
+        if($request->upline > 1){
+            $agent->upline_id = $request->upline;
         }
         $agent->save();
 
@@ -215,11 +214,11 @@ class AgentController extends Controller
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
 
-        $agent->nama = $request->input('name');
-        $agent->lokasi = $request->input('location');
-        $agent->telepon = $request->input('phone');
+        $agent->nama = $request->name;
+        $agent->lokasi = $request->location;
+        $agent->telepon = $request->phone;
         if($agent->isPrincipal || $agent->isVice){
-            if($agent->cabang_id != $request->input('branch')){
+            if($agent->cabang_id != $request->branch){
                 if($agent->isPrincipal){
                     $agent->cabang->principal_id = null;
                 }else if ($agent->isVice){
@@ -227,7 +226,7 @@ class AgentController extends Controller
                 }
             }
         }
-        $agent->cabang_id = $request->input('branch');
+        $agent->cabang_id = $request->branch;
         $agent->push();
 
         return redirect('agent/view/'.$id);

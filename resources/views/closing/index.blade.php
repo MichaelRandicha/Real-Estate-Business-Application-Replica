@@ -17,7 +17,7 @@
 			</div>
 
 			<div style="float:right">
-				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('searchClosing') }}">
+				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('closing') }}">
 					<input type="text" name="search" placeholder="Nama Property" class="search">
 				</form>
 			</div>

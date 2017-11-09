@@ -8,15 +8,14 @@ use App\Agent;
 
 class BranchController extends Controller
 {
-    public function index(){
-        $cabangs = Cabang::paginate(5);
-    	return view('branch.index', compact('cabangs'));
-    }
-
-    public function search(Request $request){
-        $cabangs = Cabang::where('nama', 'like',  $request->input('search').'%')->paginate(5);
-        $cabangs->appends(['search' => $request->input('search')]);
-
+    public function index(Request $request){
+        $cabangs = null;
+        if($request->search == null){
+            $cabangs = Cabang::paginate(5);
+        }else {
+            $cabangs = Cabang::where('nama', 'like',  $request->search.'%')->paginate(5);
+            $cabangs->appends(['search' => $request->search]);    
+        }
     	return view('branch.index', compact('cabangs'));
     }
 
@@ -31,15 +30,15 @@ class BranchController extends Controller
             'phone' => 'required|numeric|digits_between:10,12']);
 
         $agent = new Agent;
-        $agent->nama = 'Kantor '.$request->input('name');
-        $agent->lokasi = $request->input('location');
-        $agent->telepon = $request->input('phone');
+        $agent->nama = 'Kantor '.$request->name;
+        $agent->lokasi = $request->location;
+        $agent->telepon = $request->phone;
         $agent->save();
 
         $cabang = new Cabang;
-        $cabang->nama = $request->input('name');
-        $cabang->lokasi = $request->input('location');
-        $cabang->telepon = $request->input('phone');
+        $cabang->nama = $request->name;
+        $cabang->lokasi = $request->location;
+        $cabang->telepon = $request->phone;
         $cabang->kantor_id = $agent->id;
         $cabang->save();
 
@@ -89,18 +88,18 @@ class BranchController extends Controller
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12']);
 
-        $cabang->nama = $request->input('name');
-        $cabang->lokasi = $request->input('location');
-        $cabang->telepon = $request->input('phone');
+        $cabang->nama = $request->name;
+        $cabang->lokasi = $request->location;
+        $cabang->telepon = $request->phone;
 
-        if($request->input('principal') > 1){
-            $cabang->principal_id = $request->input('principal');
+        if($request->principal > 1){
+            $cabang->principal_id = $request->principal;
         }else {
             $cabang->principal_id = null;
         }
 
-        if($request->input('vice') > 1){
-            $cabang->vice_id = $request->input('vice');
+        if($request->vice > 1){
+            $cabang->vice_id = $request->vice;
         }else{
             $cabang->vice_id = null;
         }

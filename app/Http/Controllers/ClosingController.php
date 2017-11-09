@@ -9,15 +9,14 @@ use App\AgentClosing;
 
 class ClosingController extends Controller
 {
-    public function index(){
-        $closings = Closing::paginate(5);
-        return view('closing.index', compact('closings'));
-    }
-
-    public function search(Request $request){
-        $closings = Closing::where('nama', 'like',  $request->input('search').'%')->paginate(5);
-        $closings->appends(['search' => $request->input('search')]);
-
+    public function index(Request $request){
+        $closings = null;
+        if($request->search == null){
+            $closings = Closing::paginate(5);
+        }else{
+            $closings = Closing::where('nama', 'like',  $request->search.'%')->paginate(5);
+            $closings->appends(['search' => $request->search]);
+        }
         return view('closing.index', compact('closings'));
     }
 
@@ -51,7 +50,7 @@ class ClosingController extends Controller
             'date' => 'required|date', 
             'price' => 'required|numeric|min:1']);
 
-        foreach ($request->input('agent') as $id){
+        foreach ($request->agent as $id){
             if($id > 0){
                 foreach (Agent::where('nama', 'like', 'kantor%')->get() as $kantor) {
                     if($id == $kantor->id){
@@ -63,22 +62,22 @@ class ClosingController extends Controller
         }
 
         $closing = new Closing();
-        $closing->nama = $request->input('name');
-        $closing->harga = $request->input('price');
-        $closing->tanggal = $request->input('date');
+        $closing->nama = $request->name;
+        $closing->harga = $request->price;
+        $closing->tanggal = $request->date;
         $closing->save();
 
 
         $count = 0;
 
-        foreach ($request->input('agent') as $id){
+        foreach ($request->agent as $id){
             if($id > 0){
                 $count++;
             }
         }
 
         $iteration = 0;
-        foreach ($request->input('agent') as $id){
+        foreach ($request->agent as $id){
             if($id > 0){
                 $iteration++;
 
