@@ -20,6 +20,10 @@
 					<td>Sold Date</td>
 					<td>{{ date("d/m/Y", strtotime($closing->tanggal)) }}</td>
 				</tr>
+				<tr>
+					<td>Commission Money</td>
+					<td>{{ $closing->harga }}</td>
+				</tr>
 			</tbody>
 		</table>
 
