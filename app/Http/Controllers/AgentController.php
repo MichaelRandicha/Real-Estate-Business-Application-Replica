@@ -185,6 +185,8 @@ class AgentController extends Controller
         
         if($agent == null){
             return redirect('agent');
+        }else if(strpos($agent->nama, 'Kantor') !== false){
+            return redirect('agent');
         }
 
         $cabangs = Cabang::all();
@@ -202,6 +204,8 @@ class AgentController extends Controller
         $agent = Agent::find($id);
         
         if($agent == null){
+            return redirect('agent');
+        }else if(strpos($agent->nama, 'Kantor') !== false){
             return redirect('agent');
         }
 
@@ -239,6 +243,8 @@ class AgentController extends Controller
         $agent = Agent::find($id);
         
         if($agent == null){
+            return redirect('agent');
+        }else if(strpos($agent->nama, 'Kantor') !== false){
             return redirect('agent');
         }
 
