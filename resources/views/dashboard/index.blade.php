@@ -29,7 +29,7 @@
 							<td>{{ $agent->nama }}</td>
 							<td>{{ $agent->cabang->nama }}</td>
 							<td>{{ $agent->totalClosing }}</td>
-							<td class="text-center"><a href="{{ route('viewAgent', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+							<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 						</tr>
 					@endforeach
 				</tbody>
