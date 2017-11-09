@@ -82,7 +82,7 @@ class AgentController extends Controller
             $button = 'btn btn-outline-danger';
         }
 
-        if($id == 2){
+        if($id == $firstAgent->id){
             $button = $button .' this-agent';
             if(!$firstAgent->isEmployed){
                 $button = $button .' dipecat';
