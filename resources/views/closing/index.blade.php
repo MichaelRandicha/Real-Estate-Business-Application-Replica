@@ -13,7 +13,7 @@
 
 		<div>
 			<div style="float:left;">
-				<a href={{ route('addClosing') }} class="btn btn-md btn-outline-success" style="bottom:0;">Make New Closing</a>
+				<a href={{ route('closing.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Make New Closing</a>
 			</div>
 
 			<div style="float:right">
@@ -37,7 +37,7 @@
 						<td class="text-center">{{ (($closings->currentPage() - 1) * 5) + $loop->iteration }}</td>
 						<td>{{ $closing->nama }}</td>
 						<td>{{ date("d/m/Y", strtotime($closing->tanggal)) }}</td>
-						<td class="text-center"><a href="{{ route('viewClosing', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+						<td class="text-center"><a href="{{ route('closing.view', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 					</tr>
 				@endforeach
 			</tbody>

@@ -10,7 +10,7 @@
 			{{ session('status') }}
 		</div>
 		@endif
-		<form class="form-horizontal" method="POST" action="{{ route('changeBranch', ['id' => $cabang->id]) }}">
+		<form class="form-horizontal" method="POST" action="{{ route('branch.change', ['id' => $cabang->id]) }}">
 			{{ csrf_field() }}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -100,7 +100,7 @@
 					<button type="submit" class="btn btn-outline-primary">
 						Save
 					</button>
-					<a href="{{ route('viewBranch', ['id' => $cabang->id]) }}" class="btn btn-outline-danger">Cancel</a>
+					<a href="{{ route('branch.view', ['id' => $cabang->id]) }}" class="btn btn-outline-danger">Cancel</a>
 				</div>
 			</div>
 		</form>

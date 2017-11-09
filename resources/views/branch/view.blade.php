@@ -35,7 +35,7 @@
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
-			<a href="{{ route('editBranch', ['id' => $cabang->id]) }}" class="btn btn-outline-warning">Edit</a>
+			<a href="{{ route('branch.edit', ['id' => $cabang->id]) }}" class="btn btn-outline-warning">Edit</a>
 			<a href="{{ route('branch') }}" class="btn btn-outline-success">Back</a>
 		</div>
 	</div>

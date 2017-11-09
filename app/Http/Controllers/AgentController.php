@@ -106,7 +106,7 @@ class AgentController extends Controller
                     'title' => $firstAgent->cabang->nama
                 ],
                 'link' => [
-                    'href' => route('viewAgent', ['id' => $firstAgent->id])
+                    'href' => route('agent.view', ['id' => $firstAgent->id])
                 ],
                 'HTMLclass' => $button,
                 'children' => $this->getAllDownlines($firstAgent->id, $id)
@@ -151,7 +151,7 @@ class AgentController extends Controller
                         'title' => $downline->cabang->nama
                     ],
                     'link' => [
-                        'href' => route('viewAgent', ['id' => $downline->id])
+                        'href' => route('agent.view', ['id' => $downline->id])
                     ],
                     'HTMLclass' => $button
                 ];
@@ -162,7 +162,7 @@ class AgentController extends Controller
                         'title' => $downline->cabang->nama
                     ],
                     'link' => [
-                        'href' => route('viewAgent', ['id' => $downline->id])
+                        'href' => route('agent.view', ['id' => $downline->id])
                     ],
                     'HTMLclass' => $button,
                     'children' => $this->getAllDownlines($downline->id, $selectedId)

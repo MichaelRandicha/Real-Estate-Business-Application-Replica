@@ -10,7 +10,7 @@
 			{{ session('status') }}
 		</div>
 		@endif
-		<form class="form-horizontal" method="POST" action="{{ route('registerBranch') }}">
+		<form class="form-horizontal" method="POST" action="{{ route('branch.register') }}">
 			{{ csrf_field() }}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -13,7 +13,7 @@
 
 		<div>
 			<div style="float:left;">
-				<a href={{ route('addBranch') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Branch</a>
+				<a href={{ route('branch.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Branch</a>
 			</div>
 
 			<div style="float:right">
@@ -40,7 +40,7 @@
 							<td>{{ $cabang->nama }}</td>
 							<td>{{ $cabang->lokasi }}</td>
 							<td>{{ $cabang->telepon }}</td>
-							<td class="text-center"><a href="{{ route('viewBranch', ['id' => $cabang->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+							<td class="text-center"><a href="{{ route('branch.view', ['id' => $cabang->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 						</tr>
 					@endforeach
 				@endif

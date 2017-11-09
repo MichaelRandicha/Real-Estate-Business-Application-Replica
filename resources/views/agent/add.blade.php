@@ -11,7 +11,7 @@
 		</div>
 		@endif
 
-		<form class="form-horizontal" method="POST" action="{{ route('registerAgent') }}">
+		<form class="form-horizontal" method="POST" action="{{ route('agent.register') }}">
 			{{ csrf_field() }}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

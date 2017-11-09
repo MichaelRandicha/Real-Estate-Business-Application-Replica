@@ -47,9 +47,9 @@
 			</tbody>
 		</table>
 		<div style="margin:0 auto; text-align: center;">
-			<a href="{{ route('editAgent', ['id' => $agent->id]) }}" class="btn btn-outline-warning">Edit</a>
+			<a href="{{ route('agent.edit', ['id' => $agent->id]) }}" class="btn btn-outline-warning">Edit</a>
 			<Button class="btn btn-outline-danger" onclick="del(event)">Change Status</Button>
-			<a href="{{ route('changeStatusAgent', ['id' => $agent->id]) }}" id="del" hidden></a>
+			<a href="{{ route('agent.changestatus', ['id' => $agent->id]) }}" id="del" hidden></a>
 			<a href="{{ route('agent') }}" class="btn btn-outline-success">Back</a>
 		</div>
 

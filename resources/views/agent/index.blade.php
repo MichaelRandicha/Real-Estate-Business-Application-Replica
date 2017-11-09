@@ -13,7 +13,7 @@
 
 		<div>
 			<div style="float:left;">
-				<a href={{ route('addAgent') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Agent</a>
+				<a href={{ route('agent.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Agent</a>
 			</div>
 
 			<div style="float:right">
@@ -40,7 +40,7 @@
 							<td>{{ $agent->nama }}</td>
 							<td>{{ $agent->cabang->nama }}</td>
 							<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
-							<td class="text-center"><a href="{{ route('viewAgent', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+							<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 						</tr>
 					@endforeach
 				@endif

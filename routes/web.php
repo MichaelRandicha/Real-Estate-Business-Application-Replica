@@ -29,38 +29,36 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::group(['prefix' => 'branch'], function(){
 		Route::get('/', 'BranchController@index')->name('branch');
 		
-		Route::get('add', 'BranchController@add')->name('addBranch');
-		Route::post('add', 'BranchController@register')->name('registerBranch');
+		Route::get('add', 'BranchController@add')->name('branch.add');
+		Route::post('add', 'BranchController@register')->name('branch.register');
 		
-		Route::get('view/{id}', 'BranchController@view')->name('viewBranch');
+		Route::get('view/{id}', 'BranchController@view')->name('branch.view');
 
-		Route::get('edit/{id}', 'BranchController@edit')->name('editBranch');
-		Route::post('edit/{id}', 'BranchController@change')->name('changeBranch');	
+		Route::get('edit/{id}', 'BranchController@edit')->name('branch.edit');
+		Route::post('edit/{id}', 'BranchController@change')->name('branch.change');	
 	});
 
 	Route::group(['prefix' => 'agent'], function(){
 		Route::get('/', 'AgentController@index')->name('agent');
 		
-		Route::get('add', 'AgentController@add')->name('addAgent');
-		Route::post('add', 'AgentController@register')->name('registerAgent');
+		Route::get('add', 'AgentController@add')->name('agent.add');
+		Route::post('add', 'AgentController@register')->name('agent.register');
 		
-		Route::get('view/{id}', 'AgentController@view')->name('viewAgent');
+		Route::get('view/{id}', 'AgentController@view')->name('agent.view');
 
-		Route::get('edit/{id}', 'AgentController@edit')->name('editAgent');
-		Route::post('edit/{id}', 'AgentController@change')->name('changeAgent');
+		Route::get('edit/{id}', 'AgentController@edit')->name('agent.edit');
+		Route::post('edit/{id}', 'AgentController@change')->name('agent.change');
 		
-		Route::get('edit/{id}/status/change', 'AgentController@changeStatus')->name('changeStatusAgent');
+		Route::get('edit/{id}/status/change', 'AgentController@changeStatus')->name('agent.changestatus');
 	});
 
 	Route::group(['prefix' => 'closing'], function(){
 		Route::get('/', 'ClosingController@index')->name('closing');
-
-		Route::get('search', 'ClosingController@search')->name('searchClosing');
 		
-		Route::get('add', 'ClosingController@add')->name('addClosing');
-		Route::post('add', 'ClosingController@register')->name('registerClosing');
+		Route::get('add', 'ClosingController@add')->name('closing.add');
+		Route::post('add', 'ClosingController@register')->name('closing.register');
 
-		Route::get('view/{id}', 'ClosingController@view')->name('viewClosing');
+		Route::get('view/{id}', 'ClosingController@view')->name('closing.view');
 	});
 
 });
