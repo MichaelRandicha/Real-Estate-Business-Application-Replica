@@ -78,7 +78,7 @@
 
 				<div class="col-md-6">
 					<select name="upline" class="form-control" @if(App\Agent::where('nama', 'not like', 'kantor%')->get()->count() > 0) required @endif>
-					     @if(App\Agent::where('nama', 'not like', 'kantor%')->get()->count() == 0)
+					     @if(App\Agent::where('id', '>', 1)->get()->count() == 0)
 					     	<option value="0" selected></option>
 					     @endif
 					     @foreach($agents as $agent)

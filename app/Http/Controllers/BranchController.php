@@ -28,18 +28,11 @@ class BranchController extends Controller
             'name' => 'required',
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12']);
-
-        $agent = new Agent;
-        $agent->nama = 'Kantor '.$request->name;
-        $agent->lokasi = $request->location;
-        $agent->telepon = $request->phone;
-        $agent->save();
-
+        
         $cabang = new Cabang;
         $cabang->nama = $request->name;
         $cabang->lokasi = $request->location;
         $cabang->telepon = $request->phone;
-        $cabang->kantor_id = $agent->id;
         $cabang->save();
 
         return redirect('branch/view/'.$cabang->id);

@@ -12,9 +12,9 @@ class AgentController extends Controller
     public function index(Request $request){
         $agents = null;
         if($request->search == null){
-            $agents = Agent::where('nama', 'not like', 'kantor%')->paginate(5);
+            $agents = Agent::where('id', '>', 1)->paginate(5);
         }else{
-            $agents = Agent::where('nama', 'like',  $request->search.'%')->where('nama','not like', 'kantor%')->paginate(5);
+            $agents = Agent::where('nama', 'like',  $request->search.'%')->where('id', '>', 1)->paginate(5);
             $agents->appends(['search' => $request->search]);
         }
         return view('agent.index', compact('agents'));
@@ -25,8 +25,8 @@ class AgentController extends Controller
             $request->session()->flash('status', 'Please Make a New Branch First Before Adding New Agent');
             return redirect('agent');
         }
-        $agents = Agent::where('nama', 'not like', 'kantor%')->where('status', true)->get();
-        if(Agent::where('nama', 'not like', 'kantor%')->count() > 0 && $agents->count() == 0){
+        $agents = Agent::where('id', '>', 1)->where('status', true)->get();
+        if(Agent::where('id', '>', 1)->count() > 0 && $agents->count() == 0){
             $request->session()->flash('status', 'You Need At Least One Employed Agent Before Adding New Agent');
             return redirect('agent');
         }
@@ -41,7 +41,7 @@ class AgentController extends Controller
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
-        if(Agent::where('nama', 'not like', 'kantor%')->count() > 0){
+        if(Agent::where('id', '>', 1)->count() > 0){
             $this->validate($request, [
                 'upline' => 'required|not_in:0,1']);
             if($request->upline == 0){
@@ -70,13 +70,13 @@ class AgentController extends Controller
 
         if($agent == null){
             return redirect('agent');
-        }else if(strpos($agent->nama, 'Kantor') !== false){
+        }else if($id == 1){
             return redirect('agent');
         }
 
         $button = 'btn btn-outline-primary';
 
-        $firstAgent = Agent::where('nama', 'not like', 'kantor%')->first();
+        $firstAgent = Agent::find(2);
 
         if(!$firstAgent->isEmployed){
             $button = 'btn btn-outline-danger';
@@ -184,7 +184,7 @@ class AgentController extends Controller
         
         if($agent == null){
             return redirect('agent');
-        }else if(strpos($agent->nama, 'Kantor') !== false){
+        }else if($id == 1){
             return redirect('agent');
         }
 
@@ -204,7 +204,7 @@ class AgentController extends Controller
         
         if($agent == null){
             return redirect('agent');
-        }else if(strpos($agent->nama, 'Kantor') !== false){
+        }else if($id == 1){
             return redirect('agent');
         }
 
@@ -243,7 +243,7 @@ class AgentController extends Controller
         
         if($agent == null){
             return redirect('agent');
-        }else if(strpos($agent->nama, 'Kantor') !== false){
+        }else if($id == 1){
             return redirect('agent');
         }
 
