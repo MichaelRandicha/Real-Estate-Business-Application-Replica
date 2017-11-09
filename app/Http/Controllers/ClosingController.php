@@ -86,6 +86,7 @@ class ClosingController extends Controller
                 $agentClosing = new AgentClosing;
                 $agentClosing->agent_id = $id;
                 $agentClosing->closing_id = $closing->id;
+                $agentClosing->cabang_id = $agent->cabang_id;
                 switch($count){
                     case 1:
                     $agentClosing->komisi = $closing->harga;

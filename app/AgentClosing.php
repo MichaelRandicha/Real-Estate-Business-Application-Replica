@@ -22,6 +22,10 @@ class AgentClosing extends Model
     	return $this->belongsTo('App\Closing');
     }
 
+    public function cabang() {
+        return $this->belongsTo('App\Cabang');
+    }
+
     public function upline1() {
     	return $this->belongsTo('App\Agent', 'upline1_id');
     }

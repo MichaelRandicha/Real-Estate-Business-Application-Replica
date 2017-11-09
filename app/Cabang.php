@@ -25,4 +25,8 @@ class Cabang extends Model
     public function kantor(){
         return $this->belongsTo('App\Agent', 'kantor_id');
     }
+
+    public function closing(){
+        return $this->hasMany('App\AgentClosing', 'cabang_id');
+    }
 }
