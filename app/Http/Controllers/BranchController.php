@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cabang;
+use App\Agent;
 
 class BranchController extends Controller
 {
@@ -29,10 +30,17 @@ class BranchController extends Controller
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12']);
 
+        $agent = new Agent;
+        $agent->nama = 'Kantor '.$request->input('name');
+        $agent->lokasi = $request->input('location');
+        $agent->telepon = $request->input('phone');
+        $agent->save();
+
         $cabang = new Cabang;
         $cabang->nama = $request->input('name');
         $cabang->lokasi = $request->input('location');
         $cabang->telepon = $request->input('phone');
+        $cabang->kantor_id = $agent->id;
         $cabang->save();
 
         return redirect('branch/view/'.$cabang->id);

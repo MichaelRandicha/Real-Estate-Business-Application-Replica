@@ -22,12 +22,12 @@ class ClosingController extends Controller
     }
 
     public function add(Request $request){
-        if(Agent::where('id', '>', 1)->where('status', true)->count() == 0){
+        if(Agent::where('nama', 'not like', 'kantor%')->where('status', true)->count() == 0){
             $request->session()->flash('status', 'You Need At Least One Employed Agent Before Adding New Closing');
             return redirect('closing');
         }
 
-        $agents = Agent::where('id', '>', 1)->where('status', true)->get();
+        $agents = Agent::where('nama', 'not like', 'kantor%')->where('status', true)->get();
     	return view('closing.add', compact('agents'));
     }
 
@@ -107,16 +107,16 @@ class ClosingController extends Controller
 
                 $upline1 = $agent->upline;
                 if($upline1 == null){
-                    $upline1 = Agent::find(1);
+                    $upline1 = Agent::find($agent->cabang->kantor->id);
                 }else{
                     if($upline1->isEmployed){
                         if($agent->cabang->id == $upline1->cabang->id){
                             if($upline1->isPrincipal || $upline1->isVice){
-                                $upline1 = Agent::find(1);
+                                $upline1 = Agent::find($agent->cabang->kantor->id);
                             }
                         }
                     }else{
-                        $upline1 = Agent::find(1);
+                        $upline1 = Agent::find($agent->cabang->kantor->id);
                     }
                 }
                 $agentClosing->upline1_id = $upline1->id;
@@ -127,20 +127,20 @@ class ClosingController extends Controller
 
                 $upline2 = null;
                 if($agent->upline == null){
-                    $upline2 = Agent::find(1);
+                    $upline2 = Agent::find($agent->cabang->kantor->id);
                 }else{
                     $upline2 = $agent->upline->upline;
                     if($upline2 == null){
-                        $upline2 = Agent::find(1);
+                        $upline2 = Agent::find($agent->cabang->kantor->id);
                     }else{
                         if($upline2->isEmployed){
                             if($agent->cabang->id == $upline2->cabang->id){
                                 if($upline2->isPrincipal || $upline2->isVice){
-                                    $upline2 = Agent::find(1);
+                                    $upline2 = Agent::find($agent->cabang->kantor->id);
                                 }
                             }
                         }else{
-                            $upline2 = Agent::find(1);
+                            $upline2 = Agent::find($agent->cabang->kantor->id);
                         }
                     }
                 }
@@ -152,20 +152,20 @@ class ClosingController extends Controller
 
                 $upline3 = null;
                 if($agent->upline == null || $agent->upline->upline == null){
-                    $upline3 = Agent::find(1);
+                    $upline3 = Agent::find($agent->cabang->kantor->id);
                 }else{
                     $upline3 = $agent->upline->upline->upline;
                     if ($upline3 == null) {
-                        $upline3 = Agent::find(1);
+                        $upline3 = Agent::find($agent->cabang->kantor->id);
                     }else {
                         if($upline3->isEmployed){
                             if($agent->cabang->id == $upline3->cabang->id){
                                 if($upline3->isPrincipal || $upline3->isVice){
-                                    $upline3 = Agent::find(1);
+                                    $upline3 = Agent::find($agent->cabang->kantor->id);
                                 }
                             }
                         }else{
-                            $upline3 = Agent::find(1);
+                            $upline3 = Agent::find($agent->cabang->kantor->id);
                         }
                     }
                 }
@@ -177,12 +177,12 @@ class ClosingController extends Controller
 
                 $principal = $agent->cabang->principal;
                 if($principal == null){
-                    $principal = Agent::find(1);
+                    $principal = Agent::find($agent->cabang->kantor->id);
                 }else{
                     if(!$principal->isEmployed){
-                        $principal = Agent::find(1);
+                        $principal = Agent::find($agent->cabang->kantor->id);
                     }else if ($agent->id == $principal->id){
-                        $principal = Agent::find(1);
+                        $principal = Agent::find($agent->cabang->kantor->id);
                     }
                 }
                 $agentClosing->principal_id = $principal->id;
@@ -193,12 +193,12 @@ class ClosingController extends Controller
 
                 $vice = $agent->cabang->vice;
                 if($vice == null){
-                    $vice = Agent::find(1);
+                    $vice = Agent::find($agent->cabang->kantor->id);
                 }else{
                     if(!$vice->isEmployed){
-                        $vice = Agent::find(1);
+                        $vice = Agent::find($agent->cabang->kantor->id);
                     }else if ($agent->id == $vice->id){
-                        $vice = Agent::find(1);
+                        $vice = Agent::find($agent->cabang->kantor->id);
                     }
                 }
                 $agentClosing->vice_id = $vice->id;

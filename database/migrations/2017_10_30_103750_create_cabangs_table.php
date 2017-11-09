@@ -22,6 +22,8 @@ class CreateCabangsTable extends Migration
             $table->foreign('principal_id')->references('id')->on('agents');
             $table->integer('vice_id')->unsigned()->nullable();
             $table->foreign('vice_id')->references('id')->on('agents');
+            $table->integer('kantor_id')->unsigned();
+            $table->foreign('kantor_id')->references('id')->on('agents');
             $table->timestamps();
         });
     }
