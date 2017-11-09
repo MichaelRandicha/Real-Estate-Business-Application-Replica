@@ -27,7 +27,7 @@ class AgentController extends Controller
             return redirect('agent');
         }
         $agents = Agent::where('nama', 'not like', 'kantor%')->where('status', true)->get();
-        if(Agent::where('nama', 'not like', 'kantor%')->count() > 1 && $agents->count() == 0){
+        if(Agent::where('nama', 'not like', 'kantor%')->count() > 0 && $agents->count() == 0){
             $request->session()->flash('status', 'You Need At Least One Employed Agent Before Adding New Agent');
             return redirect('agent');
         }
