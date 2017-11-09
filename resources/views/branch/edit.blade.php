@@ -45,7 +45,7 @@
 				<label for="phone" class="col-md-4 control-label">Phone Number</label>
 
 				<div class="col-md-6">
-					<input id="phone" type="text" pattern="^[0-9]{1,12}$" class="form-control" name="phone" value="{{ $cabang->telepon }}" required>
+					<input id="phone" type="number" pattern="^[0-9]{1,12}$" class="form-control" name="phone" value="{{ $cabang->telepon }}" required>
 
 					@if ($errors->has('phone'))
 					<span class="help-block">
