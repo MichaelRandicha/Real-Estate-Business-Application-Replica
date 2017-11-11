@@ -74,6 +74,17 @@ class AgentController extends Controller
             return redirect('agent');
         }
 
+        $tree = $this->getTree($id);
+
+        JavaScript::put([
+            'agent_tree' => json_encode($tree),
+            'nama' => $agent->nama
+        ]);
+
+        return view('agent.view', compact('agent'));
+    }
+
+    private function getTree($id = 2){
         $button = 'btn btn-outline-primary';
 
         $firstAgent = Agent::find(2);
@@ -112,13 +123,6 @@ class AgentController extends Controller
                 'children' => $this->getAllDownlines($firstAgent->id, $id)
             ]
         ];
-
-        JavaScript::put([
-            'agent_tree' => json_encode($tree),
-            'nama' => $agent->nama
-        ]);
-
-        return view('agent.view', compact('agent'));
     }
 
     private function getAllDownlines($upline_id, $selectedId){
