@@ -10,7 +10,7 @@ class BranchController extends Controller
 {
     public function index(Request $request){
         $cabangs = null;
-        if($request->search == null){
+        if(empty($request->search)){
             $cabangs = Cabang::paginate(5);
         }else {
             $cabangs = Cabang::where('nama', 'like',  $request->search.'%')->paginate(5);

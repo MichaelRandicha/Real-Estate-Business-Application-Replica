@@ -11,7 +11,7 @@ class ClosingController extends Controller
 {
     public function index(Request $request){
         $closings = null;
-        if($request->search == null){
+        if(empty($request->search)){
             $closings = Closing::paginate(5);
         }else{
             $closings = Closing::where('nama', 'like',  $request->search.'%')->paginate(5);

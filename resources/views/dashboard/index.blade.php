@@ -20,23 +20,23 @@
 					<th scope="col">Branch</th>
 					<th scope="col">Total Closing</th>
 					<th scope="col" class="text-center">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($agents as $agent)
-						<tr>
-							<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
-							<td>{{ $agent->nama }}</td>
-							<td>{{ $agent->cabang->nama }}</td>
-							<td>{{ $agent->totalClosing }}</td>
-							<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($agents as $agent)
+				<tr>
+					<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
+					<td>{{ $agent->nama }}</td>
+					<td>{{ $agent->cabang->nama }}</td>
+					<td>{{ $agent->totalClosing }}</td>
+					<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
 
-			{{ $agents->links() }}
+		{{ $agents->links() }}
 
-		</div>
 	</div>
-	@endsection
+</div>
+@endsection

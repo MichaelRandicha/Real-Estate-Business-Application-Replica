@@ -27,6 +27,30 @@
   border-color: #e9ecef;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.no-radius {
+  border-radius: 0;
+}
+
+.button-center {
+  border-left: 0;
+  border-right: 0;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
 /**/
 
 .btn-outline-primary {
@@ -445,3 +469,9 @@
 .this-agent { background-color:#007bff; }
 .dipecat { background-color: #dc3545;border-color: #dc3545; }
 .outline-dipecat { border-color: #dc3545; }
+
+@media print {
+  a[href]:after {
+    content: none !important;
+  }
+}

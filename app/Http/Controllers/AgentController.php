@@ -11,7 +11,7 @@ class AgentController extends Controller
 {
     public function index(Request $request){
         $agents = null;
-        if($request->search == null){
+        if(empty($request->search)){
             $agents = Agent::where('id', '>', 1)->paginate(5);
         }else{
             $agents = Agent::where('nama', 'like',  $request->search.'%')->where('id', '>', 1)->paginate(5);

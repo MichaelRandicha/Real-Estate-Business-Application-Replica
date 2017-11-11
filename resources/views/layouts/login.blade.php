@@ -25,6 +25,9 @@
               <li class="nav-item">
                 <a class="nav-link @if (Request::is('closing/*') || Request::is('closing')) active @endif" href="{{ route('closing') }}">Closing</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link @if (Request::is('report/*') || Request::is('report')) active @endif" href="{{ route('report.branch') }}">Admin Report</a>
+              </li>
             </ul>
           </div>
           <div class="col-sm-9 col-lg-10">

@@ -61,6 +61,12 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('view/{id}', 'ClosingController@view')->name('closing.view');
 	});
 
+	Route::group(['prefix' => 'report'], function(){
+		Route::get('branch', 'ReportController@branch')->name('report.branch');
+		Route::get('commission', 'ReportController@commission')->name('report.commission');
+		Route::get('closing', 'ReportController@closing')->name('report.closing');
+	});
+
 });
 
 Route::match(['get', 'post'], 'password/reset', function(){
