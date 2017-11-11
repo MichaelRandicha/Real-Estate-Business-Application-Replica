@@ -75,6 +75,7 @@ class AgentController extends Controller
         }
 
         $tree = $this->getTree($id);
+        return $tree;
 
         JavaScript::put([
             'agent_tree' => json_encode($tree),
