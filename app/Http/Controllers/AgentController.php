@@ -75,7 +75,6 @@ class AgentController extends Controller
         }
 
         $tree = $this->getTree($id);
-        return $tree;
 
         JavaScript::put([
             'agent_tree' => json_encode($tree),
@@ -124,6 +123,7 @@ class AgentController extends Controller
                 'children' => $this->getAllDownlines($firstAgent->id, $id)
             ]
         ];
+        return $tree;
     }
 
     private function getAllDownlines($upline_id, $selectedId){
