@@ -20,9 +20,7 @@
 	</style>
 </head>
 <body>
-	<div>
-		<div id="agent-tree"></div>
-	</div>
+	<div id="agent-tree" style="margin-right: 25%;"></div>
 
 	<table class="table table-bordered table-hover">
 		<thead>
@@ -53,7 +51,6 @@
 		</tbody>
 	</table>
 
-	<div id="agent-tree"></div>
 
 	@include('js.value')
 </body>
