@@ -52,9 +52,9 @@ class ClosingController extends Controller
 
 
         foreach ($request->agent as $id){
-            if($id > 0){
+            if($id == 1){
                 $request->session()->flash('status', 'You Should Not Edit The ID of Dropdown');
-                return redirect('addClosing');
+                return redirect('closing.add');
             }
         }
 
