@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td>Agent Name Upline</td>
-					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @endif</td>
+					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @else - @endif</td>
 				</tr>
 				<tr>
 					<td>Pendapatan</td>

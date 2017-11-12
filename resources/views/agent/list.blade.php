@@ -44,7 +44,7 @@
 				<td>{{ $agent->lokasi }}</td>
 				<td>{{ $agent->telepon }}</td>
 				<td>{{ $agent->cabang->nama }}</td>
-				<td>@if($agent->upline != null) {{ $agent->upline->nama }} @endif</td>
+				<td>@if($agent->upline != null) {{ $agent->upline->nama }} @else - @endif</td>
 				<td>Rp. {{ number_format($agent->pendapatan, 2, ',', '.') }}</td>
 				<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
 				<td>@if($agent->isEmployed) Employed @else Unemployed @endif</td>
