@@ -51,6 +51,11 @@ class BranchController extends Controller
     	return view('branch.view', compact('cabang'));
     }
 
+    public function list(){
+        $cabangs = Cabang::all();
+        return view('branch.list', compact('cabangs'));
+    }
+
     public function edit($id){
     	if(!is_numeric($id)){
     		return redirect('branch');

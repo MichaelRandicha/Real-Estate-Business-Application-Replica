@@ -26,11 +26,11 @@
 				</tr>
 				<tr>
 					<td>Principal</td>
-					<td>@if($cabang->principal != null) {{ $cabang->principal->nama }} @endif</td>
+					<td>@if($cabang->principal != null) {{ $cabang->principal->nama }} @else - @endif</td>
 				</tr>
 				<tr>
 					<td>Vice Principal</td>
-					<td>@if($cabang->vice != null) {{ $cabang->vice->nama }} @endif</td>
+					<td>@if($cabang->vice != null) {{ $cabang->vice->nama }} @else - @endif</td>
 				</tr>
 			</tbody>
 		</table>
