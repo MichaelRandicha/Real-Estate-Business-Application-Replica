@@ -33,7 +33,6 @@
 					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @endif</td>
 				</tr>
 				<tr>
-				<tr>
 					<td>Pendapatan</td>
 					<td>Rp. {{ number_format($agent->pendapatan, 2, ',', '.') }}</td>
 				</tr>
@@ -49,7 +48,6 @@
 		<div style="margin:0 auto; text-align: center;">
 			<a href="{{ route('agent.edit', ['id' => $agent->id]) }}" class="btn btn-outline-warning">Edit</a>
 			<Button class="btn btn-outline-danger" onclick="del(event)">Change Status</Button>
-			<a href="" class="btn btn-outline-info">Print Tree View</a>
 			<a href="{{ route('agent.changestatus', ['id' => $agent->id]) }}" id="del" hidden></a>
 			<a href="{{ route('agent') }}" class="btn btn-outline-success">Back</a>
 		</div>

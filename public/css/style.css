@@ -470,8 +470,14 @@
 .dipecat { background-color: #dc3545;border-color: #dc3545; }
 .outline-dipecat { border-color: #dc3545; }
 
+@media all {
+  .page-break { display: none; }
+}
+
 @media print {
   a[href]:after {
     content: none !important;
   }
+  
+  .page-break { display: block; page-break-before: always; }
 }

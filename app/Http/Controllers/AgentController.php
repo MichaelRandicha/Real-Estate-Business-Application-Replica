@@ -75,7 +75,7 @@ class AgentController extends Controller
         }
 
         $tree = $this->getTree($id);
-
+        
         JavaScript::put([
             'agent_tree' => json_encode($tree),
             'nama' => $agent->nama
@@ -176,6 +176,18 @@ class AgentController extends Controller
         }
 
         return $children;
+    }
+
+    public function list(){
+        $agents = Agent::where('id', '>', '1')->get();
+
+        $tree = $this->getTree(1);
+        
+        JavaScript::put([
+            'agent_tree' => json_encode($tree)
+        ]);
+
+        return view('agent.list', compact('agents'));
     }
 
     public function edit($id){

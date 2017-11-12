@@ -34,6 +34,8 @@ Route::group(['middleware' => 'auth'], function() {
 		
 		Route::get('view/{id}', 'BranchController@view')->name('branch.view');
 
+		Route::get('list', 'BranchController@list')->name('branch.list');
+
 		Route::get('edit/{id}', 'BranchController@edit')->name('branch.edit');
 		Route::post('edit/{id}', 'BranchController@change')->name('branch.change');	
 	});
@@ -45,6 +47,8 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::post('add', 'AgentController@register')->name('agent.register');
 		
 		Route::get('view/{id}', 'AgentController@view')->name('agent.view');
+
+		Route::get('list', 'AgentController@list')->name('agent.list');
 
 		Route::get('edit/{id}', 'AgentController@edit')->name('agent.edit');
 		Route::post('edit/{id}', 'AgentController@change')->name('agent.change');
