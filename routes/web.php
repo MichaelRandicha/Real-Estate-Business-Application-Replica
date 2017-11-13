@@ -63,12 +63,15 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::post('add', 'ClosingController@register')->name('closing.register');
 
 		Route::get('view/{id}', 'ClosingController@view')->name('closing.view');
+
+		Route::get('list', 'ClosingController@list')->name('closing.list');
 	});
 
 	Route::group(['prefix' => 'report'], function(){
 		Route::get('branch', 'ReportController@branch')->name('report.branch');
 		Route::get('commission', 'ReportController@commission')->name('report.commission');
 		Route::get('closing', 'ReportController@closing')->name('report.closing');
+		Route::get('closing/list/', 'ReportController@closingList')->name('report.closing.list');
 	});
 
 });

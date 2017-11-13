@@ -16,49 +16,52 @@
     <script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
     <script src="{{ asset('js/perfect-scrollbar.js') }}"></script>
     <style type="text/css" media="print">
-	  @page { size: landscape; }
+	  @page { size: landscape;margin:0; }
 	</style>
 </head>
 <body>
-	<div id="agent-tree" style="margin-right: 25%;"></div>
+	<div style="margin:1em 2em">
+		<h1 class="text-center">Agent List</h1>
 
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr>
-				<th style="width:20%">Agent Name</th>
-				<th>Location</th>
-				<th>Phone</th>
-				<th>Branch</th>
-				<th>Upline</th>
-				<th>Pendapatan</th>
-				<th>Position</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($agents as $agent)
-			<tr>
-				<td id="nama">{{ $agent->nama }}</td>
-				<td>{{ $agent->lokasi }}</td>
-				<td>{{ $agent->telepon }}</td>
-				<td>{{ $agent->cabang->nama }}</td>
-				<td>@if($agent->upline != null) {{ $agent->upline->nama }} @else - @endif</td>
-				<td>Rp. {{ number_format($agent->pendapatan, 2, ',', '.') }}</td>
-				<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
-				<td>@if($agent->isEmployed) Employed @else Unemployed @endif</td>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
+		<div id="agent-tree" style="margin-right: 25%;"></div>
 
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th style="width:20%">Agent Name</th>
+					<th>Location</th>
+					<th>Phone</th>
+					<th>Branch</th>
+					<th>Upline</th>
+					<th>Pendapatan</th>
+					<th>Position</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($agents as $agent)
+				<tr>
+					<td id="nama">{{ $agent->nama }}</td>
+					<td>{{ $agent->lokasi }}</td>
+					<td>{{ $agent->telepon }}</td>
+					<td>{{ $agent->cabang->nama }}</td>
+					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @else - @endif</td>
+					<td>Rp. {{ number_format($agent->pendapatan, 2, ',', '.') }}</td>
+					<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
+					<td>@if($agent->isEmployed) Employed @else Unemployed @endif</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
 
-	@include('js.value')
+		@include('js.value')
+	</div>
 </body>
 <script>
 	var my_chart = new Treant(JSON.parse(agent_tree));
 	$(document).ready(function (){
 		window.print();
-		window.close();
+		setTimeout(function(){window.close();}, 1);
 	});
 </script>
 </html>

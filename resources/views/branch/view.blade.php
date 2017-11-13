@@ -13,7 +13,7 @@
 		<table class="table table-bordered table-hover">
 			<tbody>
 				<tr>
-					<td style="width:30%">Branch Name</td>
+					<td style="width:20%">Branch Name</td>
 					<td>{{ $cabang->nama }}</td>
 				</tr>
 				<tr>
@@ -21,7 +21,7 @@
 					<td>{{ $cabang->lokasi }}</td>
 				</tr>
 				<tr>
-					<td>Phone Number</td>
+					<td>Phone</td>
 					<td>{{ $cabang->telepon }}</td>
 				</tr>
 				<tr>

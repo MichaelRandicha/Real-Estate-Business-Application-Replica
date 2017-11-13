@@ -13,7 +13,7 @@
 		<table class="table table-bordered table-hover">
 			<tbody>
 				<tr>
-					<td style="width:30%">Agent Name</td>
+					<td style="width:20%">Agent Name</td>
 					<td id="nama">{{ $agent->nama }}</td>
 				</tr>
 				<tr>
@@ -21,7 +21,7 @@
 					<td>{{ $agent->lokasi }}</td>
 				</tr>
 				<tr>
-					<td>Phone Number</td>
+					<td>Phone</td>
 					<td>{{ $agent->telepon }}</td>
 				</tr>
 				<tr>
@@ -29,7 +29,7 @@
 					<td>{{ $agent->cabang->nama }}</td>
 				</tr>
 				<tr>
-					<td>Agent Name Upline</td>
+					<td>Upline</td>
 					<td>@if($agent->upline != null) {{ $agent->upline->nama }} @else - @endif</td>
 				</tr>
 				<tr>

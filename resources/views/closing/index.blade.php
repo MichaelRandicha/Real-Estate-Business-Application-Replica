@@ -14,7 +14,11 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('closing.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Make New Closing</a>
+				@unless(empty($closings))
+					<a href={{ route('closing.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Closing List</a>
+				@endunless
 			</div>
+
 
 			<div style="float:right">
 				<form class="form-inline" style="float:right;margin-bottom: 10px" method="GET" action="{{ route('closing') }}">
@@ -28,6 +32,7 @@
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Property</th>
 					<th scope="col">Sold Date</th>
+					<th scope="col">Closing Price</th>
 					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>
@@ -36,7 +41,8 @@
 					<tr>
 						<td class="text-center">{{ (($closings->currentPage() - 1) * 5) + $loop->iteration }}</td>
 						<td>{{ $closing->nama }}</td>
-						<td>{{ date("d/m/Y", strtotime($closing->tanggal)) }}</td>
+						<td>{{ date("d F Y", strtotime($closing->tanggal)) }}</td>
+						<td>{{ $closing->harga }}</td>
 						<td class="text-center"><a href="{{ route('closing.view', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 					</tr>
 				@endforeach

@@ -44,6 +44,11 @@ class ClosingController extends Controller
         return view('closing.view', compact('closing'));
     }
 
+    public function list(){
+        $closings = Closing::all();
+        return view('closing.list', compact('closings'));
+    }
+
     public function register(Request $request){
         $this->validate($request,[
             'name' => 'required',

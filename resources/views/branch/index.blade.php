@@ -14,9 +14,9 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('branch.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Branch</a>
-				@if(!empty($cabangs))
-					<a href={{ route('branch.list') }} class="btn btn-md btn-outline-success" style="bottom:0;">Print Branch List</a>
-				@endif
+				@unless(empty($cabangs))
+					<a href={{ route('branch.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Branch List</a>
+				@endunless
 			</div>
 
 			<div style="float:right">
@@ -36,17 +36,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				@if(!empty($cabangs))
-					@foreach($cabangs as $cabang)
-						<tr>
-							<td class="text-center">{{ (($cabangs->currentPage() - 1) * 5) + $loop->iteration }}</td>
-							<td>{{ $cabang->nama }}</td>
-							<td>{{ $cabang->lokasi }}</td>
-							<td>{{ $cabang->telepon }}</td>
-							<td class="text-center"><a href="{{ route('branch.view', ['id' => $cabang->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-						</tr>
-					@endforeach
-				@endif
+				@foreach($cabangs as $cabang)
+					<tr>
+						<td class="text-center">{{ (($cabangs->currentPage() - 1) * 5) + $loop->iteration }}</td>
+						<td>{{ $cabang->nama }}</td>
+						<td>{{ $cabang->lokasi }}</td>
+						<td>{{ $cabang->telepon }}</td>
+						<td class="text-center"><a href="{{ route('branch.view', ['id' => $cabang->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 

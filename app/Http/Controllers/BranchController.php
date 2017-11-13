@@ -14,7 +14,7 @@ class BranchController extends Controller
             $cabangs = Cabang::paginate(5);
         }else {
             $cabangs = Cabang::where('nama', 'like',  $request->search.'%')->paginate(5);
-            $cabangs->appends(['search' => $request->search]);    
+            $cabangs->appends(['search' => $request->search]);
         }
     	return view('branch.index', compact('cabangs'));
     }

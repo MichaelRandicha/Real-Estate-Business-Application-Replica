@@ -14,9 +14,9 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('agent.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Agent</a>
-				@if(!empty($agents))
-					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-success" style="bottom:0;" target="_blank">Print All List</a>
-				@endif
+				@unless(empty($agents))
+					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print All List</a>
+				@endunless
 			</div>
 
 			<div style="float:right">
@@ -36,17 +36,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				@if(!empty($agents))
-					@foreach($agents as $agent)
-						<tr @if(!$agent->isEmployed) class="table-danger" @endif>
-							<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
-							<td>{{ $agent->nama }}</td>
-							<td>{{ $agent->cabang->nama }}</td>
-							<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
-							<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-						</tr>
-					@endforeach
-				@endif
+				@foreach($agents as $agent)
+					<tr @if(!$agent->isEmployed) class="table-danger" @endif>
+						<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
+						<td>{{ $agent->nama }}</td>
+						<td>{{ $agent->cabang->nama }}</td>
+						<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
+						<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+					</tr>
+				@endforeach
 			</tbody>
 		</table>
 

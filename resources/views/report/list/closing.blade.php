@@ -1,33 +1,38 @@
-@extends('layouts.login')
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Branch List</title>
 
-@section('middle-content')
-<div class="panel panel-default">
-	<div class="panel-heading">Closing Information</div>
-
-	<div class="panel-body">
-		@if (session('status'))
-		<div class="alert alert-success">
-			{{ session('status') }}
-		</div>
-		@endif
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <style type="text/css" media="print">
+		@page { size: landscape; margin:0; }
+	</style>
+</head>
+<body>
+	<div style="margin: 1em 2em">
+		<h1 class="text-center">Closing List</h1>
+		
+		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
-			<tbody>
-				<tr>
-					<td style="width:20%">Property Name</td>
-					<td>{{ $closing->nama }}</td>
-				</tr>
-				<tr>
-					<td>Sold Date</td>
-					<td>{{ date("d F Y", strtotime($closing->tanggal)) }}</td>
-				</tr>
-				<tr>
-					<td>Closing Price</td>
-					<td>{{ $closing->harga }}</td>
-				</tr>
-			</tbody>
-		</table>
+				<tbody>
+					<tr>
+						<td style="width:10%">Property Name</td>
+						<td>{{ $closing->nama }}</td>
+					</tr>
+					<tr>
+						<td>Sold Date</td>
+						<td>{{ date("d F Y", strtotime($closing->tanggal)) }}</td>
+					</tr>
+					<tr>
+						<td>Closing Price</td>
+						<td>{{ $closing->harga }}</td>
+					</tr>
+				</tbody>
+			</table>
 
-		<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover table-md">
 			<thead class="thead-light">
 				<tr>
 					<th style="width:20%"></th>
@@ -111,32 +116,17 @@
 				</tr>
 			</tbody>
 		</table>
-		<div style="margin:0 auto; text-align: center;">
-			<a href="{{ route('closing') }}" class="btn btn-outline-success">Back</a>
-		</div>
+		@unless($loop->last)
+			<br>
+			<br>
+		@endunless
+		@endforeach
 	</div>
-</div>
-<script type="text/javascript">
-	function del (event){
-		event.preventDefault()
-		$.confirm({
-			title: 'Caution!',
-			content: 'Delete BranchA?',
-			theme: 'modern',
-			type: 'red',
-			closeIcon: true,
-			backgroundDismiss: true,
-			buttons: {
-				yes: function () {
-					document.getElementById('del').click()
-				},
-				cancel: {
-					keys: ['esc'],
-					action: function () {
-					}
-				}
-			}
-		})
-	}
+</body>
+<script>
+	$(document).ready(function (){
+		window.print();
+		setTimeout(function(){window.close();}, 1);
+	});
 </script>
-@endsection
+</html>
