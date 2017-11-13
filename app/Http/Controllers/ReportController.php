@@ -18,6 +18,9 @@ class ReportController extends Controller
     public function closing(Request $request){
     	$closings = null;
         if(!empty($request->dateFrom) || !empty($request->dateTo)){
+            $this->validate($request,[
+            'dateFrom' => 'required|date',
+            'dateTo' => 'required|date']);
             $no = 5;
             if(!empty($request->no)){
                 $no = $request->no;
