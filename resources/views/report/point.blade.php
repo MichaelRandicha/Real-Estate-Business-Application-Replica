@@ -2,7 +2,7 @@
 
 @section('middle-content')
 <div class="panel panel-default">
-	<div class="panel-heading">Top Agent Point Report</div>
+	<div class="panel-heading">Top Agent By Point Report</div>
 
 	<div class="panel-body">
 		@if (session('status'))
