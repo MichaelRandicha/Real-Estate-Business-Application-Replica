@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Closing List Sort By Date</title>
+	<title>Closing List Report</title>
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/jquery.js') }}"></script>
     <style type="text/css" media="print">
-		@page { size: landscape; margin:0; }
+		@page { size: portrait; margin:0; }
 	</style>
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h1 class="text-center">Closing List Sort By Date <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h1>
+		<h2 class="text-center">Closing List Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
 		
 		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
@@ -123,8 +123,10 @@
 			</tbody>
 		</table>
 		@unless($loop->last)
-			<br>
-			<br>
+		<div class="page-break"></div>
+		<br>
+		<br>
+		<br>
 		@endunless
 		@endforeach
 	</div>

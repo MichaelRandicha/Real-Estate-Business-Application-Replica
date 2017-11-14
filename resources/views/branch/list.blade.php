@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/jquery.js') }}"></script>
     <style type="text/css" media="print">
-	  @page { size: landscape;margin:0; }
+	  @page { size: portrait;margin:0; }
 	</style>
 </head>
 <body>

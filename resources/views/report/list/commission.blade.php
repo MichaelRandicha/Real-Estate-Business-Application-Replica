@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Top Agent By Point Report</title>
+	<title>Highest Commission Report</title>
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -12,24 +12,30 @@
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h2 class="text-center">Top Agent By Point Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
+		<h2 class="text-center">Highest Commission Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
 		<table class="table table-sm table-hover table-bordered">
 			<thead class="thead-light">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
+					@if(request()->filter == "agent")
 					<th scope="col">Agent Name</th>
+					@elseif(request()->filter == "branch")
 					<th scope="col">Branch Name</th>
-					<th scope="col">Total Point</th>
+					@endif
+					<th scope="col">Total Commission</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($points as $point)
-					<tr>
-						<td class="text-center">{{ $loop->iteration }}</td>
-						<td>{{ $point->agent->nama }}</td>
-						<td>{{ $point->cabang->nama }}</td>
-						<td>{{ $point->total_point }}</td>
-					</tr>
+				@foreach($commissions as $commission)
+				<tr>
+					<td class="text-center">{{ $loop->iteration }}</td>
+					@if(request()->filter == "agent")
+					<td>{{ $commission->agent->nama }}</td>
+					@elseif(request()->filter == "branch")
+					<td>{{ $commission->cabang->nama }}</td>
+					@endif
+					<td>Rp. {{ number_format($commission->total_komisi, 2, ',', '.') }}</td>
+				</tr>
 				@endforeach
 			</tbody>
 		</table>
