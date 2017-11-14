@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h1 class="text-center">Top Agent By Point</h1>
+		<h1 class="text-center">Top Agent By Point <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h1>
 		<table class="table table-sm table-hover table-bordered">
 			<thead class="thead-light">
 				<tr>

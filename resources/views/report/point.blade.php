@@ -68,6 +68,7 @@
 						<th scope="col">Agent Name</th>
 						<th scope="col">Branch Name</th>
 						<th scope="col">Total Point</th>
+						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,6 +78,7 @@
 							<td>{{ $point->agent->nama }}</td>
 							<td>{{ $point->cabang->nama }}</td>
 							<td>{{ $point->total_point }}</td>
+							<td class="text-center"><a href="{{ route('agent.view', ['id' => $point->agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 						</tr>
 					@endforeach
 				</tbody>

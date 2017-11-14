@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h1 class="text-center">Closing List Sort By Date</h1>
+		<h1 class="text-center">Closing List Sort By Date <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h1>
 		
 		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
