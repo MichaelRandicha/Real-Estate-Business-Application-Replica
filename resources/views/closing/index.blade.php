@@ -14,7 +14,7 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('closing.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Make New Closing</a>
-				@unless(empty($closings))
+				@unless($closings->count() == 0)
 					<a href={{ route('closing.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Closing List</a>
 				@endunless
 			</div>
@@ -42,7 +42,7 @@
 						<td class="text-center">{{ (($closings->currentPage() - 1) * 5) + $loop->iteration }}</td>
 						<td>{{ $closing->nama }}</td>
 						<td>{{ date("d F Y", strtotime($closing->tanggal)) }}</td>
-						<td>{{ $closing->harga }}</td>
+						<td>Rp. {{ number_format($closing->harga, 2, ',', '.') }}</td>
 						<td class="text-center"><a href="{{ route('closing.view', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 					</tr>
 				@endforeach

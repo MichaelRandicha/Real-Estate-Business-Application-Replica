@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Branch List</title>
+	<title>Closing List Sort By Date</title>
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -12,13 +12,13 @@
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h1 class="text-center">Closing List</h1>
+		<h1 class="text-center">Closing List Sort By Date</h1>
 		
 		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
 				<tbody>
 					<tr>
-						<td style="width:10%">Property Name</td>
+						<td style="width:20%">Property Name</td>
 						<td>{{ $closing->nama }}</td>
 					</tr>
 					<tr>
@@ -27,7 +27,7 @@
 					</tr>
 					<tr>
 						<td>Closing Price</td>
-						<td>{{ $closing->harga }}</td>
+						<td>Rp. {{ number_format($closing->harga, 2, ',', '.') }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -45,7 +45,13 @@
 				<tr>
 					<td>Agent Name</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-						<td>{{ $agentclosing->agent->nama }} From {{ $agentclosing->cabang->nama }}</td>
+						<td>{{ $agentclosing->agent->nama }}</td>
+					@endforeach
+				</tr>
+				<tr>
+					<td>Branch Name</td>
+					@foreach($closing->closing->sortBy('id') as $agentclosing)
+						<td>{{ $agentclosing->cabang->nama }}</td>
 					@endforeach
 				</tr>
 				<tr>

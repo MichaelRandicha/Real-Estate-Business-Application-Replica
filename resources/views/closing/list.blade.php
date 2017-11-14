@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Branch List</title>
+	<title>Closing List</title>
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
@@ -18,7 +18,7 @@
 		<table class="table table-bordered table-hover">
 				<tbody>
 					<tr>
-						<td style="width:10%">Property Name</td>
+						<td style="width:20%">Property Name</td>
 						<td>{{ $closing->nama }}</td>
 					</tr>
 					<tr>
@@ -27,7 +27,7 @@
 					</tr>
 					<tr>
 						<td>Closing Price</td>
-						<td>{{ $closing->harga }}</td>
+						<td>Rp. {{ number_format($closing->harga, 2, ',', '.') }}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -116,10 +116,6 @@
 				</tr>
 			</tbody>
 		</table>
-		@unless($loop->last)
-			<br>
-			<br>
-		@endunless
 		@endforeach
 	</div>
 </body>

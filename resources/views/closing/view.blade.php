@@ -22,7 +22,7 @@
 				</tr>
 				<tr>
 					<td>Closing Price</td>
-					<td>{{ $closing->harga }}</td>
+					<td>Rp. {{ number_format($closing->harga, 2, ',', '.') }}</td>
 				</tr>
 			</tbody>
 		</table>

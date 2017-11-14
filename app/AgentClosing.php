@@ -14,6 +14,10 @@ class AgentClosing extends Model
         'principal_id' , 'principal_komisi', 'vice_id' , 'vice_komisi'
     ];
 
+    // protected $hidden = [
+    //     'created_at', 'updated_at'
+    // ];
+
     public function agent() {
     	return $this->belongsTo('App\Agent');
     }
@@ -21,7 +25,7 @@ class AgentClosing extends Model
     public function closing() {
     	return $this->belongsTo('App\Closing');
     }
-
+    
     public function cabang() {
         return $this->belongsTo('App\Cabang');
     }

@@ -71,7 +71,9 @@ Route::group(['middleware' => 'auth'], function() {
 		Route::get('branch', 'ReportController@branch')->name('report.branch');
 		Route::get('commission', 'ReportController@commission')->name('report.commission');
 		Route::get('closing', 'ReportController@closing')->name('report.closing');
+		Route::get('point', 'ReportController@point')->name('report.point');
 		Route::get('closing/list/', 'ReportController@closingList')->name('report.closing.list');
+		Route::get('point/list/', 'ReportController@pointList')->name('report.point.list');
 	});
 
 });

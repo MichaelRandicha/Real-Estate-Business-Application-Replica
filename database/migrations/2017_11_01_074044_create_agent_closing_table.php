@@ -17,6 +17,7 @@ class CreateAgentClosingTable extends Migration
             $table->increments('id');
             $table->integer('agent_id')->unsigned();
             $table->foreign('agent_id')->references('id')->on('agents');
+            $table->integer('point')->unsigned();
             $table->integer('cabang_id')->unsigned();
             $table->foreign('cabang_id')->references('id')->on('cabangs');
             $table->integer('closing_id')->unsigned();

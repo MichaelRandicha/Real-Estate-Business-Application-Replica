@@ -91,26 +91,31 @@ class ClosingController extends Controller
                 switch($count){
                     case 1:
                     $agentClosing->komisi = $closing->harga;
+                    $agentClosing->point = 4;
                     $agent->pendapatan += $agentClosing->komisi;
                     break;
                     case 2:
                     $agentClosing->komisi = $closing->harga / 2;
+                    $agentClosing->point = 2;
                     $agent->pendapatan += $agentClosing->komisi;
                     break;
                     case 3:
                     switch ($iteration) {
                         case 1:
                         $agentClosing->komisi = $closing->harga / 2;
+                        $agentClosing->point = 2;
                         break;
 
                         default:
                         $agentClosing->komisi = $closing->harga / 4;
+                        $agentClosing->point = 1;
                         break;
                     }
                     $agent->pendapatan += $agentClosing->komisi;
                     break;
                     case 4:
                     $agentClosing->komisi = $closing->harga / 4;
+                    $agentClosing->point = 1;
                     $agent->pendapatan += $agentClosing->komisi;
                     break;
                 }

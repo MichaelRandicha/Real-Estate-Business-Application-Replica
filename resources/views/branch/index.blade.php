@@ -14,7 +14,7 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('branch.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Branch</a>
-				@unless(empty($cabangs))
+				@unless($cabangs->count() == 0)
 					<a href={{ route('branch.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Branch List</a>
 				@endunless
 			</div>

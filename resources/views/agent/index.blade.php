@@ -14,8 +14,8 @@
 		<div>
 			<div style="float:left;">
 				<a href={{ route('agent.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Agent</a>
-				@unless(empty($agents))
-					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print All List</a>
+				@unless($agents->count() == 0)
+					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Agent List</a>
 				@endunless
 			</div>
 

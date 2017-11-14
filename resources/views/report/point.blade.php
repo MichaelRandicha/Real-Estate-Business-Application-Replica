@@ -2,7 +2,7 @@
 
 @section('middle-content')
 <div class="panel panel-default">
-	<div class="panel-heading">Closing List Report</div>
+	<div class="panel-heading">Top Agent Point Report</div>
 
 	<div class="panel-body">
 		@if (session('status'))
@@ -12,7 +12,7 @@
 		@endif
 		@include('report.nav')
 
-		<form class="form-horizontal" method="GET" action="{{ route('report.closing') }}" id="closing">
+		<form class="form-horizontal" method="GET" action="{{ route('report.point') }}" id="closing">
 
 			<div class="form-group{{ $errors->has('dateFrom') ? ' has-error' : '' }}">
 				<label for="dateFrom" class="col-md-4 control-label">Date From</label>
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 		</form>
-		@unless(empty($closings))
+		@unless(empty($points))
 			<div>
 				<select name="no" style="padding: 5px 10px;margin: 10px 0 20px;border-radius: 4px;" class="btn-md" form="closing" onchange="this.form.submit()">
 					@for($i = 1; $i <= 4; $i++)
@@ -58,33 +58,30 @@
 					@endfor
 				</select>
 				Baris
-				<a href="{{ route('report.closing.list', ['dateFrom' => request()->dateFrom, 'dateTo' => request()->dateTo]) }}" class="btn btn-md btn-outline-primary" style="float:right" target="_blank">Print Report</a>
+				<a href="{{ route('report.point.list', ['dateFrom' => request()->dateFrom, 'dateTo' => request()->dateTo]) }}" class="btn btn-md btn-outline-primary" style="float:right" target="_blank">Print Report</a>
 			</div>
 
 			<table class="table table-sm table-hover table-bordered">
 				<thead class="thead-light">
 					<tr>
 						<th scope="col" class="text-center" style="width: 30px">No</th>
-						<th scope="col">Property</th>
-						<th scope="col">Sold Date</th>
-						<th scope="col">Closing Price</th>
-						<th scope="col" class="text-center">Action</th>
+						<th scope="col">Agent Name</th>
+						<th scope="col">Branch Name</th>
+						<th scope="col">Total Point</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($closings as $closing)
+					@foreach($points as $point)
 						<tr>
-							<td class="text-center">{{ (($closings->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
-							<td>{{ $closing->nama }}</td>
-							<td>{{ date("d F Y", strtotime($closing->tanggal)) }}</td>
-							<td>Rp. {{ number_format($closing->harga, 2, ',', '.') }}</td>
-							<td class="text-center"><a href="{{ route('closing.view', ['id' => $closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+							<td class="text-center">{{ (($points->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
+							<td>{{ $point->agent->nama }}</td>
+							<td>{{ $point->cabang->nama }}</td>
+							<td>{{ $point->total_point }}</td>
 						</tr>
 					@endforeach
 				</tbody>
 			</table>
-
-			{{ $closings->links() }}
+			{{ $points->links() }}
 		@endunless
 	</div>
 </div>
