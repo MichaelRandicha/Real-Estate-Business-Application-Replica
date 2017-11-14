@@ -86,7 +86,7 @@
 						<th scope="col">Property</th>
 						<th scope="col">Sold Date</th>
 						<th scope="col">Closing Price</th>
-						<th scope="col">Closing Money </th>
+						<th scope="col">Agent Income</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
