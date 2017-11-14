@@ -28,7 +28,7 @@
 		</table>
 
 		<table class="table table-bordered table-hover">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th style="width:20%"></th>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)

@@ -76,7 +76,7 @@
 		</div>
 
 		<table class="table table-sm table-hover table-bordered">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					@if(request()->filter == "agent")

@@ -12,10 +12,10 @@
 		@endif
 
 		<div>
-			<div style="float:left;">
-				<a href={{ route('closing.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Make New Closing</a>
+			<div style="float:left;" class="btn-group">
+				<a href={{ route('closing.add') }} class="btn btn-md btn-outline-success no-radius" style="bottom:0;">Make New Closing</a>
 				@unless($closings->count() == 0)
-					<a href={{ route('closing.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Closing List</a>
+					<a href={{ route('closing.list') }} class="btn btn-md btn-outline-primary no-radius" style="bottom:0;" target="_blank">Print Closing List</a>
 				@endunless
 			</div>
 
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<table class="table table-sm table-hover table-bordered">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Property</th>

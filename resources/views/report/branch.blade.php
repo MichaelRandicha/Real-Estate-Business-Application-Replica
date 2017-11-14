@@ -47,9 +47,9 @@
 
 				<div class="col-md-6">
 					<select name="branch" class="form-control" required>
-					    @foreach($cabangs as $cabang)
-					    	<option value="{{ $cabang->id }}" @if(old('branch') == $cabang->id) selected @elseif(request()->branch == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
-					    @endforeach
+						@foreach($cabangs as $cabang)
+						<option value="{{ $cabang->id }}" @if(old('branch') == $cabang->id) selected @elseif(request()->branch == $cabang->id) selected @endif>{{ $cabang->nama }}</option>
+						@endforeach
 					</select>
 					@if ($errors->has('branch'))
 					<span class="help-block">
@@ -68,43 +68,43 @@
 			</div>
 		</form>
 		@unless(empty($branchs))
-			<div>
-				<select name="no" style="padding: 5px 10px;margin: 10px 0 20px;border-radius: 4px;" class="btn-md" form="closing" onchange="this.form.submit()">
-					@for($i = 1; $i <= 4; $i++)
-						<option value="{{ $i * 5 }}" @if(request()->no / 5 == $i) selected @endif>{{ $i * 5 }}</option>
-					@endfor
-				</select>
-				Baris
-				<a href="{{ route('report.branch.list', ['dateFrom' => request()->dateFrom, 'dateTo' => request()->dateTo, 'branch' => request()->branch]) }}" class="btn btn-md btn-outline-primary" style="float:right" target="_blank">Print Report</a>
-			</div>
+		<div>
+			<select name="no" style="padding: 5px 10px;margin: 10px 0 20px;border-radius: 4px;" class="btn-md" form="closing" onchange="this.form.submit()">
+				@for($i = 1; $i <= 4; $i++)
+				<option value="{{ $i * 5 }}" @if(request()->no / 5 == $i) selected @endif>{{ $i * 5 }}</option>
+				@endfor
+			</select>
+			Baris
+			<a href="{{ route('report.branch.list', ['dateFrom' => request()->dateFrom, 'dateTo' => request()->dateTo, 'branch' => request()->branch]) }}" class="btn btn-md btn-outline-primary" style="float:right" target="_blank">Print Report</a>
+		</div>
 
-			<table class="table table-sm table-hover table-bordered">
-				<thead class="thead-light">
-					<tr>
-						<th scope="col" class="text-center" style="width: 30px">No</th>
-						<th scope="col">Agent Name</th>
-						<th scope="col">Property</th>
-						<th scope="col">Sold Date</th>
-						<th scope="col">Closing Price</th>
-						<th scope="col">Agent Income</th>
-						<th scope="col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($branchs as $branch)
-						<tr>
-							<td class="text-center">{{ (($branchs->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
-							<td>{{ $branch->agent->nama }}</td>
-							<td>{{ $branch->closing->nama }}</td>
-							<td>{{ date("d F Y", strtotime($branch->closing->tanggal)) }}</td>
-							<td>Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
-							<td>Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
-							<td class="text-center"><a href="{{ route('closing.view', ['id' => $branch->closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
-						</tr>
-					@endforeach
-				</tbody>
-			</table>
-			{{ $branchs->links() }}
+		<table class="table table-sm table-hover table-bordered">
+			<thead class="thead-blue">
+				<tr>
+					<th scope="col" class="text-center" style="width: 30px">No</th>
+					<th scope="col">Agent Name</th>
+					<th scope="col">Property</th>
+					<th scope="col">Sold Date</th>
+					<th scope="col">Closing Price</th>
+					<th scope="col">Agent Income</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($branchs as $branch)
+				<tr>
+					<td class="text-center">{{ (($branchs->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
+					<td>{{ $branch->agent->nama }}</td>
+					<td>{{ $branch->closing->nama }}</td>
+					<td>{{ date("d F Y", strtotime($branch->closing->tanggal)) }}</td>
+					<td>Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
+					<td>Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
+					<td class="text-center"><a href="{{ route('closing.view', ['id' => $branch->closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+		{{ $branchs->links() }}
 		@endunless
 	</div>
 </div>

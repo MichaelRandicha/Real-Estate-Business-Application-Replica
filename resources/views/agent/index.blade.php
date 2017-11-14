@@ -12,10 +12,10 @@
 		@endif
 
 		<div>
-			<div style="float:left;">
-				<a href={{ route('agent.add') }} class="btn btn-md btn-outline-success" style="bottom:0;">Add New Agent</a>
+			<div style="float:left;" class="btn-group">
+				<a href={{ route('agent.add') }} class="btn btn-md btn-outline-success no-radius" style="bottom:0;">Add New Agent</a>
 				@unless($agents->count() == 0)
-					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-primary" style="bottom:0;" target="_blank">Print Agent List</a>
+					<a href={{ route('agent.list') }} class="btn btn-md btn-outline-primary no-radius" style="bottom:0;" target="_blank">Print Agent List</a>
 				@endunless
 			</div>
 
@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<table class="table table-sm table-hover table-bordered">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Name</th>

@@ -12,8 +12,8 @@
 		@endif
 
 		<h4><strong>Top Agent</strong></h4>
-		<table class="table table-sm table-bordered">
-			<thead class="thead-light">
+		<table class="table table-sm table-bordered table-hover">
+			<thead class="thead-blue">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Agent Name</th>

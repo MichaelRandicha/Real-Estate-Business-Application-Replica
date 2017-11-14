@@ -8,13 +8,14 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <style type="text/css" media="print">
 		@page { size: portrait; margin:0; }
+		th { color: #000 !important; }
 	</style>
 </head>
 <body>
 	<div style="margin: 1em 2em">
 		<h2 class="text-center">Top Agent By Point Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
 		<table class="table table-sm table-hover table-bordered">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th scope="col" class="text-center" style="width: 30px">No</th>
 					<th scope="col">Agent Name</th>
