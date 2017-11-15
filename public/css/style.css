@@ -5,8 +5,10 @@
 }
 
 .nav-item > .nav-link.active {
-	background-color: #eee;
-	color: #000;
+	background-color: #42A5F5;
+	color: white;
+	// background-color: #eee;
+	// color: #000;
 	// #80D8FF simpan warna sek
 }
 
@@ -15,11 +17,20 @@
 } 
 
 .nav-link:hover {
-	color: #333;
+	background-color: #42A5F5 !important;
+	color: white;
+	// color: #333;
 }
 
 .nav-link:focus {
-	color: #333 !important;
+	box-shadow: 0 0 0 0.2rem rgba(144,202,249, 0.8);
+
+	// color: #333 !important;
+	// background-color: white !important;
+	// border: 1px 0px solid #90CAF9;
+
+	// color: white !important;
+	// background-color: #90CAF9 !important;
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -45,9 +56,10 @@
 }
 
 .table-hover>tbody>tr:hover {
-	color: #000;
-	background-color: #E3F2FD;
-	border-color: #E3F2FD;
+	background-color: #BBDEFB;
+	transition: all .3s ease;
+	// color: white;
+	// border-color: #E3F2FD;
 }
 
 .flex {
