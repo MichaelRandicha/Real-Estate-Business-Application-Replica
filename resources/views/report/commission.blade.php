@@ -122,7 +122,6 @@
 				dateTo.setAttribute('min', dateFrom.value);
 				if(dateTo.value < dateFrom.value && dateTo.value != ""){
 					dateTo.value = dateFrom.value;
-					dateTo.stepUp(1);
 				}
 			}
 		});
