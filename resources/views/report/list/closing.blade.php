@@ -15,6 +15,8 @@
 	<div style="margin: 1em 2em">
 		<h2 class="text-center">Closing List Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
 		
+		<button class="btn btn-outline-primary no-print" style="margin:0 auto 1em;display: block;cursor:pointer;" onclick="window.print()">Print</button>
+
 		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
 			<tbody>
@@ -133,9 +135,9 @@
 	</div>
 </body>
 <script>
-	$(document).ready(function (){
-		window.print();
-		setTimeout(function(){window.close();}, 1);
-	});
+	// $(document).ready(function (){
+	// 	window.print();
+	// 	setTimeout(function(){window.close();}, 1);
+	// });
 </script>
 </html>

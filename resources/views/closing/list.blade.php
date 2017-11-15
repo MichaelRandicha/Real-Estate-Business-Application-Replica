@@ -8,11 +8,14 @@
 	<script src="{{ asset('js/jquery.js') }}"></script>
 	<style type="text/css" media="print">
 	@page { size: portrait; margin:0; }
+	th { color: #000 !important; }
 </style>
 </head>
 <body>
 	<div style="margin: 1em 2em">
-		<h1 class="text-center">Closing List</h1>
+		<h2 class="text-center">Closing List</h2>
+		
+		<button class="btn btn-outline-primary no-print" style="margin:0 auto 1em;display: block;cursor:pointer;" onclick="window.print()">Print</button>
 		
 		@foreach($closings as $closing)
 		<table class="table table-bordered table-hover">
@@ -33,7 +36,7 @@
 		</table>
 
 		<table class="table table-bordered table-hover table-md">
-			<thead class="thead-light">
+			<thead class="thead-blue">
 				<tr>
 					<th style="width:20%"></th>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
@@ -132,9 +135,9 @@
 	</div>
 </body>
 <script>
-	$(document).ready(function (){
-		window.print();
-		setTimeout(function(){window.close();}, 1);
-	});
+	// $(document).ready(function (){
+	// 	window.print();
+	// 	setTimeout(function(){window.close();}, 1);
+	// });
 </script>
 </html>

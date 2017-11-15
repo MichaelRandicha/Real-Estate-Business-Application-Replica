@@ -5,28 +5,31 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/Treant.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-confirm.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/perfect-scrollbar.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/Treant.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-confirm.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/perfect-scrollbar.css') }}">
 
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/raphael.js') }}"></script>
-    <script src="{{ asset('js/Treant.js') }}"></script>
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
-    <script src="{{ asset('js/perfect-scrollbar.js') }}"></script>
-    <style type="text/css" media="print">
-	  @page { size: landscape;margin:0; }
+	<script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="{{ asset('js/raphael.js') }}"></script>
+	<script src="{{ asset('js/Treant.js') }}"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+	<script src="{{ asset('js/jquery.mousewheel.js') }}"></script>
+	<script src="{{ asset('js/perfect-scrollbar.js') }}"></script>
+	<style type="text/css" media="print">
+	@page { size: landscape;margin:0; }
+	th { color: #000 !important; }
 	</style>
 </head>
 <body>
 	<div style="margin:1em 2em">
-		<h1 class="text-center">Agent List</h1>
-
-		<div id="agent-tree" style="margin-right: 25%;"></div>
+		<h2 class="text-center">Agent List</h2>
+		
+		<button class="btn btn-outline-primary no-print" style="margin:0 auto 1em;display: block;cursor:pointer;" onclick="window.print()">Print</button>
+		
+		{{-- <div id="agent-tree"></div> --}}
 
 		<table class="table table-bordered table-hover">
-			<thead>
+			<thead class="thead-blue">
 				<tr>
 					<th style="width:20%">Agent Name</th>
 					<th>Location</th>
@@ -58,10 +61,10 @@
 	</div>
 </body>
 <script>
-	var my_chart = new Treant(JSON.parse(agent_tree));
-	$(document).ready(function (){
-		window.print();
-		setTimeout(function(){window.close();}, 1);
-	});
+	// var my_chart = new Treant(JSON.parse(agent_tree));
+	// $(document).ready(function (){
+	// 	window.print();
+	// 	setTimeout(function(){window.close();}, 1);
+	// });
 </script>
 </html>

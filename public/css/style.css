@@ -18,6 +18,10 @@
 	color: #333;
 }
 
+.nav-link:focus {
+	color: #333 !important;
+}
+
 .nav>li>a:focus, .nav>li>a:hover {
 	transition: all .3s ease;
 }
@@ -507,6 +511,8 @@
 	a[href]:after {
 		content: none !important;
 	}
+
+	.no-print { display: none !important; }
 
 	.page-break { display: block; page-break-before: always; }
 }

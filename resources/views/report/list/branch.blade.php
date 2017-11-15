@@ -14,6 +14,9 @@
 <body>
 	<div style="margin: 1em 2em">
 		<h2 class="text-center">Branch Activity Report <br>From {{ date("d F Y", strtotime(request()->dateFrom)) }} To {{ date("d F Y", strtotime(request()->dateTo)) }}</h2>
+
+		<button class="btn btn-outline-primary no-print" style="margin:0 auto 1em;display: block;cursor:pointer;" onclick="window.print()">Print</button>
+		
 		<table class="table table-sm table-hover table-bordered">
 			<thead class="thead-blue">
 				<tr>
@@ -41,9 +44,9 @@
 	</div>
 </body>
 <script>
-	$(document).ready(function (){
-		window.print();
-		setTimeout(function(){window.close();}, 1);
-	});
+	// $(document).ready(function (){
+	// 	window.print();
+	// 	setTimeout(function(){window.close();}, 1);
+	// });
 </script>
 </html>
