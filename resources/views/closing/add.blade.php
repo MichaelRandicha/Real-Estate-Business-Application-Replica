@@ -31,7 +31,7 @@
 				<label for="date" class="col-md-4 control-label">Closing date</label>
 
 				<div class="col-md-6">
-					<input id="date" type="date" class="form-control" name="date" value="{{ old('date', Carbon\Carbon::now()->format('Y-m-d')) }}" required>
+					<input id="date" type="date" class="form-control" name="date" value="{{ old('date', Carbon\Carbon::now()->format('Y-m-d')) }}" max="{{ Carbon\Carbon::now()->format('Y-m-d') }}"required>
 
 					@if ($errors->has('date'))
 					<span class="help-block">

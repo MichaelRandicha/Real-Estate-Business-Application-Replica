@@ -24,8 +24,8 @@
 					<th scope="col">Agent Name</th>
 					<th scope="col">Property</th>
 					<th scope="col">Sold Date</th>
-					<th scope="col">Closing Price</th>
-					<th scope="col">Agent Income</th>
+					<th scope="col" style="text-align:right;">Closing Price</th>
+					<th scope="col" style="text-align:right;">Agent Income</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,8 +35,8 @@
 					<td>{{ $branch->agent->nama }}</td>
 					<td>{{ $branch->closing->nama }}</td>
 					<td>{{ date("d F Y", strtotime($branch->closing->tanggal)) }}</td>
-					<td>Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
-					<td>Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
+					<td style="text-align:right;">Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
+					<td style="text-align:right;">Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
 				</tr>
 				@endforeach
 			</tbody>

@@ -18,7 +18,7 @@
 				<label for="dateFrom" class="col-md-4 control-label">Date From</label>
 
 				<div class="col-md-6">
-					<input id="dateFrom" type="date" class="form-control" name="dateFrom" value="@if(empty(request()->dateFrom)){{ old('dateFrom') }}@else{{ request()->dateFrom }}@endif" required autofocus>
+					<input id="dateFrom" type="date" class="form-control" name="dateFrom" value="@if(empty(request()->dateFrom)){{ old('dateFrom', Carbon\Carbon::now()->format('Y-m-d')) }}@else{{ request()->dateFrom }}@endif" required autofocus>
 
 					@if ($errors->has('dateFrom'))
 					<span class="help-block">
@@ -32,7 +32,7 @@
 				<label for="dateTo" class="col-md-4 control-label">Date To</label>
 
 				<div class="col-md-6">
-					<input id="dateTo" type="date" class="form-control" name="dateTo" value="@if(empty(request()->dateTo)){{ old('dateTo') }}@else{{ request()->dateTo }}@endif" required>
+					<input id="dateTo" type="date" class="form-control" name="dateTo" value="@if(empty(request()->dateTo)){{ old('dateTo', Carbon\Carbon::now()->format('Y-m-d')) }}@else{{ request()->dateTo }}@endif" required>
 
 					@if ($errors->has('dateTo'))
 					<span class="help-block">
@@ -97,8 +97,8 @@
 					<td>{{ $branch->agent->nama }}</td>
 					<td>{{ $branch->closing->nama }}</td>
 					<td>{{ date("d F Y", strtotime($branch->closing->tanggal)) }}</td>
-					<td>Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
-					<td>Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
+					<td style="text-align:right;">Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>
+					<td style="text-align:right;">Rp. {{ number_format($branch->komisi, 2, ',', '.') }}</td>
 					<td class="text-center"><a href="{{ route('closing.view', ['id' => $branch->closing->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				@endforeach
@@ -112,6 +112,7 @@
 	$(document).ready(function(){
 		var dateFrom = document.getElementById('dateFrom');
 		var dateTo = document.getElementById('dateTo');
+		dateTo.setAttribute('min', dateFrom.value);
 		$('#dateFrom').on('change', function(){
 			if(dateFrom.value == ""){
 				dateTo.removeAttribute('min');

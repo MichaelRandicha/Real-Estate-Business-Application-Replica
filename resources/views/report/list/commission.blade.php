@@ -26,7 +26,7 @@
 					@elseif(request()->filter == "branch")
 					<th scope="col">Branch Name</th>
 					@endif
-					<th scope="col">Total Commission</th>
+					<th scope="col" style="text-align:right;">Total Commission</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,7 +38,7 @@
 					@elseif(request()->filter == "branch")
 					<td>{{ $commission->cabang->nama }}</td>
 					@endif
-					<td>Rp. {{ number_format($commission->total_komisi, 2, ',', '.') }}</td>
+					<td style="text-align:right;">Rp. {{ number_format($commission->total_komisi, 2, ',', '.') }}</td>
 				</tr>
 				@endforeach
 			</tbody>

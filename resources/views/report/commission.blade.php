@@ -18,7 +18,7 @@
 				<label for="dateFrom" class="col-md-4 control-label">Date From</label>
 
 				<div class="col-md-6">
-					<input id="dateFrom" type="date" class="form-control" name="dateFrom" value="@if(empty(request()->dateFrom)){{ old('dateFrom') }}@else{{ request()->dateFrom }}@endif" required autofocus>
+					<input id="dateFrom" type="date" class="form-control" name="dateFrom" value="@if(empty(request()->dateFrom)){{ old('dateFrom', Carbon\Carbon::now()->format('Y-m-d')) }}@else{{ request()->dateFrom }}@endif" required autofocus>
 
 					@if ($errors->has('dateFrom'))
 					<span class="help-block">
@@ -32,7 +32,7 @@
 				<label for="dateTo" class="col-md-4 control-label">Date To</label>
 
 				<div class="col-md-6">
-					<input id="dateTo" type="date" class="form-control" name="dateTo" value="@if(empty(request()->dateTo)){{ old('dateTo') }}@else{{ request()->dateTo }}@endif" required>
+					<input id="dateTo" type="date" class="form-control" name="dateTo" value="@if(empty(request()->dateTo)){{ old('dateTo', Carbon\Carbon::now()->format('Y-m-d')) }}@else{{ request()->dateTo }}@endif" required>
 
 					@if ($errors->has('dateTo'))
 					<span class="help-block">
@@ -84,7 +84,7 @@
 					@elseif(request()->filter == "branch")
 					<th scope="col">Branch Name</th>
 					@endif
-					<th scope="col">Total Commission</th>
+					<th scope="col"  style="text-align:right;">Total Commission</th>
 					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>
@@ -97,7 +97,7 @@
 					@elseif(request()->filter == "branch")
 					<td>{{ $commission->cabang->nama }}</td>
 					@endif
-					<td>Rp. {{ number_format($commission->total_komisi, 2, ',', '.') }}</td>
+					<td  style="text-align:right;">Rp. {{ number_format($commission->total_komisi, 2, ',', '.') }}</td>
 					@if(request()->filter == "agent")
 					<td class="text-center"><a href="{{ route('agent.view', ['id' => $commission->agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 					@elseif(request()->filter == "branch")
@@ -115,6 +115,8 @@
 	$(document).ready(function(){
 		var dateFrom = document.getElementById('dateFrom');
 		var dateTo = document.getElementById('dateTo');
+		dateTo.setAttribute('min', dateFrom.value);
+		
 		$('#dateFrom').on('change', function(){
 			if(dateFrom.value == ""){
 				dateTo.removeAttribute('min');
