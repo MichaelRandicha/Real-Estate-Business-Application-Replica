@@ -87,7 +87,8 @@ class AgentController extends Controller
     private function getTree($id = 2){
         $button = 'btn btn-outline-primary';
 
-        $firstAgent = Agent::find(2);
+        // $firstAgent = Agent::find(2);
+        $firstAgent = Agent::find($id);
 
         if(!$firstAgent->isEmployed){
             $button = 'btn btn-outline-danger';
