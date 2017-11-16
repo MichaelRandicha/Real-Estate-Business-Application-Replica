@@ -26,7 +26,7 @@
 				@foreach($agents as $agent)
 				<tr>
 					<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
-					<td>{{ $agent->nama }}</td>
+					<td>{{ $agent->nama_agent }}</td>
 					<td>{{ $agent->cabang->nama }}</td>
 					<td>{{ $agent->closing_count }}</td>
 					<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
