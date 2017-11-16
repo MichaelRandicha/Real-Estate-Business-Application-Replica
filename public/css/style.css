@@ -1,3 +1,9 @@
+body {
+	/*font-family: 'Source Sans Pro', sans-serif !important;*/
+	/*font-family: 'Quicksand', sans-serif !important;*/
+	font-family: 'Oxygen', sans-serif !important;
+}
+
 .navbar {
 	background-color: #fff;
 	border: 1px solid #d3e0e9;
@@ -7,9 +13,9 @@
 .nav-item > .nav-link.active {
 	background-color: #42A5F5;
 	color: white;
-	// background-color: #eee;
-	// color: #000;
-	// #80D8FF simpan warna sek
+	/*background-color: #eee;
+	color: #000;
+	#80D8FF simpan warna sek*/
 }
 
 .nav-link {
@@ -19,18 +25,18 @@
 .nav-link:hover {
 	background-color: #42A5F5 !important;
 	color: white;
-	// color: #333;
+	/*color: #333;*/
 }
 
 .nav-link:focus {
 	box-shadow: 0 0 0 0.2rem rgba(144,202,249, 0.8);
 
-	// color: #333 !important;
-	// background-color: white !important;
-	// border: 1px 0px solid #90CAF9;
+	/*color: #333 !important;
+	background-color: white !important;
+	border: 1px 0px solid #90CAF9;*/
 
-	// color: white !important;
-	// background-color: #90CAF9 !important;
+	/*color: white !important;
+	background-color: #90CAF9 !important;*/
 }
 
 .nav>li>a:focus, .nav>li>a:hover {
@@ -58,8 +64,8 @@
 .table-hover>tbody>tr:hover {
 	background-color: #BBDEFB;
 	transition: all .3s ease;
-	// color: white;
-	// border-color: #E3F2FD;
+	/*color: white;
+	border-color: #E3F2FD;*/
 }
 
 .flex {
@@ -497,7 +503,7 @@
 	width: 13em;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
-    // border-radius: 4px;
+    /*border-radius: 4px;*/
     font-size: 14px;
     background-color: white;
     background-image: url('../images/searchicon.png');

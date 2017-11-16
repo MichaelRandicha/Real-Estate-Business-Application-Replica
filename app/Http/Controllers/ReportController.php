@@ -110,7 +110,7 @@ class ReportController extends Controller
     }
 
     public function point(Request $request){
-        if(empty($request->dateFrom) || empty($request->dateTo) || empty($request->filter)){
+        if(empty($request->dateFrom) || empty($request->dateTo)){
             return view('report.point');
         }
 
@@ -131,7 +131,7 @@ class ReportController extends Controller
         ->orderBy('total_point', 'desc')
         ->paginate($no);
         $points->appends(['dateFrom' => $request->dateFrom, 'dateTo' => $request->dateTo, 'no' => $no]);
-        
+
         return view('report.point', compact('points'));
     }
 

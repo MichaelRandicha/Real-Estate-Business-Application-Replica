@@ -85,7 +85,7 @@
 					<th scope="col">Branch Name</th>
 					@endif
 					<th scope="col">Total Commission</th>
-					<th scope="col">Action</th>
+					<th scope="col" class="text-center">Action</th>
 				</tr>
 			</thead>
 			<tbody>

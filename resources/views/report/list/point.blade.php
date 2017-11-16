@@ -32,7 +32,7 @@
 						<td class="text-center">{{ $loop->iteration }}</td>
 						<td>{{ $point->agent->nama }}</td>
 						<td>{{ $point->cabang->nama }}</td>
-						<td>{{ $point->total_point }}</td>
+						<td>{{ $point->total_point / 4 }}</td>
 					</tr>
 				@endforeach
 			</tbody>

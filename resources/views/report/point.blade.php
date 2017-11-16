@@ -68,7 +68,7 @@
 						<th scope="col">Agent Name</th>
 						<th scope="col">Branch Name</th>
 						<th scope="col">Total Point</th>
-						<th scope="col">Action</th>
+						<th scope="col" class="text-center">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,7 +77,7 @@
 							<td class="text-center">{{ (($points->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
 							<td>{{ $point->agent->nama }}</td>
 							<td>{{ $point->cabang->nama }}</td>
-							<td>{{ $point->total_point }}</td>
+							<td>{{ $point->total_point / 4 }}</td>
 							<td class="text-center"><a href="{{ route('agent.view', ['id' => $point->agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 						</tr>
 					@endforeach
