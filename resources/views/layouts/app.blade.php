@@ -16,7 +16,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/Treant.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery-confirm.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/perfect-scrollbar.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/fonts.css') }}">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet"> --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet"> --}}
     {{-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet"> --}}
 
