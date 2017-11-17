@@ -62,7 +62,16 @@
 					<select name="agent[0]" id="agent1" class="form-control">
 					    <option value="0" disabled hidden></option>
 					    @foreach($agents as $agent)	
-					    	<option value="{{ $agent->id }}" @if(old('agent.0') == $agent->id) selected @endif>{{ $agent->nama }}</option>
+					    	<option value="{{ $agent->id }}" @if(old('agent.0') == $agent->id) selected @endif>
+					    		{{ $agent->nama }}
+								@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+								@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+									@if($agen->id == $agent->id)
+										#{{ $loop->iteration }}
+									@endif
+								@endforeach 
+								@endif
+					    	</option>
 					    @endforeach
 					</select>
 					@if ($errors->has('agent.0'))
@@ -80,7 +89,16 @@
 					<select name="agent[1]" id="agent2" class="form-control">
 					    <option value="0" selected></option>
 					    @foreach($agents as $agent)	
-					    	<option value="{{ $agent->id }}" @if(old('agent.1') == $agent->id) selected @endif>{{ $agent->nama }}</option>
+					    	<option value="{{ $agent->id }}" @if(old('agent.1') == $agent->id) selected @endif>
+					    		{{ $agent->nama }}
+								@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+								@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+									@if($agen->id == $agent->id)
+										#{{ $loop->iteration }}
+									@endif
+								@endforeach 
+								@endif
+					    	</option>
 					    @endforeach
 					</select>
 					@if ($errors->has('agent.1'))
@@ -98,7 +116,16 @@
 					<select name="agent[2]" id="agent3" class="form-control">
 					    <option value="0" selected></option>
 					    @foreach($agents as $agent)	
-					    	<option value="{{ $agent->id }}" @if(old('agent.2') == $agent->id) selected @endif>{{ $agent->nama }}</option>
+					    	<option value="{{ $agent->id }}" @if(old('agent.2') == $agent->id) selected @endif>
+					    		{{ $agent->nama }}
+								@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+								@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+									@if($agen->id == $agent->id)
+										#{{ $loop->iteration }}
+									@endif
+								@endforeach 
+								@endif
+					    	</option>
 					    @endforeach
 					</select>
 					@if ($errors->has('agent.2'))
@@ -116,7 +143,16 @@
 					<select name="agent[3]" id="agent4" class="form-control">
 					    <option value="0" selected></option>
 					    @foreach($agents as $agent)	
-					    	<option value="{{ $agent->id }}" @if(old('agent.3') == $agent->id) selected @endif>{{ $agent->nama }}</option>
+					    	<option value="{{ $agent->id }}" @if(old('agent.3') == $agent->id) selected @endif>
+					    		{{ $agent->nama }}
+								@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+								@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+									@if($agen->id == $agent->id)
+										#{{ $loop->iteration }}
+									@endif
+								@endforeach 
+								@endif
+					    	</option>
 					    @endforeach
 					</select>
 					@if ($errors->has('agent.3'))

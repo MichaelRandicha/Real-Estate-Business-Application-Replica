@@ -63,7 +63,16 @@
 					    <option value="0" selected></option>
 						@foreach($cabang->member->where('status', true) as $agent)
 							@if($agent->id > 1)
-					    		<option value="{{ $agent->id }}" @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    		<option value="{{ $agent->id }}" @if($cabang->principal_id == $agent->id) selected @endif @if($cabang->vice_id == $agent->id) hidden @endif>
+					    			{{ $agent->nama }}
+									@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+									@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+										@if($agen->id == $agent->id)
+											#{{ $loop->iteration }}
+										@endif
+									@endforeach 
+									@endif
+					    		</option>
 					    	@endif
 					    @endforeach
 					</select>
@@ -83,7 +92,16 @@
 					    <option value="0" selected></option>
 					    @foreach($cabang->member->where('status', true) as $agent)
 							@if($agent->id > 1)
-					    		<option value="{{ $agent->id }}" @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>{{ $agent->nama }}</option>
+					    		<option value="{{ $agent->id }}" @if($cabang->vice_id == $agent->id) selected @endif @if($cabang->principal_id == $agent->id) hidden @endif>
+					    			{{ $agent->nama }}
+									@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+									@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+										@if($agen->id == $agent->id)
+											#{{ $loop->iteration }}
+										@endif
+									@endforeach 
+									@endif
+					    		</option>
 					    	@endif
 					    @endforeach
 					</select>

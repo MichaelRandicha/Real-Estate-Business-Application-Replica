@@ -33,8 +33,26 @@
 					<td>{{ $cabang->nama }}</td>
 					<td>{{ $cabang->lokasi }}</td>
 					<td>{{ $cabang->telepon }}</td>
-					<td>@if($cabang->principal != null) {{ $cabang->principal->nama }} @else - @endif</td>
-					<td>@if($cabang->vice != null) {{ $cabang->vice->nama }} @else - @endif</td>
+					<td>@if($cabang->principal != null)
+						{{ $cabang->principal->nama }}
+						@if(App\Agent::where('nama', '=', $cabang->principal->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $cabang->principal->nama)->get() as $agen)
+							@if($agen->id == $cabang->principal->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					@else - @endif</td>
+					<td>@if($cabang->vice != null)
+						{{ $cabang->vice->nama }}
+						@if(App\Agent::where('nama', '=', $cabang->vice->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $cabang->vice->nama)->get() as $agen)
+							@if($agen->id == $cabang->vice->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					@else - @endif</td>
 				</tr>
 				@endforeach
 			</tbody>

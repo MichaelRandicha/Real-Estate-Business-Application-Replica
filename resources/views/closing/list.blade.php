@@ -48,7 +48,16 @@
 				<tr>
 					<td>Agent Name</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->agent->nama }}</td>
+					<td>
+						{{ $agentclosing->agent->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->agent->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->agent->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->agent->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -66,7 +75,16 @@
 				<tr>
 					<td>Agent Upline 1</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->upline1->nama }}</td>
+					<td>
+						{{ $agentclosing->upline1->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->upline1->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->upline1->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->upline1->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -78,7 +96,16 @@
 				<tr>
 					<td>Agent Upline 2</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->upline2->nama }}</td>
+					<td>
+						{{ $agentclosing->upline2->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->upline2->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->upline2->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->upline2->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -90,7 +117,16 @@
 				<tr>
 					<td>Agent Upline 3</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->upline3->nama }}</td>
+					<td>
+						{{ $agentclosing->upline3->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->upline3->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->upline3->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->upline3->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -102,7 +138,16 @@
 				<tr>
 					<td>Principal</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->principal->nama }}</td>
+					<td>
+						{{ $agentclosing->principal->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->principal->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->principal->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->principal->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>
@@ -114,7 +159,16 @@
 				<tr>
 					<td>Vice Principal</td>
 					@foreach($closing->closing->sortBy('id') as $agentclosing)
-					<td>{{ $agentclosing->vice->nama }}</td>
+					<td>
+						{{ $agentclosing->vice->nama }}
+						@if(App\Agent::where('nama', '=', $agentclosing->vice->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agentclosing->vice->nama)->get() as $agen)
+							@if($agen->id == $agentclosing->vice->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@endforeach
 				</tr>
 				<tr>

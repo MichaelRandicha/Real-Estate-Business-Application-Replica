@@ -37,7 +37,7 @@ class AgentController extends Controller
 
     public function register(Request $request){
         $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required|alpha_spaces',
             'location' => 'required', 
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
@@ -105,6 +105,16 @@ class AgentController extends Controller
             }
         }
 
+        $i = 0;
+        if(Agent::where('nama', '=', $firstAgent->nama)->get()->count() > 1){
+            foreach (Agent::where('nama', '=', $firstAgent->nama)->get() as $agent){
+                $i++;
+                if($agent->id == $firstAgent->id){
+                    $firstAgent->nama = $firstAgent->nama."#".$i;
+                }
+            }
+        }
+
         $tree = [
             'chart' => [
                 'container' => '#agent-tree',
@@ -133,6 +143,15 @@ class AgentController extends Controller
         $children = array();
 
         foreach ($upline->downline as $downline) {
+            $i = 0;
+            if(Agent::where('nama', '=', $downline->nama)->get()->count() > 1){
+                foreach (Agent::where('nama', '=', $downline->nama)->get() as $agent){
+                    $i++;
+                    if($agent->id == $downline->id){
+                        $downline->nama = $downline->nama."#".$i;
+                    }
+                }
+            }
             $button = 'btn btn-outline-primary';
 
             if(!$downline->isEmployed){
@@ -182,11 +201,11 @@ class AgentController extends Controller
     public function list(){
         $agents = Agent::where('id', '>', '1')->get();
 
-        $tree = $this->getTree(1);
+        // $tree = $this->getTree(2);
         
-        JavaScript::put([
-            'agent_tree' => json_encode($tree)
-        ]);
+        // JavaScript::put([
+        //     'agent_tree' => json_encode($tree)
+        // ]);
 
         return view('agent.list', compact('agents'));
     }

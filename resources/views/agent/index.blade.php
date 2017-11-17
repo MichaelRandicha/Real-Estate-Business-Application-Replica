@@ -39,7 +39,16 @@
 				@foreach($agents as $agent)
 					<tr @if(!$agent->isEmployed) class="table-danger" @endif>
 						<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
-						<td>{{ $agent->nama }}</td>
+						<td>
+							{{ $agent->nama }}
+							@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+							@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+								@if($agen->id == $agent->id)
+									#{{ $loop->iteration }}
+								@endif
+							@endforeach 
+							@endif
+						</td>
 						<td>{{ $agent->cabang->nama }}</td>
 						<td>@if($agent->isPrincipal) Principal @elseif($agent->isVice) Vice Principal @else Normal Agent @endif</td>
 						<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>

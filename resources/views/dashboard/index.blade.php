@@ -26,10 +26,19 @@
 				@foreach($agents as $agent)
 				<tr>
 					<td class="text-center">{{ (($agents->currentPage() - 1) * 5) + $loop->iteration }}</td>
-					<td>{{ $agent->nama_agent }}</td>
+					<td>
+						{{ $agent->nama_agent }}
+						@if(App\Agent::where('nama', '=', $agent->nama_agent)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agent->nama_agent)->get() as $agen)
+							@if($agen->id == $agent->id_agent)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					<td>{{ $agent->cabang->nama }}</td>
 					<td>{{ $agent->closing_count }}</td>
-					<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
+					<td class="text-center"><a href="{{ route('agent.view', ['id' => $agent->id_agent]) }}" class="btn btn-outline-primary btn-xs">View</a></td>
 				</tr>
 				@endforeach
 			</tbody>

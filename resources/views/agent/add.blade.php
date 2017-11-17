@@ -82,7 +82,16 @@
 					     	<option value="0" selected></option>
 					     @endif
 					     @foreach($agents as $agent)
-					     	<option value="{{ $agent->id }}" @if(old('upline') == $agent->id) selected @endif>{{ $agent->nama }}</option>
+					     	<option value="{{ $agent->id }}" @if(old('upline') == $agent->id) selected @endif>
+					     		{{ $agent->nama }}
+								@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+								@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+									@if($agen->id == $agent->id)
+										#{{ $loop->iteration }}
+									@endif
+								@endforeach 
+								@endif
+					     	</option>
 					     @endforeach
 					</select>
 

@@ -34,7 +34,16 @@
 				<tr>
 					<td class="text-center">{{ $loop->iteration }}</td>
 					@if(request()->filter == "agent")
-					<td>{{ $commission->agent->nama }}</td>
+					<td>
+						{{ $commission->agent->nama }}
+						@if(App\Agent::where('nama', '=', $commission->agent->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $commission->agent->nama)->get() as $agen)
+							@if($agen->id == $commission->agent->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 					@elseif(request()->filter == "branch")
 					<td>{{ $commission->cabang->nama }}</td>
 					@endif

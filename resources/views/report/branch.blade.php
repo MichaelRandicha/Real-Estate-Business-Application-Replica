@@ -94,7 +94,16 @@
 				@foreach($branchs as $branch)
 				<tr>
 					<td class="text-center">{{ (($branchs->currentPage() - 1) * request()->no) + $loop->iteration }}</td>
-					<td>{{ $branch->agent->nama }}</td>
+					<td>
+						{{ $branch->agent->nama }}
+						@if(App\Agent::where('nama', '=', $branch->agent->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $branch->agent->nama)->get() as $agen)
+						@if($agen->id == $branch->agent->id)
+							#{{ $loop->iteration }}
+						@endif
+						@endforeach 
+						@endif
+					</td>
 					<td>{{ $branch->closing->nama }}</td>
 					<td>{{ date("d F Y", strtotime($branch->closing->tanggal)) }}</td>
 					<td style="text-align:right;">Rp. {{ number_format($branch->closing->harga, 2, ',', '.') }}</td>

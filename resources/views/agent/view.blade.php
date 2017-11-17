@@ -14,7 +14,15 @@
 			<tbody>
 				<tr>
 					<td style="width:20%">Agent Name</td>
-					<td id="nama">{{ $agent->nama }}</td>
+					<td id="nama">{{ $agent->nama }} 
+						@if(App\Agent::where('nama', '=', $agent->nama)->get()->count() > 1)
+						@foreach(App\Agent::where('nama', '=', $agent->nama)->get() as $agen)
+							@if($agen->id == $agent->id)
+								#{{ $loop->iteration }}
+							@endif
+						@endforeach 
+						@endif
+					</td>
 				</tr>
 				<tr>
 					<td>Location</td>

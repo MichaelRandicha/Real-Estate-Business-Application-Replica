@@ -30,7 +30,16 @@
 				@foreach($points as $point)
 					<tr>
 						<td class="text-center">{{ $loop->iteration }}</td>
-						<td>{{ $point->agent->nama }}</td>
+						<td>
+							{{ $point->agent->nama }}
+							@if(App\Agent::where('nama', '=', $point->agent->nama)->get()->count() > 1)
+							@foreach(App\Agent::where('nama', '=', $point->agent->nama)->get() as $agen)
+								@if($agen->id == $point->agent->id)
+									#{{ $loop->iteration }}
+								@endif
+							@endforeach 
+							@endif
+						</td>
 						<td>{{ $point->cabang->nama }}</td>
 						<td>{{ $point->total_point / 4 }}</td>
 					</tr>
