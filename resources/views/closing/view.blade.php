@@ -171,27 +171,4 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	function del (event){
-		event.preventDefault()
-		$.confirm({
-			title: 'Caution!',
-			content: 'Delete BranchA?',
-			theme: 'modern',
-			type: 'red',
-			closeIcon: true,
-			backgroundDismiss: true,
-			buttons: {
-				yes: function () {
-					document.getElementById('del').click()
-				},
-				cancel: {
-					keys: ['esc'],
-					action: function () {
-					}
-				}
-			}
-		})
-	}
-</script>
 @endsection

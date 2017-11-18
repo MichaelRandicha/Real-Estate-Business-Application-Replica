@@ -44,9 +44,6 @@ class AgentController extends Controller
         if(Agent::where('id', '>', 1)->count() > 0){
             $this->validate($request, [
                 'upline' => 'required|not_in:0,1']);
-            if($request->upline == 0){
-                return redirect('agent/add')->withErrors(['upline', 'The selected upline is invalid.']);;
-            }
         }
         $agent = new Agent;
         $agent->nama = $request->name;
