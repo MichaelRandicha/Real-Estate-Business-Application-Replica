@@ -38,7 +38,7 @@ class AgentController extends Controller
     public function register(Request $request){
         $this->validate($request,[
             'name' => 'required|alpha_spaces',
-            'location' => 'required', 
+            'location' => 'required',
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
         if(Agent::where('id', '>', 1)->count() > 0){
@@ -72,7 +72,7 @@ class AgentController extends Controller
         }
 
         $tree = $this->getTree($id);
-        
+
         JavaScript::put([
             'agent_tree' => json_encode($tree),
             'nama' => $agent->nama
@@ -107,7 +107,7 @@ class AgentController extends Controller
             foreach (Agent::where('nama', '=', $firstAgent->nama)->get() as $agent){
                 $i++;
                 if($agent->id == $firstAgent->id){
-                    $firstAgent->nama = $firstAgent->nama."#".$i;
+                    $firstAgent->nama = $firstAgent->nama." #".$i;
                 }
             }
         }
@@ -145,7 +145,7 @@ class AgentController extends Controller
                 foreach (Agent::where('nama', '=', $downline->nama)->get() as $agent){
                     $i++;
                     if($agent->id == $downline->id){
-                        $downline->nama = $downline->nama."#".$i;
+                        $downline->nama = $downline->nama." #".$i;
                     }
                 }
             }
@@ -165,7 +165,7 @@ class AgentController extends Controller
                     $button = $button .' outline-dipecat';
                 }
             }
-            
+
             if($downline->downline->count() == 0){
                 $children[] = [
                     'text' => [
@@ -199,7 +199,7 @@ class AgentController extends Controller
         $agents = Agent::where('id', '>', '1')->get();
 
         // $tree = $this->getTree(2);
-        
+
         // JavaScript::put([
         //     'agent_tree' => json_encode($tree)
         // ]);
@@ -215,7 +215,7 @@ class AgentController extends Controller
         }
 
         $agent = Agent::find($id);
-        
+
         if($agent == null){
             return redirect('agent');
         }else if($id == 1){
@@ -233,9 +233,9 @@ class AgentController extends Controller
         }else if ($id == 1){
             return redirect('agent');
         }
-        
+
         $agent = Agent::find($id);
-        
+
         if($agent == null){
             return redirect('agent');
         }else if($id == 1){
@@ -244,7 +244,7 @@ class AgentController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
-            'location' => 'required', 
+            'location' => 'required',
             'phone' => 'required|numeric|digits_between:10,12',
             'branch' => 'required']);
 
@@ -272,9 +272,9 @@ class AgentController extends Controller
         }else if ($id == 1){
             return redirect('agent');
         }
-        
+
         $agent = Agent::find($id);
-        
+
         if($agent == null){
             return redirect('agent');
         }else if($id == 1){
@@ -291,7 +291,7 @@ class AgentController extends Controller
 
         $agent->status = !$agent->status;
         $agent->push();
-        
+
         return redirect('agent/view/'.$id);
     }
 }
